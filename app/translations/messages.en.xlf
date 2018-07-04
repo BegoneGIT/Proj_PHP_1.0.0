@@ -1,0 +1,269 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+
+        <trans-unit id="parts.index">
+            <source>parts.index</source>
+            <target>Parts</target>
+        </trans-unit>
+
+        <trans-unit id="message.part_successfully_added">
+            <source>message.part_successfully_added</source>
+            <target>Part successfully added to tracked</target>
+        </trans-unit>
+
+
+        <trans-unit id="action.register">
+            <source>action.register</source>
+            <target>Register</target>
+        </trans-unit>
+
+        <trans-unit id="title.register">
+            <source>title.register</source>
+            <target>Register</target>
+        </trans-unit>
+
+        <trans-unit id="catalogue.parts">
+            <source>catalogue.parts</source>
+            <target>Car parts catalogue</target>
+        </trans-unit>
+
+
+        <trans-unit id="label.imie">
+            <source>label.imie</source>
+            <target>Name</target>
+        </trans-unit>
+
+
+        <trans-unit id="label.nazwisko">
+            <source>label.nazwisko</source>
+            <target>Surname</target>
+        </trans-unit>
+
+
+        <trans-unit id="label.email">
+            <source>label.email</source>
+            <target>email</target>
+        </trans-unit>
+
+
+        <trans-unit id="label.nip">
+            <source>label.nip</source>
+            <target>NIP</target>
+        </trans-unit>
+
+        <trans-unit id="label.regon">
+            <source>label.regon</source>
+            <target>REGON</target>
+        </trans-unit>
+
+        <trans-unit id="label.phone1">
+            <source>label.phone1</source>
+            <target>First Phone Number</target>
+        </trans-unit>
+
+
+        <trans-unit id="label.phone2">
+            <source>label.phone2</source>
+            <target>Second Phone Number</target>
+        </trans-unit>
+
+
+        <trans-unit id="label.phone3">
+            <source>label.phone3</source>
+            <target>Third Phone Number</target>
+        </trans-unit>
+
+        <trans-unit id="label.login">
+            <source>label.login</source>
+            <target>Login</target>
+        </trans-unit>
+
+        <trans-unit id="label.password">
+            <source>label.password</source>
+            <target>Password</target>
+        </trans-unit>
+
+        <trans-unit id="label.repeatPassword">
+            <source>label.repeatPassword</source>
+            <target>Repeat Password</target>
+        </trans-unit>
+
+
+        <trans-unit id="title.auth_login">
+            <source>title.auth_login</source>
+            <target>Login</target>
+        </trans-unit>
+
+        <trans-unit id="action.login">
+            <source>action.login</source>
+            <target>Login</target>
+        </trans-unit>
+
+        <trans-unit id="auth.login.label">
+            <source>auth.login.label</source>
+            <target>Login</target>
+        </trans-unit>
+
+        <trans-unit id="label.actions">
+            <source>label.actions</source>
+            <target>Action</target>
+        </trans-unit>
+
+        <trans-unit id="action.save">
+            <source>action.save</source>
+            <target>Save</target>
+        </trans-unit>
+
+        <trans-unit id="title.track_add">
+            <source>title.track_add</source>
+            <target> Add to tracked </target>
+        </trans-unit>
+
+        <trans-unit id="tracked">
+            <source>tracked</source>
+            <target> Tracked </target>
+        </trans-unit>
+
+        <trans-unit id="tracked.parts">
+            <source>tracked.parts</source>
+            <target> Tracked Parts </target>
+        </trans-unit>
+
+
+
+
+        <trans-unit id="userdata">
+            <source>userdata</source>
+            <target> User Data </target>
+        </trans-unit>
+
+        <trans-unit id="homepage">
+            <source>homepage</source>
+            <target> Homepage </target>
+        </trans-unit>
+
+        <trans-unit id="auth.logout.label">
+            <source>auth.logout.label</source>
+            <target> Logout </target>
+        </trans-unit>
+
+        <trans-unit id="label.nav.next">
+            <source>label.nav.next</source>
+            <target> Next </target>
+        </trans-unit>
+
+        <trans-unit id="labels.nav.prev">
+            <source>labels.nav.prev</source>
+            <target> Previous </target>
+        </trans-unit>
+
+        <trans-unit id="label.name">
+            <source>label.name</source>
+            <target> Name </target>
+        </trans-unit>
+
+        <trans-unit id="label.nav.prev">
+            <source>label.nav.prev</source>
+            <target> Previous </target>
+        </trans-unit>
+
+
+
+
+        <trans-unit id="index.table">
+            <source>index.table</source>
+            <target> INDEX </target>
+        </trans-unit>
+
+
+        <trans-unit id="name.table">
+            <source>name.table</source>
+            <target> NAME </target>
+        </trans-unit>
+
+            <trans-unit id="localization.table">
+                <source>localization.table</source>
+                <target> LOCALIZATION </target>
+            </trans-unit>
+
+
+        <trans-unit id="numbers.table">
+            <source>numbers.table</source>
+            <target> PARTS LEFT </target>
+        </trans-unit>
+
+        <trans-unit id="price.table">
+            <source>price.table</source>
+            <target> PRICE </target>
+        </trans-unit>
+
+
+        <trans-unit id="date.table">
+            <source>date.table</source>
+            <target> DATE </target>
+        </trans-unit>
+
+        <trans-unit id="account_edit">
+            <source>account_edit</source>
+            <target> Edit your personal data </target>
+        </trans-unit>
+
+        <trans-unit id="title.editUserdata">
+            <source>title.editUserdata</source>
+            <target> Edit your personal data </target>
+        </trans-unit>
+
+        <trans-unit id="label.city">
+            <source>label.city</source>
+            <target> City </target>
+        </trans-unit>
+
+        <trans-unit id="label.street">
+            <source>label.street</source>
+            <target> Street </target>
+        </trans-unit>
+
+        <trans-unit id="label.number">
+            <source>label.number</source>
+            <target> Home number </target>
+        </trans-unit>
+
+        <trans-unit id="label.postal_code">
+            <source>label.postal_code</source>
+            <target> Postal Code </target>
+        </trans-unit>
+
+        <trans-unit id="users.index">
+            <source>users.index</source>
+            <target> Users </target>
+        </trans-unit>
+
+        <trans-unit id="id.table">
+            <source>id.table</source>
+            <target> ID </target>
+        </trans-unit>
+
+
+        <trans-unit id="action.update_user">
+            <source>action.update_user</source>
+            <target> Update Data </target>
+        </trans-unit>
+
+
+        <trans-unit id="all_users">
+            <source>all_users</source>
+            <target> Users Data </target>
+        </trans-unit>
+
+        <trans-unit id="action.search">
+            <source>action.search</source>
+            <target> Search </target>
+        </trans-unit>
+
+
+
+        </body>
+    </file>
+</xliff>

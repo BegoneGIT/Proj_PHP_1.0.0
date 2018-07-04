@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="d7380b82-2e8c-415c-bd0c-97afc74a01c8" name="CIS" url="http://16_bulat@cis.wzks.uj.edu.pl">
+        <fileTransfer host="16_bulat@cis.wzks.uj.edu.pl" port="22" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

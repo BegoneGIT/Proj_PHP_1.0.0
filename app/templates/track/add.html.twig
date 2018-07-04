@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'title.track_add'|trans }}{% endblock %}
+
+{% block body %}
+    <a href= "{{ url('track_index') }}">{{ 'tracked'|trans }}</a>
+    <h1>{{ 'title.track_add'|trans }}</h1>
+    {{ form_start(form, { method: 'post', action: url('track_add') }) }}
+    {{ form_widget(form) }}
+    <input type="submit" value="{{ 'action.save'|trans }}" class="btn btn-success" />
+    {{ form_end(form) }}
+{% endblock %}

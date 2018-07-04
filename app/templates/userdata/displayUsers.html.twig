@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Parts
+{% endblock %}
+
+{% block body %}
+
+    <style>
+        table {
+            width: 100%;
+            border: 1px solid black;
+        }
+    </style>
+
+    {% include 'default/_paginator.html.twig' with {
+        paginator: paginator,
+        route_name: 'parts_index_paginated',
+    } %}
+
+    <h1>
+        {{ 'users.index'|trans }}
+    </h1>
+    {% if paginator.data is defined and paginator.data|length %}
+        <table>
+            <tr>
+                <th>{{ 'id.table'|trans }} </th>
+                <th>{{  'label.imie'|trans }} </th>
+                <th>{{ 'label.nazwisko'|trans }} </th>
+                <th>{{ 'label.email'|trans }} </th>
+                <th>{{ 'label.nip'|trans }} </th>
+                <th>{{ 'label.regon'|trans }} </th>
+                <th>{{ 'label.phone1'|trans }} </th>
+                <th>{{ 'label.phone2'|trans }} </th>
+                <th>{{ 'label.phone3'|trans }} </th>
+                <th>{{ 'label.city'|trans }} </th>
+                <th>{{ 'label.street'|trans }} </th>
+                <th>{{ 'label.number'|trans }} </th>
+                <th>{{ 'label.postal_code'|trans }} </th>
+
+            </tr>
+            {% for row in paginator.data %}
+                <tr>
+                    <td>{{ row.idUzytkownicy }}</td>
+                    <td>{{ row.Imie }}</td>
+                    <td>{{ row.Nazwisko }}</td>
+                    <td>{{ row.email }}</td>
+                    <td>{{ row.NIP }}</td>
+                    <td>{{ row.REGON }}</td>
+                    <td>{{ row.tel1 }}</td>
+                    <td>{{ row.tel2 }}</td>
+                    <td>{{ row.tel3 }}</td>
+                    <td>{{ row.miasto }}</td>
+                    <td>{{ row.ulica }}</td>
+                    <td>{{ row.numer }}</td>
+                    <td>{{ row.kod_pocztowy }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <div>
+            List is empty!
+        </div>
+    {% endif %}
+{% endblock %}

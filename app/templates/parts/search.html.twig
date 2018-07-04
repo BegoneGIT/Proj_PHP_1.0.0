@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'parts.index'|trans }}
+{% endblock %}
+
+{% block body %}
+
+    <style>
+        table {
+            width: 100%;
+            border: 1px solid black;
+        }
+    </style>
+
+    {% include 'default/_paginator.html.twig' with {
+        paginator: paginator,
+        route_name: 'parts_search_paginated',
+    } %}
+
+    {{ form_start(form, { method: 'get', action: url('search_index') }) }}
+    {{ form_widget(form) }}
+    <input type="submit" value="{{ 'action.search'|trans }}" class="btn btn-success" />
+    {{ form_end(form) }}
+
+
+    <h1>
+        {{ 'parts.index'|trans }}
+    </h1>
+    {% if paginator.data is defined and paginator.data|length %}
+        <table>
+            <tr>
+                <th>{{ 'index.table'|trans }} </th>
+                <th>{{  'name.table'|trans }} </th>
+                <th>{{ 'localization.table'|trans }} </th>
+                <th>{{ 'numbers.table'|trans }} </th>
+                <th>{{ 'price.table'|trans }} </th>
+            </tr>
+            {% for row in paginator.data %}
+                <tr>
+                    <td>{{ row.INDEKS }}</td>
+                    <td>{{ row.NAZWA }}</td>
+                    <td>{{ row.LOKALIZACJA }}</td>
+                    <td>{{ row.STAN_MIN }}</td>
+                    <td>{{ row.CENA1 }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        {#<a href= "{{ url('homepage') }}">{{ 'homepage'|trans }}</a>#}
+    {% else %}
+        <div>
+            List is empty!
+        </div>
+    {% endif %}
+{% endblock %}

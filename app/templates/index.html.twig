@@ -1,0 +1,26 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}
+    {{ 'catalogue.parts'|trans }}
+{% endblock %}
+{% block content %}
+    <h1>
+       {{ 'catalogue.parts'|trans }}
+    </h1>
+
+    <ul>
+        <li><a href="{{ url('parts_index') }}">{{ 'parts.index'|trans }}</a></li>
+
+        {% if is_granted('ROLE_ADMIN') %}
+            <li><a href= "{{ url('user_index') }}">{{ 'all_users'|trans }}</a></li>
+        {% endif %}
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <li><a href= "{{ url('track_index') }}">{{ 'tracked'|trans }}</a></li>
+            <li><a href="{{ url('account_index') }}">{{ 'userdata'|trans }}</a></li>
+            <li><a href="{{ url('auth_logout') }}">{{ 'auth.logout.label'|trans }}</a></li>
+        {% else %}
+            <li><a href="{{ url('register') }}">{{ 'title.register'|trans }}</a></li>
+            <li><a href="{{ url('auth_login') }}">{{ 'auth.login.label'|trans }}</a></li>
+        {% endif %}
+    </ul>
+{% endblock %}

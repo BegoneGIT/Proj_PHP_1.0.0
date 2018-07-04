@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        {{ 'title.editUserdata'|trans }}
+    {% else %}
+        {{ 'title.register'|trans }}
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+    <h1>
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            {{ 'title.editUserdata'|trans }}
+        {% else %}
+            {{ 'title.register'|trans }}
+        {% endif %}
+    </h1>
+    {{ form_start(form, { method: 'post', action: url('register') }) }}
+    {{ form_widget(form) }}
+    <input type="submit" value="{% if is_granted('IS_AUTHENTICATED_FULLY') %}{{ 'action.update_user'|trans }}{% else %}{{ 'action.register'|trans }}{% endif %}" class="btn btn-success" />
+    {{ form_end(form) }}
+{% endblock %}

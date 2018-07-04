@@ -1,0 +1,15 @@
+{
+    "require": {
+        "twbs/bootstrap": "^4.1",
+        "doctrine/dbal": "^2.5",
+        "twig/twig": "^1.35",
+        "symfony/asset": "^3.4",
+        "symfony/twig-bridge": "^3.4",
+        "symfony/translation": "^3.4",
+        "symfony/intl": "^3.4",
+        "symfony/config": "^3.4"
+    },
+    "require-dev": {
+        "sorien/silex-dbal-profiler": "^2.0"
+    }
+}

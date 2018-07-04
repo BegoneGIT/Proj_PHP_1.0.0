@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    User data
+{% endblock %}
+
+{% block body %}
+
+    <style>
+        table {
+            width: 100%;
+            border: 1px solid black;
+        }
+    </style>
+
+    <h1>
+        User data
+    </h1>
+    {% if userData is defined and userData|length %}
+    <h3> Login: {{ userData.login }} </h3>
+
+        <table>
+            <tr>
+            <th>{{ 'label.imie'|trans }} </th>
+            <td>{{ userData.userData.Imie }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'label.nazwisko'|trans }} </th>
+                <td>{{ userData.userData.Nazwisko }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'label.email'|trans }} </th>
+                <td>{{ userData.userData.email }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'label.nip'|trans }} </th>
+                <td>{{ userData.userData.NIP }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'label.regon'|trans }} </th>
+                <td>{{ userData.userData.REGON }}</td>
+            </tr>
+        </table>
+        <a href= "{{ url('account_edit') }}">{{ 'account_edit'|trans }}</a>
+    {% else %}
+        <div>
+            List is empty!
+        </div>
+    {% endif %}
+{% endblock %}

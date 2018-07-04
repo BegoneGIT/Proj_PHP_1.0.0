@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Tracked
+{% endblock %}
+
+{% block body %}
+
+    <style>
+    table {
+        width: 100%;
+        border: 1px solid black;
+    }
+    </style>
+
+    {% include 'default/_paginator.html.twig' with {
+        paginator: paginator,
+        route_name: 'track_index_paginated',
+    } %}
+
+    <h1>
+       {{ 'tracked.parts'|trans }}
+    </h1>
+
+    {% for message in app.session.getFlashBag.get('message') %}
+        {{ message }}
+    {% endfor %}
+
+    <a href= "{{ url('track_add') }}">{{ 'title.track_add'|trans }}</a>
+    {% if paginator.data is defined and paginator.data|length %}
+        <table>
+                <th>{{ 'index.table'|trans }} </th>
+                <th>{{  'name.table'|trans }} </th>
+                <th>{{  'date.table'|trans }} </th>
+                <th>{{  'price.table'|trans }}</th>
+            {% for row in paginator.data %}
+                <tr>
+                    <td>{{ row.INDEKS }}</td>
+                    <td>{{ row.NAZWA }}</td>
+                    <td>{{ row.Data }}</td>
+                    <td>{{ row.wartosc }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+       {# <a href= "{{ url('homepage') }}">{{ 'homepage'|trans }}</a>#}
+    {% else %}
+        <div>
+            List is empty!
+        </div>
+    {% endif %}
+{% endblock %}
