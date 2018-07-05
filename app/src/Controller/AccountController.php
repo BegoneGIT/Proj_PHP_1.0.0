@@ -83,11 +83,11 @@ class AccountController implements ControllerProviderInterface
         //dump($formFill);
         $form->handleRequest($request);
 
-        $token = $app['security.token_storage']->getToken();
-        $userName = $token->getUser()->getUsername();
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $userRepository->updateData($form->getData(),$userName);
+            $formData=$form->getData();
+            $formData['password'] = $app['security.encoder.bcrypt']->encodePassword($formData['password'], '');
+            $userRepository->updateData($formData,$userLogin);
 
             $app['session']->getFlashBag()->add(
                 'messages',

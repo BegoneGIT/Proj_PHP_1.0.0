@@ -106,7 +106,7 @@ class __TwigTemplate_52f610614618db964cc75a025fcabffea307dd6f9731cb306103a011822
         echo "
     <a href= \"";
         // line 29
-        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getUrl("track_add");
+        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getUrl("track_add", array("INDEKS" => "default"));
         echo "\">";
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("title.track_add"), "html", null, true);
         echo "</a>
@@ -233,7 +233,7 @@ class __TwigTemplate_52f610614618db964cc75a025fcabffea307dd6f9731cb306103a011822
         {{ message }}
     {% endfor %}
 
-    <a href= \"{{ url('track_add') }}\">{{ 'title.track_add'|trans }}</a>
+    <a href= \"{{ url('track_add', {'INDEKS': 'default'}) }}\">{{ 'title.track_add'|trans }}</a>
     {% if paginator.data is defined and paginator.data|length %}
         <table>
                 <th>{{ 'index.table'|trans }} </th>

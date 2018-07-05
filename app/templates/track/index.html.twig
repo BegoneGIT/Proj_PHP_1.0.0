@@ -26,7 +26,7 @@
         {{ message }}
     {% endfor %}
 
-    <a href= "{{ url('track_add') }}">{{ 'title.track_add'|trans }}</a>
+    <a href= "{{ url('track_add', {'INDEKS': 'default'}) }}">{{ 'title.track_add'|trans }}</a>
     {% if paginator.data is defined and paginator.data|length %}
         <table>
                 <th>{{ 'index.table'|trans }} </th>

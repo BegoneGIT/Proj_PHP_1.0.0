@@ -14,6 +14,13 @@
             <target>Część została dodana do obserwowanych</target>
         </trans-unit>
 
+
+        <trans-unit id="message.user_data_successfully_edited">
+            <source>message.user_data_successfully_edited</source>
+            <target>Dane użytkownika zostały pomyślnie uaktualnione</target>
+        </trans-unit>
+
+
         <trans-unit id="action.register">
             <source>action.register</source>
             <target>Rejestracja</target>

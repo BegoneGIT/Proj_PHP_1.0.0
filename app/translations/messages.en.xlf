@@ -13,6 +13,13 @@
             <target>Part successfully added to tracked</target>
         </trans-unit>
 
+        <trans-unit id="message.user_data_successfully_edited">
+            <source>message.user_data_successfully_edited</source>
+            <target>User data successfully edited</target>
+        </trans-unit>
+
+
+
 
         <trans-unit id="action.register">
             <source>action.register</source>

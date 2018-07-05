@@ -36,7 +36,7 @@ class TrackController implements ControllerProviderInterface
         $controller->get('/page/{page}', [$this, 'indexAction'])
             ->value('page', 1)
             ->bind('track_index_paginated');
-        $controller->match('/add', [$this, 'addAction'])
+        $controller->match('/{INDEKS}/add', [$this, 'addAction'])
             ->method('POST|GET')
             ->bind('track_add');
 
@@ -71,9 +71,9 @@ class TrackController implements ControllerProviderInterface
      *
      * @return \Symfony\Component\HttpFoundation\Response HTTP Response
      */
-    public function addAction(Application $app, Request $request)
+    public function addAction(Application $app, Request $request, $INDEKS)
     {
-        $track = [];
+        $track['updated_ID'] = $INDEKS;
 
         $form = $app['form.factory']->createBuilder(TrackType::class, $track)->getForm();
         $form->handleRequest($request);

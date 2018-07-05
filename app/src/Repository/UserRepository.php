@@ -264,7 +264,6 @@ class UserRepository
         $submit['id_uzytkownik'] = $id;
         $submit['login'] =  $logindata['login'];
         $submit['password'] = $logindata['password'];
-        $submit['role_id'] = 2;
         return $this->db->update('login', $submit, ['id_uzytkownik' => $submit['id_uzytkownik']]);
 
     }
@@ -277,14 +276,14 @@ class UserRepository
 
     private function updateUserData($userdata, $id)
     {
-        $submit['Imie'] = $userdata['imie'];
-        $submit['Nazwisko'] = $userdata['nazwisko'];
+        $submit['Imie'] = $userdata['Imie'];
+        $submit['Nazwisko'] = $userdata['Nazwisko'];
         $submit['email'] = $userdata['email'];
         $submit['NIP'] = $userdata['NIP'];
         $submit['REGON'] = $userdata['REGON'];
 
 
-        return $this->db->update('uzytkownicy', $submit, $id);
+        return $this->db->update('uzytkownicy', $submit, ['idUzytkownicy' => $id]);
     }
 
     /**
@@ -297,7 +296,9 @@ class UserRepository
     private function updateUserPhone($userdata, $id)
     {
         $telefon['id_uzytkownik'] = $id;
-        $telefon['tel1'] = $userdata['phone'];
+        $telefon['tel1'] = $userdata['tel1'];
+        $telefon['tel2'] = $userdata['tel2'];
+        $telefon['tel3'] = $userdata['tel3'];
 
         return $this->db->update('telefon', $telefon, ['id_uzytkownik' => $telefon['id_uzytkownik']]);
     }
@@ -333,7 +334,6 @@ class UserRepository
     {
         $display['login'] = $userlogin;
 
-        $findAddress['0'] = "";
         $userID = $this->findLoggedUserId($userlogin);
 
         $find = $this->findLoggedUserData($userID);
@@ -341,9 +341,9 @@ class UserRepository
         $findAddress = $this->findLoggedUserAddress($userID);
 
 
-        $display['userData'] = $find['0'];
-        $display['phone'] = $findPhone['0'];
-        $display['adress'] = $findAddress['0'];
+        $display['userData'] = $find ? $find['0'] : $find;
+        $display['phone'] = $findPhone ? $findPhone['0'] : $findPhone;
+        $display['adress'] = $findAddress ? $findAddress['0'] : $findAddress;
 
 
         return $display;
@@ -449,11 +449,12 @@ class UserRepository
         $userDataQueryBuilder = $this->db->createQueryBuilder();
 
         return $userDataQueryBuilder
-            ->select('u.idUzytkownicy', 'u.Imie', 'u.Nazwisko', 'u.email', 'u.NIP', 'u.REGON',
+            ->select('u.idUzytkownicy','l.login', 'u.Imie', 'u.Nazwisko', 'u.email', 'u.NIP', 'u.REGON',
                 't.tel1','t.tel2','t.tel3',
                 'a.miasto', 'a.ulica', 'a.numer', 'a.kod_pocztowy'
             )
             ->from('uzytkownicy', 'u')
+            ->leftJoin('u','login','l','u.idUzytkownicy = l.id_uzytkownik')
             ->leftJoin('u','telefon','t','u.idUzytkownicy = t.id_uzytkownik')
             ->leftJoin('u','adres','a','u.idUzytkownicy = a.id_uzytkownik')
             ->orderBy('u.idUzytkownicy', 'ASC');

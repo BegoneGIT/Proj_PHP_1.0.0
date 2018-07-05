@@ -137,16 +137,99 @@ class __TwigTemplate_8930c27b5313ce6b257119847290a048a4bd81847dba324f72b1b0dda4f
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["userData"]) ? $context["userData"] : $this->getContext($context, "userData")), "userData", array()), "REGON", array()), "html", null, true);
             echo "</td>
             </tr>
-        </table>
+";
+            // line 43
+            if ($this->getAttribute((isset($context["userData"]) ? $context["userData"] : $this->getContext($context, "userData")), "phone", array())) {
+                // line 44
+                echo "            <tr>
+                <th>";
+                // line 45
+                echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("label.phone1"), "html", null, true);
+                echo " </th>
+                <td>";
+                // line 46
+                echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["userData"]) ? $context["userData"] : $this->getContext($context, "userData")), "phone", array()), "tel1", array()), "html", null, true);
+                echo "</td>
+            </tr>
+            <tr>
+                <th>";
+                // line 49
+                echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("label.phone2"), "html", null, true);
+                echo " </th>
+                <td>";
+                // line 50
+                echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["userData"]) ? $context["userData"] : $this->getContext($context, "userData")), "phone", array()), "tel2", array()), "html", null, true);
+                echo "</td>
+            </tr>
+            <tr>
+                <th>";
+                // line 53
+                echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("label.phone3"), "html", null, true);
+                echo " </th>
+                <td>";
+                // line 54
+                echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["userData"]) ? $context["userData"] : $this->getContext($context, "userData")), "phone", array()), "tel3", array()), "html", null, true);
+                echo "</td>
+            </tr>
+    ";
+            }
+            // line 57
+            echo "    ";
+            if ($this->getAttribute((isset($context["userData"]) ? $context["userData"] : $this->getContext($context, "userData")), "adress", array())) {
+                // line 58
+                echo "            <tr>
+                <th>";
+                // line 59
+                echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("label.city"), "html", null, true);
+                echo " </th>
+                <td>";
+                // line 60
+                echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["userData"]) ? $context["userData"] : $this->getContext($context, "userData")), "adress", array()), "city", array()), "html", null, true);
+                echo "</td>
+            </tr>
+            <tr>
+                <th>";
+                // line 63
+                echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("label.street"), "html", null, true);
+                echo " </th>
+                <td>";
+                // line 64
+                echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["userData"]) ? $context["userData"] : $this->getContext($context, "userData")), "adress", array()), "street", array()), "html", null, true);
+                echo "</td>
+            </tr>
+        <tr>
+            <th>";
+                // line 67
+                echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("label.number"), "html", null, true);
+                echo " </th>
+            <td>";
+                // line 68
+                echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["userData"]) ? $context["userData"] : $this->getContext($context, "userData")), "adress", array()), "number", array()), "html", null, true);
+                echo "</td>
+        </tr>
+        <tr>
+            <th>";
+                // line 71
+                echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("label.postal_code"), "html", null, true);
+                echo " </th>
+            <td>";
+                // line 72
+                echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["userData"]) ? $context["userData"] : $this->getContext($context, "userData")), "adress", array()), "postal_code", array()), "html", null, true);
+                echo "</td>
+        </tr>
+    ";
+            }
+            // line 75
+            echo "        </table>
         <a href= \"";
-            // line 44
+            // line 76
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getUrl("account_edit");
             echo "\">";
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("account_edit"), "html", null, true);
             echo "</a>
     ";
         } else {
-            // line 46
+            // line 78
             echo "        <div>
             List is empty!
         </div>
@@ -172,7 +255,7 @@ class __TwigTemplate_8930c27b5313ce6b257119847290a048a4bd81847dba324f72b1b0dda4f
 
     public function getDebugInfo()
     {
-        return array (  150 => 46,  143 => 44,  137 => 41,  133 => 40,  127 => 37,  123 => 36,  117 => 33,  113 => 32,  107 => 29,  103 => 28,  97 => 25,  93 => 24,  85 => 20,  83 => 19,  70 => 8,  61 => 7,  50 => 4,  41 => 3,  11 => 1,);
+        return array (  233 => 78,  226 => 76,  223 => 75,  217 => 72,  213 => 71,  207 => 68,  203 => 67,  197 => 64,  193 => 63,  187 => 60,  183 => 59,  180 => 58,  177 => 57,  171 => 54,  167 => 53,  161 => 50,  157 => 49,  151 => 46,  147 => 45,  144 => 44,  142 => 43,  137 => 41,  133 => 40,  127 => 37,  123 => 36,  117 => 33,  113 => 32,  107 => 29,  103 => 28,  97 => 25,  93 => 24,  85 => 20,  83 => 19,  70 => 8,  61 => 7,  50 => 4,  41 => 3,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -227,6 +310,38 @@ class __TwigTemplate_8930c27b5313ce6b257119847290a048a4bd81847dba324f72b1b0dda4f
                 <th>{{ 'label.regon'|trans }} </th>
                 <td>{{ userData.userData.REGON }}</td>
             </tr>
+{% if userData.phone %}
+            <tr>
+                <th>{{ 'label.phone1'|trans }} </th>
+                <td>{{ userData.phone.tel1 }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'label.phone2'|trans }} </th>
+                <td>{{ userData.phone.tel2 }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'label.phone3'|trans }} </th>
+                <td>{{ userData.phone.tel3 }}</td>
+            </tr>
+    {% endif %}
+    {% if userData.adress %}
+            <tr>
+                <th>{{ 'label.city'|trans }} </th>
+                <td>{{ userData.adress.city }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'label.street'|trans }} </th>
+                <td>{{ userData.adress.street }}</td>
+            </tr>
+        <tr>
+            <th>{{ 'label.number'|trans }} </th>
+            <td>{{ userData.adress.number }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'label.postal_code'|trans }} </th>
+            <td>{{ userData.adress.postal_code }}</td>
+        </tr>
+    {% endif %}
         </table>
         <a href= \"{{ url('account_edit') }}\">{{ 'account_edit'|trans }}</a>
     {% else %}

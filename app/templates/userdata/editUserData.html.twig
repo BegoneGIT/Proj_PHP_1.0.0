@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+
+        {{ 'title.editUserdata'|trans }}
+
+{% endblock %}
+
+{% block body %}
+    <h1>
+            {{ 'title.editUserdata'|trans }}
+    </h1>
+
+{#    <h2> User login {{ userData.login }}</h2>#}
+
+        {{ form_start(form, { method: 'post', action: url('user_edit', {'userLogin': tag.login}) }) }}
+        {{ form_widget(form) }}
+        <input type="submit" value="{{ 'action.update_user'|trans }}" class="btn btn-success" />
+        {{ form_end(form) }}
+
+{% endblock %}

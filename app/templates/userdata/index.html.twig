@@ -40,6 +40,38 @@
                 <th>{{ 'label.regon'|trans }} </th>
                 <td>{{ userData.userData.REGON }}</td>
             </tr>
+{% if userData.phone %}
+            <tr>
+                <th>{{ 'label.phone1'|trans }} </th>
+                <td>{{ userData.phone.tel1 }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'label.phone2'|trans }} </th>
+                <td>{{ userData.phone.tel2 }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'label.phone3'|trans }} </th>
+                <td>{{ userData.phone.tel3 }}</td>
+            </tr>
+    {% endif %}
+    {% if userData.adress %}
+            <tr>
+                <th>{{ 'label.city'|trans }} </th>
+                <td>{{ userData.adress.city }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'label.street'|trans }} </th>
+                <td>{{ userData.adress.street }}</td>
+            </tr>
+        <tr>
+            <th>{{ 'label.number'|trans }} </th>
+            <td>{{ userData.adress.number }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'label.postal_code'|trans }} </th>
+            <td>{{ userData.adress.postal_code }}</td>
+        </tr>
+    {% endif %}
         </table>
         <a href= "{{ url('account_edit') }}">{{ 'account_edit'|trans }}</a>
     {% else %}

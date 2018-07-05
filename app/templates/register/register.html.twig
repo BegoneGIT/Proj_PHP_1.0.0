@@ -16,8 +16,16 @@
             {{ 'title.register'|trans }}
         {% endif %}
     </h1>
-    {{ form_start(form, { method: 'post', action: url('register') }) }}
-    {{ form_widget(form) }}
-    <input type="submit" value="{% if is_granted('IS_AUTHENTICATED_FULLY') %}{{ 'action.update_user'|trans }}{% else %}{{ 'action.register'|trans }}{% endif %}" class="btn btn-success" />
-    {{ form_end(form) }}
+
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        {{ form_start(form, { method: 'post', action: url('account_edit') }) }}
+        {{ form_widget(form) }}
+        <input type="submit" value="{{ 'action.update_user'|trans }}" class="btn btn-success" />
+        {{ form_end(form) }}
+    {% else %}
+        {{ form_start(form, { method: 'post', action: url('register') }) }}
+        {{ form_widget(form) }}
+        <input type="submit" value="{{ 'action.register'|trans }}" class="btn btn-success" />
+        {{ form_end(form) }}
+    {% endif %}
 {% endblock %}

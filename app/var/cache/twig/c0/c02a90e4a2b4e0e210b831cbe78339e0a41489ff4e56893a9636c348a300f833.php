@@ -127,10 +127,12 @@ class __TwigTemplate_4b630b9daae9c5b765c4cf2607668ae799297f6b48c0139f343b136e2a9
             foreach ($context['_seq'] as $context["_key"] => $context["row"]) {
                 // line 40
                 echo "                <tr>
-                    <td>";
+                    <td><a href= \"";
                 // line 41
+                echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getUrl("track_add", array("INDEKS" => $this->getAttribute($context["row"], "INDEKS", array()))), "html", null, true);
+                echo "\">";
                 echo twig_escape_filter($this->env, $this->getAttribute($context["row"], "INDEKS", array()), "html", null, true);
-                echo "</td>
+                echo "</a></td>
                     <td>";
                 // line 42
                 echo twig_escape_filter($this->env, $this->getAttribute($context["row"], "NAZWA", array()), "html", null, true);
@@ -185,7 +187,7 @@ class __TwigTemplate_4b630b9daae9c5b765c4cf2607668ae799297f6b48c0139f343b136e2a9
 
     public function getDebugInfo()
     {
-        return array (  163 => 51,  160 => 50,  157 => 48,  148 => 45,  144 => 44,  140 => 43,  136 => 42,  132 => 41,  129 => 40,  125 => 39,  120 => 37,  116 => 36,  112 => 35,  108 => 34,  104 => 33,  100 => 31,  98 => 30,  93 => 28,  88 => 25,  85 => 20,  83 => 17,  82 => 16,  72 => 8,  63 => 7,  50 => 4,  41 => 3,  11 => 1,);
+        return array (  165 => 51,  162 => 50,  159 => 48,  150 => 45,  146 => 44,  142 => 43,  138 => 42,  132 => 41,  129 => 40,  125 => 39,  120 => 37,  116 => 36,  112 => 35,  108 => 34,  104 => 33,  100 => 31,  98 => 30,  93 => 28,  88 => 25,  85 => 20,  83 => 17,  82 => 16,  72 => 8,  63 => 7,  50 => 4,  41 => 3,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -238,7 +240,7 @@ class __TwigTemplate_4b630b9daae9c5b765c4cf2607668ae799297f6b48c0139f343b136e2a9
             </tr>
             {% for row in paginator.data %}
                 <tr>
-                    <td>{{ row.INDEKS }}</td>
+                    <td><a href= \"{{ url('track_add', {'INDEKS': row.INDEKS}) }}\">{{ row.INDEKS }}</a></td>
                     <td>{{ row.NAZWA }}</td>
                     <td>{{ row.LOKALIZACJA }}</td>
                     <td>{{ row.STAN_MIN }}</td>

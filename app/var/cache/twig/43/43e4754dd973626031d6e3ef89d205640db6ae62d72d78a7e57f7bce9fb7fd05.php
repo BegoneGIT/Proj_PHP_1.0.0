@@ -76,21 +76,43 @@ class __TwigTemplate_6c390ee4c9f0f99290973d070331da957afe63c345bbe37dff033d1514a
         echo "</h1>
     ";
         // line 8
-        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'form_start', array("method" => "post", "action" => $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getUrl("track_index")));
-        echo "
+        if ($this->getAttribute((isset($context["track"]) ? $context["track"] : $this->getContext($context, "track")), "updated_ID", array())) {
+            // line 9
+            echo "        ";
+            echo             $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'form_start', array("method" => "post", "action" => $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getUrl("track_add", array("INDEKS" => $this->getAttribute((isset($context["track"]) ? $context["track"] : $this->getContext($context, "track")), "updated_ID", array())))));
+            echo "
+        ";
+            // line 10
+            echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'widget');
+            echo "
+        <input type=\"submit\" value=\"";
+            // line 11
+            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("action.save"), "html", null, true);
+            echo "\" class=\"btn btn-success\" />
+        ";
+            // line 12
+            echo             $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'form_end');
+            echo "
     ";
-        // line 9
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'widget');
-        echo "
-    <input type=\"submit\" value=\"";
-        // line 10
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("action.save"), "html", null, true);
-        echo "\" class=\"btn btn-success\" />
+        } else {
+            // line 14
+            echo "        ";
+            echo             $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'form_start', array("method" => "post", "action" => $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getUrl("track_add", array("INDEKS" => "default"))));
+            echo "
+        ";
+            // line 15
+            echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'widget');
+            echo "
+        <input type=\"submit\" value=\"";
+            // line 16
+            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("action.save"), "html", null, true);
+            echo "\" class=\"btn btn-success\" />
+        ";
+            // line 17
+            echo             $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'form_end');
+            echo "
     ";
-        // line 11
-        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'form_end');
-        echo "
-";
+        }
         
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->leave($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof);
 
@@ -111,7 +133,7 @@ class __TwigTemplate_6c390ee4c9f0f99290973d070331da957afe63c345bbe37dff033d1514a
 
     public function getDebugInfo()
     {
-        return array (  91 => 11,  87 => 10,  83 => 9,  79 => 8,  75 => 7,  68 => 6,  59 => 5,  41 => 3,  11 => 1,);
+        return array (  112 => 17,  108 => 16,  104 => 15,  99 => 14,  94 => 12,  90 => 11,  86 => 10,  81 => 9,  79 => 8,  75 => 7,  68 => 6,  59 => 5,  41 => 3,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -131,10 +153,17 @@ class __TwigTemplate_6c390ee4c9f0f99290973d070331da957afe63c345bbe37dff033d1514a
 {% block body %}
     <a href= \"{{ url('track_index') }}\">{{ 'tracked'|trans }}</a>
     <h1>{{ 'title.track_add'|trans }}</h1>
-    {{ form_start(form, { method: 'post', action: url('track_index') }) }}
-    {{ form_widget(form) }}
-    <input type=\"submit\" value=\"{{ 'action.save'|trans }}\" class=\"btn btn-success\" />
-    {{ form_end(form) }}
+    {% if track.updated_ID %}
+        {{ form_start(form, { method: 'post', action: url('track_add',{'INDEKS': track.updated_ID}) }) }}
+        {{ form_widget(form) }}
+        <input type=\"submit\" value=\"{{ 'action.save'|trans }}\" class=\"btn btn-success\" />
+        {{ form_end(form) }}
+    {% else %}
+        {{ form_start(form, { method: 'post', action: url('track_add',{'INDEKS':  'default' }) }) }}
+        {{ form_widget(form) }}
+        <input type=\"submit\" value=\"{{ 'action.save'|trans }}\" class=\"btn btn-success\" />
+        {{ form_end(form) }}
+    {% endif %}
 {% endblock %}", "track/add.html.twig", "C:\\xampp\\htdocs\\Proj_PHP_1.0.0\\app\\templates\\track\\add.html.twig");
     }
 }

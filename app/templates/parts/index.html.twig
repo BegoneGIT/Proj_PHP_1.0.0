@@ -38,7 +38,7 @@
             </tr>
             {% for row in paginator.data %}
                 <tr>
-                    <td>{{ row.INDEKS }}</td>
+                    <td><a href= "{{ url('track_add', {'INDEKS': row.INDEKS}) }}">{{ row.INDEKS }}</a></td>
                     <td>{{ row.NAZWA }}</td>
                     <td>{{ row.LOKALIZACJA }}</td>
                     <td>{{ row.STAN_MIN }}</td>

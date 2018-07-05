@@ -99,111 +99,121 @@ class __TwigTemplate_e7a94a790dd536879edc32ea88d2d3664474983831a58e5b35bb8fee43e
             echo " </th>
                 <th>";
             // line 28
+            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("label.login"), "html", null, true);
+            echo "</th>
+                <th>";
+            // line 29
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("label.imie"), "html", null, true);
             echo " </th>
                 <th>";
-            // line 29
+            // line 30
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("label.nazwisko"), "html", null, true);
             echo " </th>
                 <th>";
-            // line 30
+            // line 31
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("label.email"), "html", null, true);
             echo " </th>
                 <th>";
-            // line 31
+            // line 32
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("label.nip"), "html", null, true);
             echo " </th>
                 <th>";
-            // line 32
+            // line 33
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("label.regon"), "html", null, true);
             echo " </th>
                 <th>";
-            // line 33
+            // line 34
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("label.phone1"), "html", null, true);
             echo " </th>
                 <th>";
-            // line 34
+            // line 35
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("label.phone2"), "html", null, true);
             echo " </th>
                 <th>";
-            // line 35
+            // line 36
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("label.phone3"), "html", null, true);
             echo " </th>
                 <th>";
-            // line 36
+            // line 37
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("label.city"), "html", null, true);
             echo " </th>
                 <th>";
-            // line 37
+            // line 38
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("label.street"), "html", null, true);
             echo " </th>
                 <th>";
-            // line 38
+            // line 39
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("label.number"), "html", null, true);
             echo " </th>
                 <th>";
-            // line 39
+            // line 40
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("label.postal_code"), "html", null, true);
             echo " </th>
 
             </tr>
             ";
-            // line 42
+            // line 43
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable($this->getAttribute((isset($context["paginator"]) ? $context["paginator"] : $this->getContext($context, "paginator")), "data", array()));
             foreach ($context['_seq'] as $context["_key"] => $context["row"]) {
-                // line 43
+                // line 44
                 echo "                <tr>
                     <td>";
-                // line 44
+                // line 45
                 echo twig_escape_filter($this->env, $this->getAttribute($context["row"], "idUzytkownicy", array()), "html", null, true);
                 echo "</td>
+                    <td><a href= \"";
+                // line 46
+                echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getUrl("user_edit", array("userLogin" => $this->getAttribute($context["row"], "login", array()))), "html", null, true);
+                echo "\">";
+                echo twig_escape_filter($this->env, $this->getAttribute($context["row"], "login", array()), "html", null, true);
+                echo "</a></td>
                     <td>";
-                // line 45
+                // line 47
                 echo twig_escape_filter($this->env, $this->getAttribute($context["row"], "Imie", array()), "html", null, true);
                 echo "</td>
                     <td>";
-                // line 46
+                // line 48
                 echo twig_escape_filter($this->env, $this->getAttribute($context["row"], "Nazwisko", array()), "html", null, true);
                 echo "</td>
                     <td>";
-                // line 47
+                // line 49
                 echo twig_escape_filter($this->env, $this->getAttribute($context["row"], "email", array()), "html", null, true);
                 echo "</td>
                     <td>";
-                // line 48
+                // line 50
                 echo twig_escape_filter($this->env, $this->getAttribute($context["row"], "NIP", array()), "html", null, true);
                 echo "</td>
                     <td>";
-                // line 49
+                // line 51
                 echo twig_escape_filter($this->env, $this->getAttribute($context["row"], "REGON", array()), "html", null, true);
                 echo "</td>
                     <td>";
-                // line 50
+                // line 52
                 echo twig_escape_filter($this->env, $this->getAttribute($context["row"], "tel1", array()), "html", null, true);
                 echo "</td>
                     <td>";
-                // line 51
+                // line 53
                 echo twig_escape_filter($this->env, $this->getAttribute($context["row"], "tel2", array()), "html", null, true);
                 echo "</td>
                     <td>";
-                // line 52
+                // line 54
                 echo twig_escape_filter($this->env, $this->getAttribute($context["row"], "tel3", array()), "html", null, true);
                 echo "</td>
                     <td>";
-                // line 53
+                // line 55
                 echo twig_escape_filter($this->env, $this->getAttribute($context["row"], "miasto", array()), "html", null, true);
                 echo "</td>
                     <td>";
-                // line 54
+                // line 56
                 echo twig_escape_filter($this->env, $this->getAttribute($context["row"], "ulica", array()), "html", null, true);
                 echo "</td>
                     <td>";
-                // line 55
+                // line 57
                 echo twig_escape_filter($this->env, $this->getAttribute($context["row"], "numer", array()), "html", null, true);
                 echo "</td>
                     <td>";
-                // line 56
+                // line 58
                 echo twig_escape_filter($this->env, $this->getAttribute($context["row"], "kod_pocztowy", array()), "html", null, true);
                 echo "</td>
                 </tr>
@@ -212,11 +222,11 @@ class __TwigTemplate_e7a94a790dd536879edc32ea88d2d3664474983831a58e5b35bb8fee43e
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['row'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 59
+            // line 61
             echo "        </table>
     ";
         } else {
-            // line 61
+            // line 63
             echo "        <div>
             List is empty!
         </div>
@@ -242,7 +252,7 @@ class __TwigTemplate_e7a94a790dd536879edc32ea88d2d3664474983831a58e5b35bb8fee43e
 
     public function getDebugInfo()
     {
-        return array (  220 => 61,  216 => 59,  207 => 56,  203 => 55,  199 => 54,  195 => 53,  191 => 52,  187 => 51,  183 => 50,  179 => 49,  175 => 48,  171 => 47,  167 => 46,  163 => 45,  159 => 44,  156 => 43,  152 => 42,  146 => 39,  142 => 38,  138 => 37,  134 => 36,  130 => 35,  126 => 34,  122 => 33,  118 => 32,  114 => 31,  110 => 30,  106 => 29,  102 => 28,  98 => 27,  94 => 25,  92 => 24,  87 => 22,  83 => 20,  81 => 17,  80 => 16,  70 => 8,  61 => 7,  50 => 4,  41 => 3,  11 => 1,);
+        return array (  230 => 63,  226 => 61,  217 => 58,  213 => 57,  209 => 56,  205 => 55,  201 => 54,  197 => 53,  193 => 52,  189 => 51,  185 => 50,  181 => 49,  177 => 48,  173 => 47,  167 => 46,  163 => 45,  160 => 44,  156 => 43,  150 => 40,  146 => 39,  142 => 38,  138 => 37,  134 => 36,  130 => 35,  126 => 34,  122 => 33,  118 => 32,  114 => 31,  110 => 30,  106 => 29,  102 => 28,  98 => 27,  94 => 25,  92 => 24,  87 => 22,  83 => 20,  81 => 17,  80 => 16,  70 => 8,  61 => 7,  50 => 4,  41 => 3,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -282,6 +292,7 @@ class __TwigTemplate_e7a94a790dd536879edc32ea88d2d3664474983831a58e5b35bb8fee43e
         <table>
             <tr>
                 <th>{{ 'id.table'|trans }} </th>
+                <th>{{ 'label.login'|trans }}</th>
                 <th>{{  'label.imie'|trans }} </th>
                 <th>{{ 'label.nazwisko'|trans }} </th>
                 <th>{{ 'label.email'|trans }} </th>
@@ -299,6 +310,7 @@ class __TwigTemplate_e7a94a790dd536879edc32ea88d2d3664474983831a58e5b35bb8fee43e
             {% for row in paginator.data %}
                 <tr>
                     <td>{{ row.idUzytkownicy }}</td>
+                    <td><a href= \"{{ url('user_edit', {'userLogin': row.login}) }}\">{{ row.login }}</a></td>
                     <td>{{ row.Imie }}</td>
                     <td>{{ row.Nazwisko }}</td>
                     <td>{{ row.email }}</td>

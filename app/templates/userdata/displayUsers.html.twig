@@ -25,6 +25,7 @@
         <table>
             <tr>
                 <th>{{ 'id.table'|trans }} </th>
+                <th>{{ 'label.login'|trans }}</th>
                 <th>{{  'label.imie'|trans }} </th>
                 <th>{{ 'label.nazwisko'|trans }} </th>
                 <th>{{ 'label.email'|trans }} </th>
@@ -42,6 +43,7 @@
             {% for row in paginator.data %}
                 <tr>
                     <td>{{ row.idUzytkownicy }}</td>
+                    <td><a href= "{{ url('user_edit', {'userLogin': row.login}) }}">{{ row.login }}</a></td>
                     <td>{{ row.Imie }}</td>
                     <td>{{ row.Nazwisko }}</td>
                     <td>{{ row.email }}</td>

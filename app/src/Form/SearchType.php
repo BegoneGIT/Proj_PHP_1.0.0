@@ -41,6 +41,6 @@ class SearchType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'track_type';
+        return 'search_type';
     }
 }
