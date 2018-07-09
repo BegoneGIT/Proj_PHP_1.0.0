@@ -93,46 +93,59 @@ class __TwigTemplate_959324d008d8cd7fbd46d417f07530a01abeeaf357c6728ebe91e97920b
             echo "\">";
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("all_users"), "html", null, true);
             echo "</a></li>
+            <li><a href= \"";
+            // line 16
+            echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getUrl("show_for_delete");
+            echo "\">";
+            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("delete.user"), "html", null, true);
+            echo "</a></li>
         ";
         }
-        // line 17
+        // line 18
         echo "        ";
         if ($this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("IS_AUTHENTICATED_FULLY")) {
-            // line 18
+            // line 19
             echo "            <li><a href= \"";
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getUrl("track_index");
             echo "\">";
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("tracked"), "html", null, true);
             echo "</a></li>
             <li><a href=\"";
-            // line 19
+            // line 20
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getUrl("account_index");
             echo "\">";
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("userdata"), "html", null, true);
             echo "</a></li>
             <li><a href=\"";
-            // line 20
+            // line 21
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getUrl("auth_logout");
             echo "\">";
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("auth.logout.label"), "html", null, true);
             echo "</a></li>
+            <li><a href=\"";
+            // line 22
+            echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getUrl("deleteUser");
+            echo "\">";
+            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("title.delete_user"), "html", null, true);
+            echo "</a></li>
+
         ";
         } else {
-            // line 22
+            // line 25
             echo "            <li><a href=\"";
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getUrl("register");
             echo "\">";
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("title.register"), "html", null, true);
             echo "</a></li>
             <li><a href=\"";
-            // line 23
+            // line 26
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getUrl("auth_login");
             echo "\">";
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("auth.login.label"), "html", null, true);
             echo "</a></li>
         ";
         }
-        // line 25
+        // line 28
         echo "    </ul>
 ";
         
@@ -155,7 +168,7 @@ class __TwigTemplate_959324d008d8cd7fbd46d417f07530a01abeeaf357c6728ebe91e97920b
 
     public function getDebugInfo()
     {
-        return array (  136 => 25,  129 => 23,  122 => 22,  115 => 20,  109 => 19,  102 => 18,  99 => 17,  91 => 15,  89 => 14,  82 => 12,  75 => 8,  72 => 7,  63 => 6,  50 => 4,  41 => 3,  11 => 1,);
+        return array (  149 => 28,  142 => 26,  135 => 25,  127 => 22,  121 => 21,  115 => 20,  108 => 19,  105 => 18,  98 => 16,  91 => 15,  89 => 14,  82 => 12,  75 => 8,  72 => 7,  63 => 6,  50 => 4,  41 => 3,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -183,11 +196,14 @@ class __TwigTemplate_959324d008d8cd7fbd46d417f07530a01abeeaf357c6728ebe91e97920b
 
         {% if is_granted('ROLE_ADMIN') %}
             <li><a href= \"{{ url('user_index') }}\">{{ 'all_users'|trans }}</a></li>
+            <li><a href= \"{{ url('show_for_delete') }}\">{{ 'delete.user'|trans }}</a></li>
         {% endif %}
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
             <li><a href= \"{{ url('track_index') }}\">{{ 'tracked'|trans }}</a></li>
             <li><a href=\"{{ url('account_index') }}\">{{ 'userdata'|trans }}</a></li>
             <li><a href=\"{{ url('auth_logout') }}\">{{ 'auth.logout.label'|trans }}</a></li>
+            <li><a href=\"{{ url('deleteUser') }}\">{{ 'title.delete_user'|trans }}</a></li>
+
         {% else %}
             <li><a href=\"{{ url('register') }}\">{{ 'title.register'|trans }}</a></li>
             <li><a href=\"{{ url('auth_login') }}\">{{ 'auth.login.label'|trans }}</a></li>

@@ -18,8 +18,26 @@
             <target>User data successfully edited</target>
         </trans-unit>
 
+        <trans-unit id="title.delete_user">
+            <source>title.delete_user</source>
+            <target>Delete your account</target>
+        </trans-unit>
+
+        <trans-unit id="action.delete_user">
+            <source>action.delete_user</source>
+            <target>Confirm deletion</target>
+        </trans-unit>
 
 
+        <trans-unit id="label.delete_user">
+            <source>label.delete_user</source>
+            <target>Validate your account deletion</target>
+        </trans-unit>
+
+        <trans-unit id="confirm.deletion">
+            <source>confirm.deletion</source>
+            <target>Are you sure?</target>
+        </trans-unit>
 
         <trans-unit id="action.register">
             <source>action.register</source>
@@ -269,7 +287,17 @@
             <target> Search </target>
         </trans-unit>
 
+        <trans-unit id="text.deletion_information">
+            <source>text.deletion_information</source>
+            <target> After clicking button your account
+                    will be permamently deleted and none of your
+                    information can be retrieved. Are you sure?</target>
+        </trans-unit>
 
+        <trans-unit id="delete.user">
+            <source>delete.user</source>
+            <target> Usuń użytkownika </target>
+        </trans-unit>
 
         </body>
     </file>

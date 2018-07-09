@@ -16,6 +16,7 @@ use Silex\Application;
 use Silex\Api\ControllerProviderInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Repository\UserRepository;
+use Form\DeleteType;
 
 /**
  * Class AccountController
@@ -37,6 +38,8 @@ class AccountController implements ControllerProviderInterface
         $controller->get('/', [$this, 'indexAction'])->bind('account_index');
         $controller->get('/editAccount', [$this, 'editData'])->bind('account_edit')
                     ->method('GET|POST');
+        $controller->get('/delete', [$this, 'deleteUser'])->bind('deleteUser')
+                   ->method('GET|POST');;
 
 
         return $controller;
@@ -108,4 +111,44 @@ class AccountController implements ControllerProviderInterface
             ]
         );
     }
+
+    /**
+     * Delete action
+     *
+     * Deletes user from all tables
+     *
+     * @param Application $app
+     */
+    public function deleteUser(Application $app,Request $request)
+    {
+        $userRepository = new UserRepository($app['db']);
+
+        $userLogin = $app['security.token_storage']->getToken()->getUser()->getUsername();
+
+        $form = $app['form.factory']->createBuilder(DeleteType::class)->getForm();
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $userRepository->deleteUser($userLogin);
+
+            $app['session']->getFlashBag()->add(
+                'messages',
+                [
+                    'type' => 'success',
+                    'message' => 'message.user_successfully_deleted',
+                ]
+            );
+
+            return $app->redirect($app['url_generator']->generate('homepage'), 301);
+        }
+        return $app['twig']->render(
+            'delete/delete.html.twig',
+            [
+                'form' => $form->createView()
+            ]
+        );
+    }
+
 }

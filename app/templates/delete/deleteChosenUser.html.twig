@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+
+    {{ 'title.delete_user'|trans }}
+
+{% endblock %}
+
+{% block body %}
+    <h1>
+        {{ 'title.delete_user'|trans }}
+    </h1>
+
+    {{ 'text.deletion_information'|trans }}
+
+    {{ form_start(form, {method:'POST', action: url('delete_chosen_user', {'userLogin': userLogin}) }) }}
+    {{ form_widget(form) }}
+    {#<input type="submit" value="{{ 'action.delete_user'|trans }}" class="btn btn-success" />#}
+    {{ form_end(form) }}
+    {# ( {'attr': {'onclick': 'return confirm("Are you sure?")'}})#}
+{% endblock %}

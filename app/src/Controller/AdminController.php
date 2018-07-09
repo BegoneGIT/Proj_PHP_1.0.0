@@ -12,6 +12,7 @@ use Silex\Api\ControllerProviderInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Repository\PartsRepository;
 use Form\RegisterType;
+use Form\DeleteType;
 
 /**
  * Class AdminContoller
@@ -35,7 +36,12 @@ class AdminController implements ControllerProviderInterface
            // ->assert('userLogin', '[1-9]\d*')
             ->bind('user_edit')
             ->method('GET|POST');
-
+        $controller->match('/{userLogin}/deleteUser', [$this, 'deleteUser'])
+            ->bind('delete_chosen_user')
+            ->method('GET|POST');
+        $controller->match('/display_for_deletion', [$this, 'displayDeletion'])
+            ->bind('show_for_delete')
+            ->method('GET|POST');
 
         return $controller;
     }
@@ -58,6 +64,15 @@ class AdminController implements ControllerProviderInterface
         );
     }
 
+    /**
+     * Edit user data
+     *
+     * @param Application $app
+     * @param $userLogin
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @throws \Doctrine\DBAL\DBALException
+     */
     public function editUserData(Application $app, $userLogin,Request $request)
     {
         $userRepository = new UserRepository($app['db']);
@@ -100,5 +115,65 @@ class AdminController implements ControllerProviderInterface
             ]
         );
     }
+
+    /**
+     * Displays users for deletion
+     *
+     * @param Application $app
+     * @param int $page
+     * @return mixed
+     */
+    public function displayDeletion(Application $app, $page = 1)
+    {
+        $userRepository = new UserRepository($app['db']);
+
+        return $app['twig']->render(
+            'userdata/displayDeletion.html.twig',
+            ['paginator' => $userRepository->findAllPaginated($page)]
+        );
+    }
+
+    /**
+     * Deletes user data
+     *
+     * @param Application $app
+     * @param $userLogin
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @throws \Doctrine\DBAL\DBALException
+     */
+    public function deleteUser(Application $app, $userLogin, Request $request)
+    {
+        $userRepository = new UserRepository($app['db']);
+
+
+        $form = $app['form.factory']->createBuilder(DeleteType::class)->getForm();
+
+        $form->handleRequest($request);
+
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $userRepository->deleteUser($userLogin);
+
+            $app['session']->getFlashBag()->add(
+                'messages',
+                [
+                    'type' => 'success',
+                    'message' => 'message.user_successfully_deleted',
+                ]
+            );
+
+            return $app->redirect($app['url_generator']->generate('homepage'), 301);
+        }
+        return $app['twig']->render(
+            'delete/deleteChosenUser.html.twig',
+            [
+                'userLogin' => $userLogin,
+                'form' => $form->createView()
+            ]
+        );
+    }
+
 
 }

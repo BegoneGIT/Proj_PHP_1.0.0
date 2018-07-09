@@ -13,11 +13,14 @@
 
         {% if is_granted('ROLE_ADMIN') %}
             <li><a href= "{{ url('user_index') }}">{{ 'all_users'|trans }}</a></li>
+            <li><a href= "{{ url('show_for_delete') }}">{{ 'delete.user'|trans }}</a></li>
         {% endif %}
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
             <li><a href= "{{ url('track_index') }}">{{ 'tracked'|trans }}</a></li>
             <li><a href="{{ url('account_index') }}">{{ 'userdata'|trans }}</a></li>
             <li><a href="{{ url('auth_logout') }}">{{ 'auth.logout.label'|trans }}</a></li>
+            <li><a href="{{ url('deleteUser') }}">{{ 'title.delete_user'|trans }}</a></li>
+
         {% else %}
             <li><a href="{{ url('register') }}">{{ 'title.register'|trans }}</a></li>
             <li><a href="{{ url('auth_login') }}">{{ 'auth.login.label'|trans }}</a></li>

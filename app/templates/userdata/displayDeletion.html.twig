@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Parts
+{% endblock %}
+
+{% block body %}
+
+    <style>
+        table {
+            width: 100%;
+            border: 1px solid black;
+        }
+    </style>
+
+    {% include 'default/_paginator.html.twig' with {
+        paginator: paginator,
+        route_name: 'parts_index_paginated',
+    } %}
+
+    <h1>
+        {{ 'users.index'|trans }}
+    </h1>
+    {% if paginator.data is defined and paginator.data|length %}
+        <table>
+            <tr>
+                <th>{{ 'id.table'|trans }} </th>
+                <th>{{ 'label.login'|trans }}</th>
+                <th>{{  'label.imie'|trans }} </th>
+                <th>{{ 'label.nazwisko'|trans }} </th>
+                <th>{{ 'label.email'|trans }} </th>
+                <th>{{ 'label.nip'|trans }} </th>
+                <th>{{ 'label.regon'|trans }} </th>
+
+
+            </tr>
+            {% for row in paginator.data %}
+                <tr>
+                    <td>{{ row.idUzytkownicy }}</td>
+                    <td><a href= "{{ url('delete_chosen_user', {'userLogin': row.login}) }}">{{ row.login }}</a></td>
+                    <td>{{ row.Imie }}</td>
+                    <td>{{ row.Nazwisko }}</td>
+                    <td>{{ row.email }}</td>
+                    <td>{{ row.NIP }}</td>
+                    <td>{{ row.REGON }}</td>
+
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <div>
+            List is empty!
+        </div>
+    {% endif %}
+{% endblock %}

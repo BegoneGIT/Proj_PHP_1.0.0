@@ -223,6 +223,25 @@
             <target> Edycja danych konta </target>
         </trans-unit>
 
+        <trans-unit id="title.delete_user">
+            <source>title.delete_user</source>
+            <target>Usuń konto</target>
+        </trans-unit>
+
+        <trans-unit id="action.delete_user">
+            <source>action.delete_user</source>
+            <target>Potwierdź usunięcie konta</target>
+        </trans-unit>
+
+        <trans-unit id="confirm.deletion">
+            <source>confirm.deletion</source>
+            <target>Czy na pewno chcesz usunąć konto?</target>
+        </trans-unit>
+
+        <trans-unit id="label.delete_user">
+            <source>label.delete_user</source>
+            <target>Potwierdź usunięcie konta</target>
+        </trans-unit>
 
         <trans-unit id="label.city">
             <source>label.city</source>
@@ -272,6 +291,16 @@
             <source>action.search</source>
             <target> Szukaj </target>
         </trans-unit>
+
+        <trans-unit id="text.deletion_information">
+            <source>text.deletion_information</source>
+            <target> Po kliknięciu poniższego przycisku
+                    wszystkie informacje o twoim koncie zostaną
+                    usunięte i nie będzie możliwe ich odzyskanie.
+                    Czy na pewno chcesz usunąć konto?
+            </target>
+        </trans-unit>
+
         </body>
 
     </file>

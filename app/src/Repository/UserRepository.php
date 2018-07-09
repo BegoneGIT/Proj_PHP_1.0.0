@@ -204,7 +204,7 @@ class UserRepository
     private function saveUserPhone($userdata, $id)
     {
         $telefon['id_uzytkownik'] = $id;
-        $telefon['tel1'] = $userdata['phone'];
+        $telefon['tel1'] = $userdata['tel1'];
 
         return $this->db->insert('telefon', $telefon);
     }
@@ -484,4 +484,31 @@ class UserRepository
     }
 
 
+    /**
+     * Delete user and all his info (in all atbles using his $id)
+     */
+
+    public function deleteUser($userName)
+    {
+
+        try {
+            $this->db->beginTransaction();
+
+            $id = $this->findLoggedUserId($userName);
+
+
+            $this->db->delete('obserwowane', ['uzytkownik_ID' => $id]);
+            $this->db->delete('login', ['id_uzytkownik' => $id]);
+            $this->db->delete('telefon', ['id_uzytkownik' => $id]);
+            $this->db->delete('adres', ['id_uzytkownik' => $id]);
+            $this->db->delete('uzytkownicy', ['idUzytkownicy' => $id]);
+
+            $this->db->commit();
+        } catch (DBALException $exception){
+            $this->db->rollBack();
+            throw $exception;
+        }
+
+        return $this;
+    }
 }
