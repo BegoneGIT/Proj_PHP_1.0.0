@@ -38,6 +38,8 @@ class __TwigTemplate_acb4fba3191d30dbcdd0cbeb175d4f15227a2cad7aeea0f1005e77e2d11
         // line 8
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("css/main.css"), "html", null, true);
         echo "\" rel=\"stylesheet\" type=\"text/css\" />
+        <link href='https://fonts.googleapis.com/css?family=Quicksand:300,400,700' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Lato:400,400italic,900' rel='stylesheet' type='text/css'>
 
 
 
@@ -55,9 +57,9 @@ class __TwigTemplate_acb4fba3191d30dbcdd0cbeb175d4f15227a2cad7aeea0f1005e77e2d11
     </head>
     <body>
         ";
-        // line 25
+        // line 27
         $this->displayBlock('content', $context, $blocks);
-        // line 26
+        // line 28
         echo "    </body>
 </html>
 ";
@@ -87,7 +89,7 @@ class __TwigTemplate_acb4fba3191d30dbcdd0cbeb175d4f15227a2cad7aeea0f1005e77e2d11
 
     }
 
-    // line 25
+    // line 27
     public function block_content($context, array $blocks = array())
     {
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
@@ -116,7 +118,7 @@ class __TwigTemplate_acb4fba3191d30dbcdd0cbeb175d4f15227a2cad7aeea0f1005e77e2d11
 
     public function getDebugInfo()
     {
-        return array (  91 => 25,  73 => 4,  61 => 26,  59 => 25,  39 => 8,  32 => 4,  27 => 1,);
+        return array (  93 => 27,  75 => 4,  63 => 28,  61 => 27,  39 => 8,  32 => 4,  27 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -137,6 +139,8 @@ class __TwigTemplate_acb4fba3191d30dbcdd0cbeb175d4f15227a2cad7aeea0f1005e77e2d11
         <meta charset=\"UTF-8\">
 
         <link href=\"{{ asset('css/main.css') }}\" rel=\"stylesheet\" type=\"text/css\" />
+        <link href='https://fonts.googleapis.com/css?family=Quicksand:300,400,700' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Lato:400,400italic,900' rel='stylesheet' type='text/css'>
 
 
 

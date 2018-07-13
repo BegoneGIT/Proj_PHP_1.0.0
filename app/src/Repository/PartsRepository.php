@@ -63,8 +63,8 @@ class PartsRepository
     {
         $queryBuilder = $this->db->createQueryBuilder();
 
-        return $queryBuilder->select('t.INDEKS', 't.NAZWA', 't.LOKALIZACJA', 't.STAN_MIN', 't.CENA1')
-            ->from('updated', 't');
+        return $queryBuilder->select('t.INDEKS', 't.NAZWA', 't.LOKALIZACJA', 't.STAN_MIN', 't.CENA')
+            ->from('parts', 't');
     }
 
 
@@ -88,7 +88,7 @@ class PartsRepository
         return $paginator->getCurrentPageResults();
     }
 
-
+/*
     public function searchPaginated($searchIndex, $page = 1)
     {
 
@@ -101,18 +101,46 @@ class PartsRepository
         $paginator->setMaxPerPage(static::NUM_ITEMS);
 
         return $paginator->getCurrentPageResults();
-    }
-
-    private function searchAll($searchIndex)
+    }*/
+/*
+    public function searchAll($searchIndex)
     {
         if(!$searchIndex){
             return $this->queryAll();
         }
         $queryBuilder = $this->db->createQueryBuilder();
 
-        return $queryBuilder->select('t.INDEKS', 't.NAZWA', 't.LOKALIZACJA', 't.STAN_MIN', 't.CENA1')
-            ->from('updated', 't')
+         $queryBuilder->select('t.INDEKS', 't.NAZWA', 't.LOKALIZACJA', 't.STAN_MIN', 't.CENA')
+            ->from('parts', 't')
             ->where('t.INDEKS LIKE :index')
-            ->setParameter(':index', '%'.$searchIndex.'%', \PDO::PARAM_STR);
+            ->setParameter(':index', '%'.$searchIndex['INDEKS'].'%', \PDO::PARAM_STR);
+
+         return $queryBuilder->execute()->fetchAll();
+    }*/
+
+
+    public function searchPaginated($searchIndex, $page = 1)
+    {
+        $countQueryBuilder = $this->searchAll($searchIndex)
+            ->select('COUNT(DISTINCT t.INDEKS) AS total_results')
+            ->setMaxResults(1);
+        $paginator = new Paginator($this->searchAll($searchIndex), $countQueryBuilder);
+        $paginator->setCurrentPage($page);
+        $paginator->setMaxPerPage(static::NUM_ITEMS);
+        return $paginator->getCurrentPageResults();
+    }
+    private function searchAll($searchIndex)
+    {
+        if(!$searchIndex){
+            return $this->queryAll();
+        }
+        $queryBuilder = $this->db->createQueryBuilder();
+        return $queryBuilder->select('t.INDEKS', 't.NAZWA', 't.LOKALIZACJA', 't.STAN_MIN', 't.CENA')
+            ->from('parts', 't')
+            ->where('t.INDEKS LIKE :index')
+            ->setParameter(':index', '%'.$searchIndex['INDEKS'].'%', \PDO::PARAM_STR);
     }
 }
+
+
+

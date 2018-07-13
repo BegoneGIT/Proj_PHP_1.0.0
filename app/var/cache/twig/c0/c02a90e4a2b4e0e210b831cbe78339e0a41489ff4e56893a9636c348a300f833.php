@@ -147,7 +147,7 @@ class __TwigTemplate_4b630b9daae9c5b765c4cf2607668ae799297f6b48c0139f343b136e2a9
                 echo "</td>
                     <td>";
                 // line 45
-                echo twig_escape_filter($this->env, $this->getAttribute($context["row"], "CENA1", array()), "html", null, true);
+                echo twig_escape_filter($this->env, $this->getAttribute($context["row"], "CENA", array()), "html", null, true);
                 echo "</td>
                 </tr>
             ";
@@ -244,7 +244,7 @@ class __TwigTemplate_4b630b9daae9c5b765c4cf2607668ae799297f6b48c0139f343b136e2a9
                     <td>{{ row.NAZWA }}</td>
                     <td>{{ row.LOKALIZACJA }}</td>
                     <td>{{ row.STAN_MIN }}</td>
-                    <td>{{ row.CENA1 }}</td>
+                    <td>{{ row.CENA }}</td>
                 </tr>
             {% endfor %}
         </table>

@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'title.addcsv'|trans }}{% endblock %}
+
+{% block body %}
+    <h1>{{ 'title.addcsv'|trans }}</h1>
+
+        {{ form_start(form, { method: 'post', action: url('addCsv') }) }}
+        {{ form_widget(form) }}
+        <input type="submit" value="{{ 'action.save'|trans }}" class="btn btn-success" />
+        {{ form_end(form) }}
+{% endblock %}

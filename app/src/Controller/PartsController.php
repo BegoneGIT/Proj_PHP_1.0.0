@@ -34,9 +34,11 @@ class PartsController implements ControllerProviderInterface
             ->value('page', 1)
             ->bind('parts_index_paginated');
 
-        $controller->get('/search', [$this, 'searchAction'])->bind('search_index');
-        $controller->match('/search/page/{page}', [$this, 'searchAction'])
-            ->method('POST|GET')
+        $controller->get('/{INDEKS}/search', [$this, 'searchAction'])
+          //  ->method('POST|GET')
+            ->bind('search_index');
+        $controller->match('/{INDEKS}/search/page/{page}', [$this, 'searchAction'])
+      //      ->method('POST|GET')
             ->value('page', 1)
             ->bind('parts_search_paginated');
 
@@ -70,22 +72,20 @@ class PartsController implements ControllerProviderInterface
      * @return string Response
      */
 
-    public function searchAction(Application $app, Request $request, $page = 1)
+    public function searchAction(Application $app, Request $request, $INDEKS, $page =1)
     {
-        $search = [];
+        $search['INDEKS'] = $INDEKS;
 
-        $form = $app['form.factory']->createBuilder(SearchType::class, $search)->getForm();
+        $form = $app['form.factory']->createBuilder(SearchType::class, $search)
+            ->setMethod('GET')
+            ->getForm();
         $form->handleRequest($request);
 
         $PartsRepository = new PartsRepository($app['db']);
 
-        var_dump($form->isSubmitted());
         if ($form->isSubmitted() && $form->isValid()) {
           //  $PartsRepository = new PartsRepository($app['db']);
             $search = $form->getData();
-
-            var_dump($search);
-
         }
 
        /* return $app['twig']->render(
@@ -98,7 +98,7 @@ class PartsController implements ControllerProviderInterface
             [
                 'search' => $search,
                 'form' => $form->createView(),
-                'paginator' => $PartsRepository->searchPaginated($search, $page),
+                'paginator' => $PartsRepository->searchPaginated($search,$page),
             ]
         );
     }

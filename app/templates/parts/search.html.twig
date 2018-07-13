@@ -12,16 +12,21 @@
             border: 1px solid black;
         }
     </style>
-
-    {% include 'default/_paginator.html.twig' with {
+    {% include 'default/_paginator_search.html.twig' with {
         paginator: paginator,
         route_name: 'parts_search_paginated',
     } %}
-
-    {{ form_start(form, { method: 'get', action: url('search_index') }) }}
+    {% if search.INDEKS %}
+    {{ form_start(form, { method: 'get', action: url('search_index',{'INDEKS':  search.INDEKS }) }) }}
     {{ form_widget(form) }}
     <input type="submit" value="{{ 'action.search'|trans }}" class="btn btn-success" />
     {{ form_end(form) }}
+    {% else %}
+    {{ form_start(form, { method: 'get', action: url('search_index',{'INDEKS':  'default' }) }) }}
+    {{ form_widget(form) }}
+    <input type="submit" value="{{ 'action.search'|trans }}" class="btn btn-success" />
+    {{ form_end(form) }}
+    {% endif %}
 
 
     <h1>
@@ -38,11 +43,11 @@
             </tr>
             {% for row in paginator.data %}
                 <tr>
-                    <td>{{ row.INDEKS }}</td>
+                    <td><a href= "{{ url('track_add', {'INDEKS': row.INDEKS}) }}">{{ row.INDEKS }}</a></td>
                     <td>{{ row.NAZWA }}</td>
                     <td>{{ row.LOKALIZACJA }}</td>
                     <td>{{ row.STAN_MIN }}</td>
-                    <td>{{ row.CENA1 }}</td>
+                    <td>{{ row.CENA }}</td>
                 </tr>
             {% endfor %}
         </table>

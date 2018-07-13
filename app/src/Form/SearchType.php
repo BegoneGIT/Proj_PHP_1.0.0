@@ -28,7 +28,6 @@ class SearchType extends AbstractType
             TextType::class,
             [
                 'label' => 'label.name',
-                'required' => true,
                 'attr' => [
                     'max_length' => 128,
                 ],

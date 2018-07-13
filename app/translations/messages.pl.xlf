@@ -301,6 +301,12 @@
             </target>
         </trans-unit>
 
+
+        <trans-unit id="delete.user">
+            <source>delete.user</source>
+            <target> Usuń użytkowników </target>
+        </trans-unit>
+
         </body>
 
     </file>

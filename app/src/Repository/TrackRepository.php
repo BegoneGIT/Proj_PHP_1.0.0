@@ -59,7 +59,7 @@ class TrackRepository
 
         return $queryBuilder->select('u.INDEKS','u.NAZWA', 't.Data', 't.wartosc')
             ->from('obserwowane', 't')
-            ->innerJoin('t','updated','u','t.updated_ID = u.ID')
+            ->innerJoin('t','parts','u','t.updated_ID = u.ID')
             ->where('t.uzytkownik_ID = :userId')
             ->setParameter(':userId', $userId, \PDO::PARAM_INT);
 
@@ -91,11 +91,11 @@ class TrackRepository
      *
      * It is supposed to add a record with current date,
      * uploaders ID (uzytkownicy.idUzytkownicy) from session and
-     * price (updated.CENA1)
+     * price (updated.CENA)
      *
      * It additionally changes data it gets from $track[updated_ID]
      * to make it really what it's name means, before this operation
-     * we have an index (from updated.INDEKS table) in it.
+     * we have an index (from parts.INDEKS table) in it.
      *
      * @var float $cena is required to change string to a float
      * @param array $part Parts index number
@@ -106,14 +106,13 @@ class TrackRepository
     public function save($track)
     {
         $idQueryBuilder = $this->db->createQueryBuilder();
-
-        $id = $idQueryBuilder->select('ID','CENA1')
-            ->from('updated', 'u')
+        $id = $idQueryBuilder->select('ID','CENA')
+            ->from('parts', 'u')
             ->where('u.INDEKS = :part')
             ->setParameter(':part', $track['updated_ID'], \PDO::PARAM_STR);
         $result = $id->execute()->fetch();
         $track['updated_ID'] = $result['ID'];
-        $cena = floatval(str_replace(",",".",$result['CENA1']));
+        $cena = floatval(str_replace(",",".",$result['CENA']));
         $track['wartosc'] = $cena;
 
 

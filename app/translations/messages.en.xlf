@@ -296,7 +296,7 @@
 
         <trans-unit id="delete.user">
             <source>delete.user</source>
-            <target> Usuń użytkownika </target>
+            <target> Delete users </target>
         </trans-unit>
 
         </body>

@@ -7,12 +7,15 @@
 namespace Controller;
 
 use Repository\UserRepository;
+use Repository\FileRepository;
 use Silex\Application;
 use Silex\Api\ControllerProviderInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Repository\PartsRepository;
 use Form\RegisterType;
 use Form\DeleteType;
+use Form\CsvType;
 
 /**
  * Class AdminContoller
@@ -42,6 +45,9 @@ class AdminController implements ControllerProviderInterface
         $controller->match('/display_for_deletion', [$this, 'displayDeletion'])
             ->bind('show_for_delete')
             ->method('GET|POST');
+        $controller->get('addcsv',[$this, 'addCsv'])->bind('addCsv')
+            ->method('GET|POST');;
+
 
         return $controller;
     }
@@ -174,6 +180,60 @@ class AdminController implements ControllerProviderInterface
             ]
         );
     }
+
+
+    public function addCsv(Application $app, Request $request)
+    {
+        $csv = [];
+
+        $directory = dirname(__DIR__).'/UploadedFiles';
+
+        $form = $app['form.factory']->createBuilder(CsvType::class, $csv)
+            //->setMethod('GET')
+            ->getForm();
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $table = new FileRepository($app['db']);
+            $csv = $form->getData();
+
+
+            $table->createTable($csv['name']);
+
+//            dump($csv['csvfile']->getClientOriginalName());
+            $fop = fopen($csv['csvfile'],'r');
+            while(! feof($fop))
+            {
+                $row = fgetcsv($fop,null ,';' );
+                $table->insertData($csv['name'],$row);
+            }
+
+/*            $expr = fgetcsv($fop,null ,';' );
+            $table->insertData($csv['name'],$expr );*/
+
+            $app['session']->getFlashBag()->add(
+                'messages',
+                [
+                    'type' => 'success',
+                    'message' => 'message.part_successfully_added',
+                ]
+            );
+
+
+           // return $app->redirect($app['url_generator']->generate('parts_index'), 301);
+        }
+
+        return $app['twig']->render(
+            'fileUpload/index_csv.html.twig',
+            [
+                'track' => $csv,
+                'form' => $form->createView(),
+            ]
+        );
+    }
+
+
 
 
 }
