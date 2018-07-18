@@ -10,7 +10,15 @@
 
 <div class="wrapper">
     <ul>
-        <li><a class="first after"  href="{{ url('parts_index') }}">{{ 'parts.index'|trans }}</a></li>
+
+            {% for company in companies %}
+                <li>
+                    <a class="first after"  href="{{ url('parts_index', {'company': company.FIRMA}) }}">
+                            <span class="capitalize"> {{ company.FIRMA }}</span>
+                    </a>
+                </li>
+        {% endfor %}
+
 
         {% if is_granted('ROLE_ADMIN') %}
             <li><a class="first after"  href= "{{ url('user_index') }}">{{ 'all_users'|trans }}</a></li>
@@ -18,11 +26,11 @@
             <li><a class="first after"  href= "{{ url('addCsv') }}">{{ 'title.addcsv'|trans }}</a></li>
         {% endif %}
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-            <li><a class="first after"  href= "{{ url('track_index') }}">{{ 'tracked'|trans }}</a></li>
+            <li><a class="first after"  href= "{{ url('track_index',{'company': 'mixed'}) }}">{{ 'tracked'|trans }}</a></li>
             <li><a class="first after"  href="{{ url('account_index') }}">{{ 'userdata'|trans }}</a></li>
             <li><a class="first after"  href="{{ url('auth_logout') }}">{{ 'auth.logout.label'|trans }}</a></li>
             <li><a class="first after"  href="{{ url('deleteUser') }}">{{ 'title.delete_user'|trans }}</a></li>
-            <li><a class="first after"  href="{{ url('search_index',{'INDEKS':  'default' }) }}">{{ 'action.search'|trans }}</a></li>
+            <li><a class="first after"  href="{{ url('search_index',{'INDEKS':  'default'}) }}">{{ 'action.search'|trans }}</a></li>
         {% else %}
             <li><a class="first after"  href="{{ url('register') }}">{{ 'title.register'|trans }}</a></li>
             <li><a class="first after"  href="{{ url('auth_login') }}">{{ 'auth.login.label'|trans }}</a></li>
