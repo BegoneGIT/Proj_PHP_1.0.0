@@ -6,12 +6,12 @@
 
 {% block body %}
 
-    <style>
+{#    <style>
         table {
             width: 100%;
             border: 1px solid black;
         }
-    </style>
+    </style>#}
 
     <h1>
         User data
@@ -19,7 +19,7 @@
     {% if userData is defined and userData|length %}
     <h3> Login: {{ userData.login }} </h3>
 
-        <table>
+        <table class="zui-table">
             <tr>
             <th>{{ 'label.imie'|trans }} </th>
             <td>{{ userData.userData.Imie }}</td>

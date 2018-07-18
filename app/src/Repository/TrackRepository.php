@@ -15,7 +15,7 @@ class TrackRepository
      *
      * const int NUM_ITEMS
      */
-    const NUM_ITEMS = 5;
+    const NUM_ITEMS = 10;
     /**
      * Doctrine DBAL connection.
      *
@@ -146,5 +146,23 @@ class TrackRepository
             ->setParameter('login', $userLogin, \PDO::PARAM_STR);
         $resultUserId = $userID->execute()->fetch();
        return $resultUserId['id_uzytkownik'];
+    }
+
+    /**
+     * This is called before save() from this repository
+     * Checks whether the form submitted part name exists
+     *
+     * @param $track
+     */
+    public function partExists($track)
+    {
+        $queryBuilder = $this->db->createQueryBuilder();
+
+        $queryBuilder->select('p.ID')
+            ->from('parts', 'p')
+            ->where('p.INDEKS = :track')
+            ->setParameter('track', $track['updated_ID'], \PDO::PARAM_STR);
+
+        return $queryBuilder->execute()->fetchAll();
     }
 }

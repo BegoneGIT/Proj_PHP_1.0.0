@@ -59,7 +59,7 @@ class AccountController implements ControllerProviderInterface
         $UserRepository = new UserRepository($app['db']);
 
         $userLogin = $app['security.token_storage']->getToken()->getUser()->getUsername();
-        $UserRepository->showAllUsers();
+
 
         return $app['twig']->render(
             'userdata/index.html.twig',

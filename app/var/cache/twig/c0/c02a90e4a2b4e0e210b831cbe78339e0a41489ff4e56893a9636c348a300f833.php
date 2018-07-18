@@ -79,37 +79,34 @@ class __TwigTemplate_4b630b9daae9c5b765c4cf2607668ae799297f6b48c0139f343b136e2a9
 
     ";
         // line 16
-        $this->loadTemplate("default/_paginator.html.twig", "parts/index.html.twig", 16)->display(array_merge($context, array("paginator" =>         // line 17
+        $this->loadTemplate("default/_paginator.html.twig", "parts/index.html.twig", 16)->display(array_merge($context, array("company" =>         // line 17
+(isset($context["company"]) ? $context["company"] : $this->getContext($context, "company")), "paginator" =>         // line 18
 (isset($context["paginator"]) ? $context["paginator"] : $this->getContext($context, "paginator")), "route_name" => "parts_index_paginated")));
-        // line 20
+        // line 21
         echo "
 ";
-        // line 25
+        // line 26
         echo "
 
     <h1>
         ";
-        // line 28
+        // line 29
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("parts.index"), "html", null, true);
         echo "
     </h1>
     ";
-        // line 30
+        // line 31
         if (($this->getAttribute((isset($context["paginator"]) ? $context["paginator"] : null), "data", array(), "any", true, true) && twig_length_filter($this->env, $this->getAttribute((isset($context["paginator"]) ? $context["paginator"] : $this->getContext($context, "paginator")), "data", array())))) {
-            // line 31
-            echo "        <table>
+            // line 32
+            echo "        <table class=\"zui-table\">
             <tr>
                 <th>";
-            // line 33
+            // line 34
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("index.table"), "html", null, true);
             echo " </th>
                 <th>";
-            // line 34
-            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("name.table"), "html", null, true);
-            echo " </th>
-                <th>";
             // line 35
-            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("localization.table"), "html", null, true);
+            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("name.table"), "html", null, true);
             echo " </th>
                 <th>";
             // line 36
@@ -129,7 +126,7 @@ class __TwigTemplate_4b630b9daae9c5b765c4cf2607668ae799297f6b48c0139f343b136e2a9
                 echo "                <tr>
                     <td><a href= \"";
                 // line 41
-                echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getUrl("track_add", array("INDEKS" => $this->getAttribute($context["row"], "INDEKS", array()))), "html", null, true);
+                echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getUrl("track_add", array("INDEKS" => $this->getAttribute($context["row"], "INDEKS", array()), "company" => (isset($context["company"]) ? $context["company"] : $this->getContext($context, "company")))), "html", null, true);
                 echo "\">";
                 echo twig_escape_filter($this->env, $this->getAttribute($context["row"], "INDEKS", array()), "html", null, true);
                 echo "</a></td>
@@ -139,14 +136,10 @@ class __TwigTemplate_4b630b9daae9c5b765c4cf2607668ae799297f6b48c0139f343b136e2a9
                 echo "</td>
                     <td>";
                 // line 43
-                echo twig_escape_filter($this->env, $this->getAttribute($context["row"], "LOKALIZACJA", array()), "html", null, true);
-                echo "</td>
-                    <td>";
-                // line 44
                 echo twig_escape_filter($this->env, $this->getAttribute($context["row"], "STAN_MIN", array()), "html", null, true);
                 echo "</td>
                     <td>";
-                // line 45
+                // line 44
                 echo twig_escape_filter($this->env, $this->getAttribute($context["row"], "CENA", array()), "html", null, true);
                 echo "</td>
                 </tr>
@@ -155,13 +148,13 @@ class __TwigTemplate_4b630b9daae9c5b765c4cf2607668ae799297f6b48c0139f343b136e2a9
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['row'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 48
+            // line 47
             echo "        </table>
         ";
-            // line 50
+            // line 49
             echo "    ";
         } else {
-            // line 51
+            // line 50
             echo "        <div>
             List is empty!
         </div>
@@ -187,7 +180,7 @@ class __TwigTemplate_4b630b9daae9c5b765c4cf2607668ae799297f6b48c0139f343b136e2a9
 
     public function getDebugInfo()
     {
-        return array (  165 => 51,  162 => 50,  159 => 48,  150 => 45,  146 => 44,  142 => 43,  138 => 42,  132 => 41,  129 => 40,  125 => 39,  120 => 37,  116 => 36,  112 => 35,  108 => 34,  104 => 33,  100 => 31,  98 => 30,  93 => 28,  88 => 25,  85 => 20,  83 => 17,  82 => 16,  72 => 8,  63 => 7,  50 => 4,  41 => 3,  11 => 1,);
+        return array (  158 => 50,  155 => 49,  152 => 47,  143 => 44,  139 => 43,  135 => 42,  129 => 41,  126 => 40,  122 => 39,  117 => 37,  113 => 36,  109 => 35,  105 => 34,  101 => 32,  99 => 31,  94 => 29,  89 => 26,  86 => 21,  84 => 18,  83 => 17,  82 => 16,  72 => 8,  63 => 7,  50 => 4,  41 => 3,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -216,6 +209,7 @@ class __TwigTemplate_4b630b9daae9c5b765c4cf2607668ae799297f6b48c0139f343b136e2a9
     </style>
 
     {% include 'default/_paginator.html.twig' with {
+        company: company,
         paginator: paginator,
         route_name: 'parts_index_paginated',
     } %}
@@ -230,19 +224,17 @@ class __TwigTemplate_4b630b9daae9c5b765c4cf2607668ae799297f6b48c0139f343b136e2a9
         {{ 'parts.index'|trans }}
     </h1>
     {% if paginator.data is defined and paginator.data|length %}
-        <table>
+        <table class=\"zui-table\">
             <tr>
                 <th>{{ 'index.table'|trans }} </th>
                 <th>{{  'name.table'|trans }} </th>
-                <th>{{ 'localization.table'|trans }} </th>
                 <th>{{ 'numbers.table'|trans }} </th>
                 <th>{{ 'price.table'|trans }} </th>
             </tr>
             {% for row in paginator.data %}
                 <tr>
-                    <td><a href= \"{{ url('track_add', {'INDEKS': row.INDEKS}) }}\">{{ row.INDEKS }}</a></td>
+                    <td><a href= \"{{ url('track_add', {'INDEKS': row.INDEKS, 'company': company}) }}\">{{ row.INDEKS }}</a></td>
                     <td>{{ row.NAZWA }}</td>
-                    <td>{{ row.LOKALIZACJA }}</td>
                     <td>{{ row.STAN_MIN }}</td>
                     <td>{{ row.CENA }}</td>
                 </tr>

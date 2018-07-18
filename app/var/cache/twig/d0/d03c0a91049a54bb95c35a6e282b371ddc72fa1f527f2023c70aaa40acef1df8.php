@@ -68,13 +68,9 @@ class __TwigTemplate_8930c27b5313ce6b257119847290a048a4bd81847dba324f72b1b0dda4f
 
         // line 8
         echo "
-    <style>
-        table {
-            width: 100%;
-            border: 1px solid black;
-        }
-    </style>
-
+";
+        // line 15
+        echo "
     <h1>
         User data
     </h1>
@@ -86,7 +82,7 @@ class __TwigTemplate_8930c27b5313ce6b257119847290a048a4bd81847dba324f72b1b0dda4f
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["userData"]) ? $context["userData"] : $this->getContext($context, "userData")), "login", array()), "html", null, true);
             echo " </h3>
 
-        <table>
+        <table class=\"zui-table\">
             <tr>
             <th>";
             // line 24
@@ -255,7 +251,7 @@ class __TwigTemplate_8930c27b5313ce6b257119847290a048a4bd81847dba324f72b1b0dda4f
 
     public function getDebugInfo()
     {
-        return array (  233 => 78,  226 => 76,  223 => 75,  217 => 72,  213 => 71,  207 => 68,  203 => 67,  197 => 64,  193 => 63,  187 => 60,  183 => 59,  180 => 58,  177 => 57,  171 => 54,  167 => 53,  161 => 50,  157 => 49,  151 => 46,  147 => 45,  144 => 44,  142 => 43,  137 => 41,  133 => 40,  127 => 37,  123 => 36,  117 => 33,  113 => 32,  107 => 29,  103 => 28,  97 => 25,  93 => 24,  85 => 20,  83 => 19,  70 => 8,  61 => 7,  50 => 4,  41 => 3,  11 => 1,);
+        return array (  229 => 78,  222 => 76,  219 => 75,  213 => 72,  209 => 71,  203 => 68,  199 => 67,  193 => 64,  189 => 63,  183 => 60,  179 => 59,  176 => 58,  173 => 57,  167 => 54,  163 => 53,  157 => 50,  153 => 49,  147 => 46,  143 => 45,  140 => 44,  138 => 43,  133 => 41,  129 => 40,  123 => 37,  119 => 36,  113 => 33,  109 => 32,  103 => 29,  99 => 28,  93 => 25,  89 => 24,  81 => 20,  79 => 19,  73 => 15,  70 => 8,  61 => 7,  50 => 4,  41 => 3,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -276,12 +272,12 @@ class __TwigTemplate_8930c27b5313ce6b257119847290a048a4bd81847dba324f72b1b0dda4f
 
 {% block body %}
 
-    <style>
+{#    <style>
         table {
             width: 100%;
             border: 1px solid black;
         }
-    </style>
+    </style>#}
 
     <h1>
         User data
@@ -289,7 +285,7 @@ class __TwigTemplate_8930c27b5313ce6b257119847290a048a4bd81847dba324f72b1b0dda4f
     {% if userData is defined and userData|length %}
     <h3> Login: {{ userData.login }} </h3>
 
-        <table>
+        <table class=\"zui-table\">
             <tr>
             <th>{{ 'label.imie'|trans }} </th>
             <td>{{ userData.userData.Imie }}</td>

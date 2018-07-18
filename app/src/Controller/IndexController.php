@@ -6,6 +6,7 @@
  */
 namespace Controller;
 
+use Repository\IndexRepository;
 use Silex\Application;
 use Silex\Api\ControllerProviderInterface;
 
@@ -42,8 +43,14 @@ class IndexController implements ControllerProviderInterface
 
     public function indexAction(Application $app)
     {
+        $parts = new IndexRepository($app['db']);
+
+        $companies = $parts->findAll();
+
+
         return $app['twig']->render(
-            'index.html.twig'
+            'index.html.twig',
+            ['companies' => $companies]
         );
     }
 }

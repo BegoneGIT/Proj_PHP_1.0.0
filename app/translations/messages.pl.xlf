@@ -307,6 +307,29 @@
             <target> Usuń użytkowników </target>
         </trans-unit>
 
+
+        <trans-unit id="title.addcsv">
+            <source>title.addcsv</source>
+            <target> Stwórz nową tabelę z pliku csv</target>
+        </trans-unit>
+
+        <trans-unit id="label.file">
+            <source>label.file</source>
+            <target> Plik Csv </target>
+        </trans-unit>
+
+
+        <trans-unit id="Bad credentials.">
+            <source>Bad credentials.</source>
+            <target> Podano błędny login lub hasło </target>
+        </trans-unit>
+
+
+        <trans-unit id="message.part_does_not_exist">
+            <source>message.part_does_not_exist</source>
+            <target> Część nie istnieje, sprawdź czy wpisałeś numer indeksowy poprawnie </target>
+        </trans-unit>
+
         </body>
 
     </file>

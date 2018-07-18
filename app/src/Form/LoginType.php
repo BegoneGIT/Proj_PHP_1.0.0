@@ -29,6 +29,7 @@ class LoginType extends AbstractType
                 'required' => true,
                 'attr' => [
                     'max_length' => 32,
+                    'class' => 'form-row'
 
                 ],
                 'constraints' => [
@@ -50,6 +51,7 @@ class LoginType extends AbstractType
                 'required' => true,
                 'attr' => [
                     'max_length' => 32,
+                    'class' => 'form-row'
 
                 ],
                 'constraints' => [

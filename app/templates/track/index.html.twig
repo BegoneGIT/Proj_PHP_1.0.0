@@ -13,7 +13,7 @@
     }
     </style>
 
-    {% include 'default/_paginator.html.twig' with {
+    {% include 'default/_paginator_track.html.twig' with {
         paginator: paginator,
         route_name: 'track_index_paginated',
     } %}
@@ -28,7 +28,7 @@
 
     <a href= "{{ url('track_add', {'INDEKS': 'default'}) }}">{{ 'title.track_add'|trans }}</a>
     {% if paginator.data is defined and paginator.data|length %}
-        <table>
+        <table class="zui-table">
                 <th>{{ 'index.table'|trans }} </th>
                 <th>{{  'name.table'|trans }} </th>
                 <th>{{  'date.table'|trans }} </th>

@@ -28,7 +28,7 @@ class __TwigTemplate_c674a114dae607059cccee18006c878ad81a38a5c51cc18b9cf33aa15c2
             $context["previous"] = ($this->getAttribute((isset($context["paginator"]) ? $context["paginator"] : $this->getContext($context, "paginator")), "page", array()) - 1);
             // line 10
             echo "    <a href=\"";
-            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getUrl((isset($context["route_name"]) ? $context["route_name"] : $this->getContext($context, "route_name")), array("page" => (isset($context["previous"]) ? $context["previous"] : $this->getContext($context, "previous")))), "html", null, true);
+            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getUrl((isset($context["route_name"]) ? $context["route_name"] : $this->getContext($context, "route_name")), array("page" => (isset($context["previous"]) ? $context["previous"] : $this->getContext($context, "previous")), "company" => (isset($context["company"]) ? $context["company"] : $this->getContext($context, "company")))), "html", null, true);
             echo "\" title=\"";
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("label.nav.prev"), "html", null, true);
             echo "\">        ";
@@ -49,7 +49,7 @@ class __TwigTemplate_c674a114dae607059cccee18006c878ad81a38a5c51cc18b9cf33aa15c2
             $context["next"] = ($this->getAttribute((isset($context["paginator"]) ? $context["paginator"] : $this->getContext($context, "paginator")), "page", array()) + 1);
             // line 17
             echo "    <a href=\"";
-            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getUrl((isset($context["route_name"]) ? $context["route_name"] : $this->getContext($context, "route_name")), array("page" => (isset($context["next"]) ? $context["next"] : $this->getContext($context, "next")))), "html", null, true);
+            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getUrl((isset($context["route_name"]) ? $context["route_name"] : $this->getContext($context, "route_name")), array("page" => (isset($context["next"]) ? $context["next"] : $this->getContext($context, "next")), "company" => (isset($context["company"]) ? $context["company"] : $this->getContext($context, "company")))), "html", null, true);
             echo "\" title=\"";
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("label.nav.next"), "html", null, true);
             echo "\">
@@ -102,14 +102,14 @@ class __TwigTemplate_c674a114dae607059cccee18006c878ad81a38a5c51cc18b9cf33aa15c2
 #}
 {% if paginator.page > 1 %}
     {% set previous = (paginator.page - 1) %}
-    <a href=\"{{ url(route_name, {'page': previous}) }}\" title=\"{{ 'label.nav.prev'|trans }}\">        {#powinno byc jeszcze 'label.nav.prev'|trans#}
+    <a href=\"{{ url(route_name, {'page': previous, 'company': company}) }}\" title=\"{{ 'label.nav.prev'|trans }}\">        {#powinno byc jeszcze 'label.nav.prev'|trans#}
         {{ 'labels.nav.prev'|trans}}
     </a>
 {%  endif %}
 
 {% if paginator.page < paginator.pages_number %}
     {% set next = (paginator.page + 1) %}
-    <a href=\"{{ url(route_name, {'page': next}) }}\" title=\"{{ 'label.nav.next'|trans}}\">
+    <a href=\"{{ url(route_name, {'page': next, 'company': company}) }}\" title=\"{{ 'label.nav.next'|trans}}\">
         {{ 'label.nav.next'|trans}}
     </a>
 {% endif  %}", "default/_paginator.html.twig", "C:\\xampp\\htdocs\\Proj_PHP_1.0.0\\app\\templates\\default\\_paginator.html.twig");

@@ -91,7 +91,7 @@ class __TwigTemplate_2c6926f4eee15264ed88de67498790b3d6857906a7c862e6b00ff3b43bc
         echo "
         ";
         // line 20
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'widget');
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'widget', array("attr" => array("class" => "form-labels-on-top")));
         echo "
         <input type=\"submit\" value=\"";
         // line 21
@@ -155,7 +155,7 @@ class __TwigTemplate_2c6926f4eee15264ed88de67498790b3d6857906a7c862e6b00ff3b43bc
 
     <div>
         {{ form_start(form, { method: 'post', action: path('auth_login_check') }) }}
-        {{ form_widget(form) }}
+        {{ form_widget(form, {'attr': { 'class': 'form-labels-on-top' }} )  }}
         <input type=\"submit\" value=\"{{ 'action.login'|trans }}\" class=\"btn btn-success\" />
         {{ form_end(form) }}
     </div>

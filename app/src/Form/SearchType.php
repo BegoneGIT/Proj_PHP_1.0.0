@@ -29,7 +29,8 @@ class SearchType extends AbstractType
             [
                 'label' => 'label.name',
                 'attr' => [
-                    'max_length' => 128,
+                    'maxlength' => 128,
+                    'class' => 'form-row'
                 ],
             ]
         );

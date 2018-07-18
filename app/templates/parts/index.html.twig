@@ -14,6 +14,7 @@
     </style>
 
     {% include 'default/_paginator.html.twig' with {
+        company: company,
         paginator: paginator,
         route_name: 'parts_index_paginated',
     } %}
@@ -28,19 +29,17 @@
         {{ 'parts.index'|trans }}
     </h1>
     {% if paginator.data is defined and paginator.data|length %}
-        <table>
+        <table class="zui-table">
             <tr>
                 <th>{{ 'index.table'|trans }} </th>
                 <th>{{  'name.table'|trans }} </th>
-                <th>{{ 'localization.table'|trans }} </th>
                 <th>{{ 'numbers.table'|trans }} </th>
                 <th>{{ 'price.table'|trans }} </th>
             </tr>
             {% for row in paginator.data %}
                 <tr>
-                    <td><a href= "{{ url('track_add', {'INDEKS': row.INDEKS}) }}">{{ row.INDEKS }}</a></td>
+                    <td><a href= "{{ url('track_add', {'INDEKS': row.INDEKS, 'company': company}) }}">{{ row.INDEKS }}</a></td>
                     <td>{{ row.NAZWA }}</td>
-                    <td>{{ row.LOKALIZACJA }}</td>
                     <td>{{ row.STAN_MIN }}</td>
                     <td>{{ row.CENA }}</td>
                 </tr>

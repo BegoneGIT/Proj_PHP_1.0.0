@@ -15,7 +15,7 @@ class PartsRepository
      *
      * const int NUM_ITEMS
      */
-    const NUM_ITEMS = 10;
+    const NUM_ITEMS = 15;
     /**
      * Doctrine DBAL connection.
      *
@@ -38,9 +38,9 @@ class PartsRepository
      *
      * @return array Result
      */
-    public function findAll()
+    public function findAll($table)
     {
-        $queryBuilder = $this->queryAll();
+        $queryBuilder = $this->queryAll($table);
 
         return $queryBuilder->execute()->fetchAll();
     }
@@ -59,12 +59,14 @@ class PartsRepository
      *
      * @return \Doctrine\DBAL\Query\QueryBuilder Result
      */
-    protected function queryAll()
+    protected function queryAll($company)
     {
         $queryBuilder = $this->db->createQueryBuilder();
 
-        return $queryBuilder->select('t.INDEKS', 't.NAZWA', 't.LOKALIZACJA', 't.STAN_MIN', 't.CENA')
-            ->from('parts', 't');
+        return $queryBuilder->select('t.INDEKS', 't.NAZWA', 't.STAN_MIN', 't.CENA')
+            ->from('parts', 't')
+            ->where('t.FIRMA = :comp')
+            ->setParameter(':comp', $company, \PDO::PARAM_STR);
     }
 
 
@@ -75,18 +77,36 @@ class PartsRepository
      *
      * @return array Result
      */
-    public function findAllPaginated($page = 1)
+    public function findAllPaginated($page = 1, $company)
     {
-        $countQueryBuilder = $this->queryAll()
-            ->select('COUNT(DISTINCT t.INDEKS) AS total_results')
+
+        $countQueryBuilder = $this->queryAll($company)
+            ->select('COUNT(DISTINCT INDEKS) AS total_results')
             ->setMaxResults(1);
 
-        $paginator = new Paginator($this->queryAll(), $countQueryBuilder);
+        $paginator = new Paginator($this->queryAll($company), $countQueryBuilder);
         $paginator->setCurrentPage($page);
         $paginator->setMaxPerPage(static::NUM_ITEMS);
 
         return $paginator->getCurrentPageResults();
     }
+
+/*
+    public function tableExists($table)
+    {
+        $checkQueryBuilder = $this->db->createQueryBuilder();
+
+        $checkQueryBuilder->select('c.ID','c.tablename')
+            ->from('czesci', 'c')
+            ->where('c.tablename = :tablename')
+            ->setParameter(':tablename', $table, \PDO::PARAM_STR);
+        if($checkQueryBuilder->execute()->fetchAll()){
+            return 1;
+        }
+
+        return 0;
+    }*/
+
 
 /*
     public function searchPaginated($searchIndex, $page = 1)
@@ -132,10 +152,10 @@ class PartsRepository
     private function searchAll($searchIndex)
     {
         if(!$searchIndex){
-            return $this->queryAll();
+            return $this->queryAll('parts');
         }
         $queryBuilder = $this->db->createQueryBuilder();
-        return $queryBuilder->select('t.INDEKS', 't.NAZWA', 't.LOKALIZACJA', 't.STAN_MIN', 't.CENA')
+        return $queryBuilder->select('t.INDEKS', 't.NAZWA', 't.STAN_MIN', 't.CENA')
             ->from('parts', 't')
             ->where('t.INDEKS LIKE :index')
             ->setParameter(':index', '%'.$searchIndex['INDEKS'].'%', \PDO::PARAM_STR);

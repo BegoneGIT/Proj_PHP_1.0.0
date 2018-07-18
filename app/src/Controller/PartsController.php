@@ -29,8 +29,8 @@ class PartsController implements ControllerProviderInterface
     public function connect(Application $app)
     {
         $controller = $app['controllers_factory'];
-        $controller->get('/', [$this, 'indexAction'])->bind('parts_index');
-        $controller->get('/page/{page}', [$this, 'indexAction'])
+        $controller->get('/{company}', [$this, 'indexAction'])->bind('parts_index');
+        $controller->get('/{company}/page/{page}', [$this, 'indexAction'])
             ->value('page', 1)
             ->bind('parts_index_paginated');
 
@@ -54,13 +54,14 @@ class PartsController implements ControllerProviderInterface
      * @return string Response
      */
 
-    public function indexAction(Application $app, $page = 1)
+    public function indexAction(Application $app, $page = 1, $company)
     {
         $partsRepository = new PartsRepository($app['db']);
 
         return $app['twig']->render(
             'parts/index.html.twig',
-            ['paginator' => $partsRepository->findAllPaginated($page)]
+            ['paginator' => $partsRepository->findAllPaginated($page,$company),
+                'company' => $company]
         );
     }
 

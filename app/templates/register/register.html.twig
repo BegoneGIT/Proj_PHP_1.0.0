@@ -19,12 +19,12 @@
 
     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
         {{ form_start(form, { method: 'post', action: url('account_edit') }) }}
-        {{ form_widget(form) }}
+        {{ form_widget(form, {'attr': { 'class': 'form-labels-on-top' }}) }}
         <input type="submit" value="{{ 'action.update_user'|trans }}" class="btn btn-success" />
         {{ form_end(form) }}
     {% else %}
         {{ form_start(form, { method: 'post', action: url('register') }) }}
-        {{ form_widget(form) }}
+        {{ form_widget(form, {'attr': { 'class': 'form-labels-on-top'}}) }}
         <input type="submit" value="{{ 'action.register'|trans }}" class="btn btn-success" />
         {{ form_end(form) }}
     {% endif %}

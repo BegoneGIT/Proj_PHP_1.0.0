@@ -84,6 +84,22 @@ class TrackController implements ControllerProviderInterface
 
             $token = $app['security.token_storage']->getToken();
             $track['uzytkownik_ID'] = $token->getUser()->getUsername();
+
+
+            if(!$TrackRepository->partExists($track)){
+
+
+                $app['session']->getFlashBag()->add(
+                    'messages',
+                    [
+                        'type' => 'error',
+                        'message' => 'message.part_does_not_exist',
+                    ]
+                );
+
+                return $app->redirect($app['url_generator']->generate('track_index'), 301);
+            }
+
             $TrackRepository->save($track);
 
 

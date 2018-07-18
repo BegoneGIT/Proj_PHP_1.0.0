@@ -77,7 +77,7 @@ class __TwigTemplate_52f610614618db964cc75a025fcabffea307dd6f9731cb306103a011822
 
     ";
         // line 16
-        $this->loadTemplate("default/_paginator.html.twig", "track/index.html.twig", 16)->display(array_merge($context, array("paginator" =>         // line 17
+        $this->loadTemplate("default/_paginator_track.html.twig", "track/index.html.twig", 16)->display(array_merge($context, array("paginator" =>         // line 17
 (isset($context["paginator"]) ? $context["paginator"] : $this->getContext($context, "paginator")), "route_name" => "track_index_paginated")));
         // line 20
         echo "
@@ -114,7 +114,7 @@ class __TwigTemplate_52f610614618db964cc75a025fcabffea307dd6f9731cb306103a011822
         // line 30
         if (($this->getAttribute((isset($context["paginator"]) ? $context["paginator"] : null), "data", array(), "any", true, true) && twig_length_filter($this->env, $this->getAttribute((isset($context["paginator"]) ? $context["paginator"] : $this->getContext($context, "paginator")), "data", array())))) {
             // line 31
-            echo "        <table>
+            echo "        <table class=\"zui-table\">
                 <th>";
             // line 32
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("index.table"), "html", null, true);
@@ -220,7 +220,7 @@ class __TwigTemplate_52f610614618db964cc75a025fcabffea307dd6f9731cb306103a011822
     }
     </style>
 
-    {% include 'default/_paginator.html.twig' with {
+    {% include 'default/_paginator_track.html.twig' with {
         paginator: paginator,
         route_name: 'track_index_paginated',
     } %}
@@ -235,7 +235,7 @@ class __TwigTemplate_52f610614618db964cc75a025fcabffea307dd6f9731cb306103a011822
 
     <a href= \"{{ url('track_add', {'INDEKS': 'default'}) }}\">{{ 'title.track_add'|trans }}</a>
     {% if paginator.data is defined and paginator.data|length %}
-        <table>
+        <table class=\"zui-table\">
                 <th>{{ 'index.table'|trans }} </th>
                 <th>{{  'name.table'|trans }} </th>
                 <th>{{  'date.table'|trans }} </th>

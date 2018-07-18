@@ -29,6 +29,7 @@ class CsvType extends AbstractType
                 'required' => true,
                 'attr' => [
                     'max_length' => 32,
+                    'class' => 'form-row'
 
                 ],
                 'constraints' => [
@@ -45,6 +46,7 @@ class CsvType extends AbstractType
                 'required' => true,
                 'attr' => [
                     'max_length' => 32,
+                    'class' => 'form-row'
 
                 ],
                 'constraints' => [

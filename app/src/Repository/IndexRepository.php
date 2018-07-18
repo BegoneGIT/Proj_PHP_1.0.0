@@ -28,37 +28,19 @@ class IndexRepository
     }
 
     /**
-     * Fetch all records.
+     * query and fetch all tables
      *
      * @return array Result
      */
     public function findAll()
     {
+        $ask = $this->db->createQueryBuilder();
 
+        $ask->select('DISTINCT p.FIRMA')
+            ->from('parts', 'p');
+        return $ask->execute()->fetchAll();
     }
 
-    /**
-     * Query all records.
-     *
-     * @return \Doctrine\DBAL\Query\QueryBuilder Result
-     */
-    protected function queryAll()
-    {
-
-    }
-
-
-    /**
-     * Get records paginated.
-     *
-     * @param int $page Current page number
-     *
-     * @return array Result
-     */
-    public function findAllPaginated($page = 1)
-    {
-
-    }
 
 
 }

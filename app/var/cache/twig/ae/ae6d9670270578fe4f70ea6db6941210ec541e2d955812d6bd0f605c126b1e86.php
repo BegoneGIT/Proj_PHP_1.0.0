@@ -89,7 +89,7 @@ class __TwigTemplate_c0a87ff58cd1aa2c8011be2c5049a6f4ad915bc0e99b554f71868260462
             echo "
     ";
             // line 21
-            echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'widget');
+            echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'widget', array("attr" => array("class" => "form-labels-on-top")));
             echo "
     <input type=\"submit\" value=\"";
             // line 22
@@ -107,7 +107,7 @@ class __TwigTemplate_c0a87ff58cd1aa2c8011be2c5049a6f4ad915bc0e99b554f71868260462
             echo "
     ";
             // line 26
-            echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'widget');
+            echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'widget', array("attr" => array("class" => "form-labels-on-top")));
             echo "
     <input type=\"submit\" value=\"";
             // line 27
@@ -144,44 +144,36 @@ class __TwigTemplate_c0a87ff58cd1aa2c8011be2c5049a6f4ad915bc0e99b554f71868260462
             echo " </th>
                 <th>";
             // line 40
-            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("localization.table"), "html", null, true);
-            echo " </th>
-                <th>";
-            // line 41
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("numbers.table"), "html", null, true);
             echo " </th>
                 <th>";
-            // line 42
+            // line 41
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("price.table"), "html", null, true);
             echo " </th>
             </tr>
             ";
-            // line 44
+            // line 43
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable($this->getAttribute((isset($context["paginator"]) ? $context["paginator"] : $this->getContext($context, "paginator")), "data", array()));
             foreach ($context['_seq'] as $context["_key"] => $context["row"]) {
-                // line 45
+                // line 44
                 echo "                <tr>
                     <td><a href= \"";
-                // line 46
+                // line 45
                 echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getUrl("track_add", array("INDEKS" => $this->getAttribute($context["row"], "INDEKS", array()))), "html", null, true);
                 echo "\">";
                 echo twig_escape_filter($this->env, $this->getAttribute($context["row"], "INDEKS", array()), "html", null, true);
                 echo "</a></td>
                     <td>";
-                // line 47
+                // line 46
                 echo twig_escape_filter($this->env, $this->getAttribute($context["row"], "NAZWA", array()), "html", null, true);
                 echo "</td>
                     <td>";
-                // line 48
-                echo twig_escape_filter($this->env, $this->getAttribute($context["row"], "LOKALIZACJA", array()), "html", null, true);
-                echo "</td>
-                    <td>";
-                // line 49
+                // line 47
                 echo twig_escape_filter($this->env, $this->getAttribute($context["row"], "STAN_MIN", array()), "html", null, true);
                 echo "</td>
                     <td>";
-                // line 50
+                // line 48
                 echo twig_escape_filter($this->env, $this->getAttribute($context["row"], "CENA", array()), "html", null, true);
                 echo "</td>
                 </tr>
@@ -190,13 +182,13 @@ class __TwigTemplate_c0a87ff58cd1aa2c8011be2c5049a6f4ad915bc0e99b554f71868260462
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['row'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 53
+            // line 51
             echo "        </table>
         ";
-            // line 55
+            // line 53
             echo "    ";
         } else {
-            // line 56
+            // line 54
             echo "        <div>
             List is empty!
         </div>
@@ -222,7 +214,7 @@ class __TwigTemplate_c0a87ff58cd1aa2c8011be2c5049a6f4ad915bc0e99b554f71868260462
 
     public function getDebugInfo()
     {
-        return array (  200 => 56,  197 => 55,  194 => 53,  185 => 50,  181 => 49,  177 => 48,  173 => 47,  167 => 46,  164 => 45,  160 => 44,  155 => 42,  151 => 41,  147 => 40,  143 => 39,  139 => 38,  135 => 36,  133 => 35,  128 => 33,  123 => 30,  118 => 28,  114 => 27,  110 => 26,  105 => 25,  100 => 23,  96 => 22,  92 => 21,  87 => 20,  84 => 19,  82 => 16,  81 => 15,  72 => 8,  63 => 7,  50 => 4,  41 => 3,  11 => 1,);
+        return array (  192 => 54,  189 => 53,  186 => 51,  177 => 48,  173 => 47,  169 => 46,  163 => 45,  160 => 44,  156 => 43,  151 => 41,  147 => 40,  143 => 39,  139 => 38,  135 => 36,  133 => 35,  128 => 33,  123 => 30,  118 => 28,  114 => 27,  110 => 26,  105 => 25,  100 => 23,  96 => 22,  92 => 21,  87 => 20,  84 => 19,  82 => 16,  81 => 15,  72 => 8,  63 => 7,  50 => 4,  41 => 3,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -255,12 +247,12 @@ class __TwigTemplate_c0a87ff58cd1aa2c8011be2c5049a6f4ad915bc0e99b554f71868260462
     } %}
     {% if search.INDEKS %}
     {{ form_start(form, { method: 'get', action: url('search_index',{'INDEKS':  search.INDEKS }) }) }}
-    {{ form_widget(form) }}
+    {{ form_widget(form, {'attr': { 'class': 'form-labels-on-top' }}) }}
     <input type=\"submit\" value=\"{{ 'action.search'|trans }}\" class=\"btn btn-success\" />
     {{ form_end(form) }}
     {% else %}
     {{ form_start(form, { method: 'get', action: url('search_index',{'INDEKS':  'default' }) }) }}
-    {{ form_widget(form) }}
+    {{ form_widget(form, {'attr': { 'class': 'form-labels-on-top' }})  }}
     <input type=\"submit\" value=\"{{ 'action.search'|trans }}\" class=\"btn btn-success\" />
     {{ form_end(form) }}
     {% endif %}
@@ -274,7 +266,6 @@ class __TwigTemplate_c0a87ff58cd1aa2c8011be2c5049a6f4ad915bc0e99b554f71868260462
             <tr>
                 <th>{{ 'index.table'|trans }} </th>
                 <th>{{  'name.table'|trans }} </th>
-                <th>{{ 'localization.table'|trans }} </th>
                 <th>{{ 'numbers.table'|trans }} </th>
                 <th>{{ 'price.table'|trans }} </th>
             </tr>
@@ -282,7 +273,6 @@ class __TwigTemplate_c0a87ff58cd1aa2c8011be2c5049a6f4ad915bc0e99b554f71868260462
                 <tr>
                     <td><a href= \"{{ url('track_add', {'INDEKS': row.INDEKS}) }}\">{{ row.INDEKS }}</a></td>
                     <td>{{ row.NAZWA }}</td>
-                    <td>{{ row.LOKALIZACJA }}</td>
                     <td>{{ row.STAN_MIN }}</td>
                     <td>{{ row.CENA }}</td>
                 </tr>

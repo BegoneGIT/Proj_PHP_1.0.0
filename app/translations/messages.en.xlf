@@ -299,6 +299,31 @@
             <target> Delete users </target>
         </trans-unit>
 
+
+        <trans-unit id="title.addcsv">
+            <source>title.addcsv</source>
+            <target> Create new table form csv file</target>
+        </trans-unit>
+
+        <trans-unit id="label.file">
+            <source>label.file</source>
+            <target> Insert your file </target>
+        </trans-unit>
+
+
+        <trans-unit id="Bad credentials.">
+            <source>Bad credentials.</source>
+            <target> Bad credentials </target>
+        </trans-unit>
+
+
+        <trans-unit id="message.part_does_not_exist">
+            <source>message.part_does_not_exist</source>
+            <target> Part does not exist, try typing it's index again </target>
+        </trans-unit>
+
+
+
         </body>
     </file>
 </xliff>

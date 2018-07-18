@@ -199,15 +199,17 @@ class AdminController implements ControllerProviderInterface
             $csv = $form->getData();
 
 
-            $table->createTable($csv['name']);
+      //      $table->createTable($csv['name']);
 
 //            dump($csv['csvfile']->getClientOriginalName());
             $fop = fopen($csv['csvfile'],'r');
-            while(! feof($fop))
+
+            $table->loopInsert($csv['name'],$fop);
+/*            while(! feof($fop))
             {
                 $row = fgetcsv($fop,null ,';' );
                 $table->insertData($csv['name'],$row);
-            }
+            }*/
 
 /*            $expr = fgetcsv($fop,null ,';' );
             $table->insertData($csv['name'],$expr );*/

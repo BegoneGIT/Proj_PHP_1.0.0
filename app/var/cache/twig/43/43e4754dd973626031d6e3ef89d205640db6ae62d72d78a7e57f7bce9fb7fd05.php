@@ -83,7 +83,7 @@ class __TwigTemplate_6c390ee4c9f0f99290973d070331da957afe63c345bbe37dff033d1514a
             echo "
         ";
             // line 10
-            echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'widget');
+            echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'widget', array("attr" => array("class" => "form-labels-on-top")));
             echo "
         <input type=\"submit\" value=\"";
             // line 11
@@ -101,7 +101,7 @@ class __TwigTemplate_6c390ee4c9f0f99290973d070331da957afe63c345bbe37dff033d1514a
             echo "
         ";
             // line 15
-            echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'widget');
+            echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'widget', array("attr" => array("class" => "form-labels-on-top")));
             echo "
         <input type=\"submit\" value=\"";
             // line 16
@@ -155,12 +155,12 @@ class __TwigTemplate_6c390ee4c9f0f99290973d070331da957afe63c345bbe37dff033d1514a
     <h1>{{ 'title.track_add'|trans }}</h1>
     {% if track.updated_ID %}
         {{ form_start(form, { method: 'post', action: url('track_add',{'INDEKS': track.updated_ID}) }) }}
-        {{ form_widget(form) }}
+        {{ form_widget(form, {'attr': { 'class': 'form-labels-on-top' }}) }}
         <input type=\"submit\" value=\"{{ 'action.save'|trans }}\" class=\"btn btn-success\" />
         {{ form_end(form) }}
     {% else %}
         {{ form_start(form, { method: 'post', action: url('track_add',{'INDEKS':  'default' }) }) }}
-        {{ form_widget(form) }}
+        {{ form_widget(form, {'attr': { 'class': 'form-labels-on-top' }}) }}
         <input type=\"submit\" value=\"{{ 'action.save'|trans }}\" class=\"btn btn-success\" />
         {{ form_end(form) }}
     {% endif %}

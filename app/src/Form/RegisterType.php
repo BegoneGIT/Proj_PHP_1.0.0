@@ -34,6 +34,7 @@ class RegisterType extends AbstractType
                 'required' => true,
                 'attr' => [
                     'max_length' => 12,
+                    'class' => 'form-row'
 
                 ],
                 'constraints' => [
@@ -56,6 +57,7 @@ class RegisterType extends AbstractType
                 'required' => true,
                 'attr' => [
                     'max_length' => 12,
+                    'class' => 'form-row'
 
                 ],
                 'constraints' => [
@@ -78,6 +80,7 @@ class RegisterType extends AbstractType
                 'required' => true,
                 'attr' => [
                     'max_length' => 32,
+                    'class' => 'form-row'
 
                 ],
                 'constraints' => [
@@ -101,6 +104,7 @@ class RegisterType extends AbstractType
                 'required' => false,
                 'attr' => [
                     'length' => 10,
+                    'class' => 'form-row'
 
                 ],
                 'constraints' => [
@@ -123,6 +127,7 @@ class RegisterType extends AbstractType
                 'required' => false,
                 'attr' => [
                     'length' => 9,
+                    'class' => 'form-row'
 
                 ],
                 'constraints' => [
@@ -145,6 +150,7 @@ class RegisterType extends AbstractType
                 'required' => false,
                 'attr' => [
                     'length' => 9,
+                    'class' => 'form-row'
 
                 ],
                 'constraints' => [
@@ -166,6 +172,7 @@ class RegisterType extends AbstractType
                 'required' => false,
                 'attr' => [
                     'length' => 9,
+                    'class' => 'form-row'
 
                 ],
                 'constraints' => [
@@ -186,6 +193,7 @@ class RegisterType extends AbstractType
                 'required' => false,
                 'attr' => [
                     'length' => 9,
+                    'class' => 'form-row'
 
                 ],
                 'constraints' => [
@@ -206,6 +214,7 @@ class RegisterType extends AbstractType
                 'required' => true,
                 'attr' => [
                     'max_length' => 32,
+                    'class' => 'form-row'
 
                 ],
                 'constraints' => [
@@ -229,6 +238,7 @@ class RegisterType extends AbstractType
                 'required' => true,
                 'attr' => [
                     'max_length' => 32,
+                    'class' => 'form-row'
 
                 ],
                 'constraints' => [
@@ -250,7 +260,8 @@ class RegisterType extends AbstractType
                 'label' => 'label.city',
                 'required' => true,
                 'attr' => [
-                    'max_length' => 32
+                    'max_length' => 32,
+                    'class' => 'form-row'
                 ],
                 'constraints' => [
                     new Assert\NotBlank(),
@@ -272,7 +283,8 @@ class RegisterType extends AbstractType
                 'label' => 'label.street',
                 'required' => true,
                 'attr' => [
-                    'max_length' => 32
+                    'max_length' => 32,
+                    'class' => 'form-row'
                 ],
                 'constraints' => [
                     new Assert\NotBlank(),
@@ -294,7 +306,8 @@ class RegisterType extends AbstractType
                 'label' => 'label.number',
                 'required' => true,
                 'attr' => [
-                    'max_length' => 9
+                    'max_length' => 9,
+                    'class' => 'form-row'
                 ],
                 'constraints' => [
                     new Assert\NotBlank(),
@@ -316,7 +329,8 @@ class RegisterType extends AbstractType
                 'label' => 'label.postal_code',
                 'required' => true,
                 'attr' => [
-                    'max_length' => 9
+                    'max_length' => 9,
+                    'class' => 'form-row'
                 ],
                 'constraints' => [
                     new Assert\NotBlank(),

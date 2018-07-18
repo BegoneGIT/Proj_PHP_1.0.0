@@ -107,7 +107,7 @@ class __TwigTemplate_b79bef5601ed1fd01fad49b6c636e4f1736ff943fbc92797147507986d5
             echo "
         ";
             // line 22
-            echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'widget');
+            echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'widget', array("attr" => array("class" => "form-labels-on-top")));
             echo "
         <input type=\"submit\" value=\"";
             // line 23
@@ -125,7 +125,7 @@ class __TwigTemplate_b79bef5601ed1fd01fad49b6c636e4f1736ff943fbc92797147507986d5
             echo "
         ";
             // line 27
-            echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'widget');
+            echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'widget', array("attr" => array("class" => "form-labels-on-top")));
             echo "
         <input type=\"submit\" value=\"";
             // line 28
@@ -191,12 +191,12 @@ class __TwigTemplate_b79bef5601ed1fd01fad49b6c636e4f1736ff943fbc92797147507986d5
 
     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
         {{ form_start(form, { method: 'post', action: url('account_edit') }) }}
-        {{ form_widget(form) }}
+        {{ form_widget(form, {'attr': { 'class': 'form-labels-on-top' }}) }}
         <input type=\"submit\" value=\"{{ 'action.update_user'|trans }}\" class=\"btn btn-success\" />
         {{ form_end(form) }}
     {% else %}
         {{ form_start(form, { method: 'post', action: url('register') }) }}
-        {{ form_widget(form) }}
+        {{ form_widget(form, {'attr': { 'class': 'form-labels-on-top'}}) }}
         <input type=\"submit\" value=\"{{ 'action.register'|trans }}\" class=\"btn btn-success\" />
         {{ form_end(form) }}
     {% endif %}

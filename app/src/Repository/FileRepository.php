@@ -5,6 +5,7 @@ use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\DBALException;
 use Doctrine\DBAL\Schema;
 use Utils\Paginator;
+use Doctrine\DBAL\Exception\LockWaitTimeoutException;
 
 /**
  * File Repository
@@ -30,11 +31,14 @@ class FileRepository
     }
 
 
-
-
-
-
-    public function createTable($name)
+    /**
+     * Ceates table with specified $name and appropriate column names
+     *
+     * @param $name
+     * @return int
+     * @throws DBALException
+     */
+ /*   public function createTable($name)
     {
         $schema = $this->db->getSchemaManager();
         if (!$schema->tablesExist($name)){
@@ -94,18 +98,60 @@ class FileRepository
             return 0;
         }
         return 1;
-    }
+    }*/
 
 
+    /**
+     * Simple insert $data to $table
+     *
+     * @param $table string Table name
+     * @param $data array Table data
+     */
     public function insertData($table,$data)
     {
-        $this->db->insert($table,
+        $this->db->insert('parts',
             [
-                'INDEKS' => $data[1],
-                'NAZWA' => $data[2],
+                'INDEKS' => $data[2],
+                'NAZWA' => $data[1],
                 'STAN_MIN' => $data[5],
-                'CENA' => $data[11]
+                'CENA' => floatval(str_replace(",", ".", $data[11])),
+                'FIRMA' => $table
         ]
         );
     }
+
+    /**
+     * Inserts all csv contents looping trough all lines of file
+     * set_time_limit is necessary to maintain connection for a loop of inserts
+     *
+     * Although transaction should rollback everything (should it really?) it does not occur when timeout happens
+     *
+     * @param $table string Table name
+     * @param $handle   handle to opened csv file
+     * @return int
+     * @throws DBALException
+     */
+    public function loopInsert($table,$handle)
+    {
+        try{
+            $this->db->beginTransaction();
+
+            set_time_limit(300);
+
+//            $this->createTable($table);           // this was to be used when admin could create new tables
+
+            while(! feof($handle) ){
+                $row = fgetcsv($handle,null ,';' );
+                if ($row[1] || $row[2] || $row[5] || $row[11]) {
+                    $this->insertData($table,$row);
+                }
+            }
+            $this->db->commit();
+        }catch (DBALException $exception){
+            $this->db->rollBack();
+            throw $exception;
+        }
+        return 1;
+    }
+
 }
