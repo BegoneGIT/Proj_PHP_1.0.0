@@ -323,6 +323,20 @@
         </trans-unit>
 
 
+        <trans-unit id="error_text.client_fault">
+            <source>error_text.client_fault</source>
+            <target> An error occured on clients side </target>
+        </trans-unit>
+
+        <trans-unit id="error_text.page_not_found">
+            <source>error_text.page_not_found</source>
+            <target> Sorry, the page you were looking for does not exist </target>
+        </trans-unit>
+
+        <trans-unit id="error_text.server_fault">
+            <source>error_text.server_fault</source>
+            <target> An error occured on servers side </target>
+        </trans-unit>
 
         </body>
     </file>

@@ -1,5 +1,8 @@
 {% extends "layout.html.twig" %}
 
 {% block content %}
-    Page not found.
+    <h2>
+        {{ error_text.page_not_found }}
+    </h2>
+    <a href= "{{ url('homepage') }}">{{ 'homepage'|trans }}</a>
 {% endblock %}

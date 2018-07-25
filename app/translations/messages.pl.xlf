@@ -330,6 +330,23 @@
             <target> Część nie istnieje, sprawdź czy wpisałeś numer indeksowy poprawnie </target>
         </trans-unit>
 
+
+        <trans-unit id="error_text.client_fault">
+            <source>error_text.client_fault</source>
+            <target> Wystąpił błąd po stronie klienta </target>
+        </trans-unit>
+
+        <trans-unit id="error_text.page_not_found">
+            <source>error_text.page_not_found</source>
+            <target> Przepraszamy, strona której szukasz nie istnieje </target>
+        </trans-unit>
+
+
+        <trans-unit id="error_text.server_fault">
+            <source>error_text.server_fault</source>
+            <target> Wystąpił błąd po stronie serwera </target>
+        </trans-unit>
+
         </body>
 
     </file>

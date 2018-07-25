@@ -1371,3 +1371,5 @@ bec38c,::1,GET,http://localhost:8888/index_dev.php/,1531942258,,200
 981ec4,::1,GET,http://localhost:8888/index_dev.php/track/,1531942266,,200
 971df6,::1,GET,http://localhost:8888/index_dev.php/,1531942269,,200
 1811cd,::1,GET,http://localhost:8888/index_dev.php/,1531942528,,200
+6b73d2,::1,GET,http://localhost:8888/index_dev.php/,1532024337,,200
+25e269,::1,GET,http://localhost:8888/index_dev.php/shit,1532024345,,404

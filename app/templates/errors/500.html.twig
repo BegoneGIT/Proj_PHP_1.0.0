@@ -1,5 +1,9 @@
 {% extends "layout.html.twig" %}
 
 {% block content %}
-    Internal server error.
+    <h2>
+        {{ error_text.server_fault }}
+    </h2>
+
+    <a href= "{{ url('homepage') }}">{{ 'homepage'|trans }}</a>
 {% endblock %}
