@@ -52,7 +52,27 @@ class RegisterController implements ControllerProviderInterface
             $register['password'] = $app['security.encoder.bcrypt']->encodePassword($register['password'], '');
             $UserRepository->register($register);
 
-            return $app->redirect($app['url_generator']->generate('homepage'), 301);
+            if($register) {
+                $app['session']->getFlashBag()->add(
+                    'messages',
+                    [
+                        'type' => 'success',
+                        'message' => 'message.registration_complete',
+                    ]
+                );
+
+                return $app->redirect($app['url_generator']->generate('homepage'), 301);
+            }else{
+                $app['session']->getFlashBag()->add(
+                    'messages',
+                    [
+                        'type' => 'error',
+                        'message' => 'message.registration_error',
+                    ]
+                );
+
+                return $app->redirect($app['url_generator']->generate('homepage'), 301);
+            }
         }
 
         return $app['twig']->render(

@@ -11,7 +11,7 @@
         {{ 'title.delete_user'|trans }}
     </h1>
 
-    {{ 'text.deletion_information'|trans }}
+    {{ 'text.user_deletion_information'|trans }}
 
     {{ form_start(form, {method:'POST', action: url('delete_chosen_user', {'userLogin': userLogin}) }) }}
     {{ form_widget(form) }}

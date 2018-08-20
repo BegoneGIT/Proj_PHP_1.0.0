@@ -11,13 +11,13 @@
 <div class="x_content bs-example-popovers">
     {% endif %}
     <div class="alert alert-dismissible alert-{{ type }}" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+{#        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
-        </button>
+        </button>#}
         {% if message|trans is not same as(message) %}
-            {{ message|trans }}
+            <span class="error-style"> {{ message|trans }} </span>
         {% else %}
-            {{ message }}
+            <span class="error-style"> {{ message }} </span>
         {% endif %}
     </div>
     {% if is_single_message|default(true) %}

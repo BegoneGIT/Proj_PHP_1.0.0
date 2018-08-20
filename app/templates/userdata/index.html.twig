@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    User data
+    {{ 'userdata'|trans }}
 {% endblock %}
 
 {% block body %}
@@ -14,7 +14,7 @@
     </style>#}
 
     <h1>
-        User data
+        {{ 'userdata'|trans }}
     </h1>
     {% if userData is defined and userData|length %}
     <h3> Login: {{ userData.login }} </h3>

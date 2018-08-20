@@ -34,22 +34,20 @@ class __TwigTemplate_9a54ef3be7c8c479768e20d2ad4fb0e4edd6d49c0f3cd7909df8c17da7e
         echo "    <div class=\"alert alert-dismissible alert-";
         echo twig_escape_filter($this->env, (isset($context["type"]) ? $context["type"] : $this->getContext($context, "type")), "html", null, true);
         echo "\" role=\"alert\">
-        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
-            <span aria-hidden=\"true\">&times;</span>
-        </button>
-        ";
+";
         // line 17
+        echo "        ";
         if ( !($this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans((isset($context["message"]) ? $context["message"] : $this->getContext($context, "message"))) === (isset($context["message"]) ? $context["message"] : $this->getContext($context, "message")))) {
             // line 18
-            echo "            ";
+            echo "            <span class=\"error-style\"> ";
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans((isset($context["message"]) ? $context["message"] : $this->getContext($context, "message"))), "html", null, true);
-            echo "
+            echo " </span>
         ";
         } else {
             // line 20
-            echo "            ";
+            echo "            <span class=\"error-style\"> ";
             echo twig_escape_filter($this->env, (isset($context["message"]) ? $context["message"] : $this->getContext($context, "message")), "html", null, true);
-            echo "
+            echo " </span>
         ";
         }
         // line 22
@@ -81,7 +79,7 @@ class __TwigTemplate_9a54ef3be7c8c479768e20d2ad4fb0e4edd6d49c0f3cd7909df8c17da7e
 
     public function getDebugInfo()
     {
-        return array (  61 => 24,  59 => 23,  56 => 22,  50 => 20,  44 => 18,  42 => 17,  34 => 13,  30 => 11,  28 => 10,  25 => 8,);
+        return array (  59 => 24,  57 => 23,  54 => 22,  48 => 20,  42 => 18,  39 => 17,  34 => 13,  30 => 11,  28 => 10,  25 => 8,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -107,13 +105,13 @@ class __TwigTemplate_9a54ef3be7c8c479768e20d2ad4fb0e4edd6d49c0f3cd7909df8c17da7e
 <div class=\"x_content bs-example-popovers\">
     {% endif %}
     <div class=\"alert alert-dismissible alert-{{ type }}\" role=\"alert\">
-        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+{#        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
             <span aria-hidden=\"true\">&times;</span>
-        </button>
+        </button>#}
         {% if message|trans is not same as(message) %}
-            {{ message|trans }}
+            <span class=\"error-style\"> {{ message|trans }} </span>
         {% else %}
-            {{ message }}
+            <span class=\"error-style\"> {{ message }} </span>
         {% endif %}
     </div>
     {% if is_single_message|default(true) %}

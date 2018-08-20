@@ -32,6 +32,8 @@ class __TwigTemplate_5ce11cec64ca8ac961bcc7fb0c0bb5346b6ced60f733c32d622948233b2
         // line 8
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("css/main.css"), "html", null, true);
         echo "\" rel=\"stylesheet\" type=\"text/css\" />
+        <link href='https://fonts.googleapis.com/css?family=Quicksand:300,400,700' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Lato:400,400italic,900' rel='stylesheet' type='text/css'>
 
 
 
@@ -49,9 +51,9 @@ class __TwigTemplate_5ce11cec64ca8ac961bcc7fb0c0bb5346b6ced60f733c32d622948233b2
     </head>
     <body>
         ";
-        // line 25
+        // line 27
         $this->displayBlock('content', $context, $blocks);
-        // line 26
+        // line 28
         echo "    </body>
 </html>
 ";
@@ -63,7 +65,7 @@ class __TwigTemplate_5ce11cec64ca8ac961bcc7fb0c0bb5346b6ced60f733c32d622948233b2
         echo "";
     }
 
-    // line 25
+    // line 27
     public function block_content($context, array $blocks = array())
     {
     }
@@ -80,7 +82,7 @@ class __TwigTemplate_5ce11cec64ca8ac961bcc7fb0c0bb5346b6ced60f733c32d622948233b2
 
     public function getDebugInfo()
     {
-        return array (  67 => 25,  61 => 4,  55 => 26,  53 => 25,  33 => 8,  26 => 4,  21 => 1,);
+        return array (  69 => 27,  63 => 4,  57 => 28,  55 => 27,  33 => 8,  26 => 4,  21 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */

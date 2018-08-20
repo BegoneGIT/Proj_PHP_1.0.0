@@ -203,6 +203,26 @@ class AdminController implements ControllerProviderInterface
 
 //            dump($csv['csvfile']->getClientOriginalName());
             $fop = fopen($csv['csvfile'],'r');
+            $sample = $fop;
+            $columns = fgetcsv($sample,null,';');
+            if(count($columns)<11 || strpbrk($columns[1],'\"\'\/')){
+
+                $app['session']->getFlashBag()->add(
+                    'messages',
+                    [
+                        'type' => 'error',
+                        'message' => 'message.unvalid_csv',
+                    ]
+                );
+
+                return $app['twig']->render(
+                    'fileUpload/index_csv.html.twig',
+                    [
+                        'track' => $csv,
+                        'form' => $form->createView(),
+                    ]
+                );
+            }
 
             $table->loopInsert($csv['name'],$fop);
 /*            while(! feof($fop))

@@ -20,6 +20,11 @@
             <target>Dane użytkownika zostały pomyślnie uaktualnione</target>
         </trans-unit>
 
+        <trans-unit id="message.unvalid_csv">
+            <source>message.unvalid_csv</source>
+            <target>Ten plik csv jest niepoprawny</target>
+        </trans-unit>
+
 
         <trans-unit id="action.register">
             <source>action.register</source>
@@ -270,6 +275,11 @@
         </trans-unit>
 
 
+        <trans-unit id="message.user_successfully_deleted">
+            <source>message.user_successfully_deleted</source>
+            <target>Użytkownik został usunięty</target>
+        </trans-unit>
+
         <trans-unit id="id.table">
             <source>id.table</source>
             <target> ID </target>
@@ -298,6 +308,15 @@
                     wszystkie informacje o twoim koncie zostaną
                     usunięte i nie będzie możliwe ich odzyskanie.
                     Czy na pewno chcesz usunąć konto?
+            </target>
+        </trans-unit>
+
+        <trans-unit id="text.user_deletion_information">
+            <source>text.user_deletion_information</source>
+            <target> Po kliknięciu poniższego przycisku
+                wszystkie informacje o tym koncie zostaną
+                usunięte i nie będzie możliwe ich odzyskanie.
+                Czy na pewno chcesz usunąć konto?
             </target>
         </trans-unit>
 
@@ -345,6 +364,17 @@
         <trans-unit id="error_text.server_fault">
             <source>error_text.server_fault</source>
             <target> Wystąpił błąd po stronie serwera </target>
+        </trans-unit>
+
+
+        <trans-unit id="message.registration_complete">
+            <source>message.registration_complete</source>
+            <target> Konto zostało pomyślnie zarejestrowane </target>
+        </trans-unit>
+
+        <trans-unit id="message.registration_error">
+            <source>message.registration_error</source>
+            <target> Przepraszamy, nie mogliśmy stworzyć twojego konta </target>
         </trans-unit>
 
         </body>

@@ -18,6 +18,18 @@
             <target>User data successfully edited</target>
         </trans-unit>
 
+
+        <trans-unit id="message.user_successfully_deleted">
+            <source>message.user_successfully_deleted</source>
+            <target>User data successfully deleted</target>
+        </trans-unit>
+
+        <trans-unit id="message.unvalid_csv">
+            <source>message.unvalid_csv</source>
+            <target>This csv file is unvalid</target>
+        </trans-unit>
+
+
         <trans-unit id="title.delete_user">
             <source>title.delete_user</source>
             <target>Delete your account</target>
@@ -294,6 +306,13 @@
                     information can be retrieved. Are you sure?</target>
         </trans-unit>
 
+        <trans-unit id="text.user_deletion_information">
+            <source>text.user_deletion_information</source>
+            <target> After clicking button this account
+                will be permamently deleted and none of your
+                information can be retrieved. Are you sure?</target>
+        </trans-unit>
+
         <trans-unit id="delete.user">
             <source>delete.user</source>
             <target> Delete users </target>
@@ -337,6 +356,18 @@
             <source>error_text.server_fault</source>
             <target> An error occured on servers side </target>
         </trans-unit>
+
+
+        <trans-unit id="message.registration_complete">
+            <source>message.registration_complete</source>
+            <target> You have been successfully registered </target>
+        </trans-unit>
+
+        <trans-unit id="message.registration_error">
+            <source>message.registration_error</source>
+            <target> We cold not create your account </target>
+        </trans-unit>
+
 
         </body>
     </file>

@@ -63,6 +63,17 @@ ul {
     margin-bottom: 75px;
 }
 
+.error-style {
+    color: red;
+    font-weight: bold;
+    font-family: "Arial Black"!important;
+
+}
+
+label.required:after {
+    content: "* ";
+}
+
 .content {
     max-width: 500px;
     margin: auto;
@@ -257,12 +268,12 @@ GODDAMN FORMS
     border-bottom: 2px solid #6CAEE0;
 }
 
-.form-labels-on-top .form-row > label span{
+.form-labels-on-top .form-row > label {
     display: block;
     box-sizing: border-box;
     color:  #5f5f5f;
     width: 200px;
-    padding: 0 0 12px;
+    padding: 0 5px 12px;
 }
 
 .form-labels-on-top input{
