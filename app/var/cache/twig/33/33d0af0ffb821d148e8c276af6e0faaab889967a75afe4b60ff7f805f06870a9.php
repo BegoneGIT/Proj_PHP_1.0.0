@@ -58,7 +58,7 @@ class __TwigTemplate_be53bfe2efa704e083337bc94550e673df1e1c8a8df8b207d578b3e7ebc
                 echo "<div class=\"alert alert-danger\">";
             }
             // line 10
-            echo "        <ul class=\"list-unstyled\">";
+            echo "        <ul class=\"error-list\">";
             // line 11
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable((isset($context["errors"]) ? $context["errors"] : $this->getContext($context, "errors")));
@@ -123,7 +123,7 @@ class __TwigTemplate_be53bfe2efa704e083337bc94550e673df1e1c8a8df8b207d578b3e7ebc
     {% if errors|length > 0 -%}
         {% if compound %}<div class=\"has-error\">{% endif %}
     {% if form.parent %}<span class=\"help-block\">{% else %}<div class=\"alert alert-danger\">{% endif %}
-        <ul class=\"list-unstyled\">
+        <ul class=\"error-list\">
         {%- for error in errors -%}
             <li>{{ error.message }}</li>
         {%- endfor -%}
