@@ -48,7 +48,7 @@
         {#<a href= "{{ url('homepage') }}">{{ 'homepage'|trans }}</a>#}
     {% else %}
         <div>
-            List is empty!
+            {{ error.empty_list }}
         </div>
     {% endif %}
 {% endblock %}

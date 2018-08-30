@@ -367,6 +367,11 @@
         </trans-unit>
 
 
+        <trans-unit id="error.empty_list">
+            <source>error.empty_list</source>
+            <target> Lista jest pusta! </target>
+        </trans-unit>
+
         <trans-unit id="message.registration_complete">
             <source>message.registration_complete</source>
             <target> Konto zostało pomyślnie zarejestrowane </target>
