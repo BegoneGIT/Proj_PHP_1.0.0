@@ -243,7 +243,6 @@ class UserRepository
             $this->updateUserData($data, $id);
             $this->updateUserPhone($data, $id);
             $this->updateUserAdress($data,$id);
-            $this->updatePassData($data, $id);
             $this->db->commit();
         } catch (DBALException $exception){
             $this->db->rollBack();
@@ -258,14 +257,23 @@ class UserRepository
      * @param array $logindata is a form data acquired registering user
      */
 
-    private function updatePassData($logindata, $id)
+    public function updatePassData($logindata, $userName)
     {
+        try {
+            $this->db->beginTransaction();
 
-        $submit['id_uzytkownik'] = $id;
-        $submit['login'] =  $logindata['login'];
-        $submit['password'] = $logindata['password'];
-        return $this->db->update('login', $submit, ['id_uzytkownik' => $submit['id_uzytkownik']]);
+            $id = $this->findLoggedUserId($userName);
 
+            $submit['id_uzytkownik'] = $id;
+            $submit['login'] =  $logindata['login'];
+            $submit['password'] = $logindata['password'];
+            $this->db->update('login', $submit, ['id_uzytkownik' => $submit['id_uzytkownik']]);
+                $this->db->commit();
+        } catch (DBALException $exception){
+            $this->db->rollBack();
+            throw $exception;
+        }
+        return 1;
     }
 
     /**

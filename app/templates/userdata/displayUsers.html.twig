@@ -6,12 +6,12 @@
 
 {% block body %}
 
-    <style>
+{#    <style>
         table {
             width: 100%;
             border: 1px solid black;
         }
-    </style>
+    </style>#}
 
     {% include 'default/_paginator.html.twig' with {
         paginator: paginator,
@@ -22,7 +22,7 @@
         {{ 'users.index'|trans }}
     </h1>
     {% if paginator.data is defined and paginator.data|length %}
-        <table>
+        <table class="zui-table">
             <tr>
                 <th>{{ 'id.table'|trans }} </th>
                 <th>{{ 'label.login'|trans }}</th>

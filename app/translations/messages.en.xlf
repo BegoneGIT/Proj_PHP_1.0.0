@@ -252,6 +252,17 @@
             <target> Edit your personal data </target>
         </trans-unit>
 
+        <trans-unit id="label.quantity">
+            <source>label.quantity</source>
+            <target> Quantity </target>
+        </trans-unit>
+
+        <trans-unit id="label.price">
+            <source>label.price</source>
+            <target> Price </target>
+        </trans-unit>
+
+
         <trans-unit id="label.city">
             <source>label.city</source>
             <target> City </target>
@@ -318,6 +329,15 @@
             <target> Delete users </target>
         </trans-unit>
 
+        <trans-unit id="title.user_id">
+            <source>title.user_id</source>
+            <target> User ID </target>
+        </trans-unit>
+
+        <trans-unit id="title.edit">
+            <source>title.edit</source>
+            <target> Edit part </target>
+        </trans-unit>
 
         <trans-unit id="title.addcsv">
             <source>title.addcsv</source>
@@ -363,6 +383,20 @@
             <target> List is empty! </target>
         </trans-unit>
 
+        <trans-unit id="message.part_successfully_edited">
+            <source>message.part_successfully_edited</source>
+            <target> Part have been successfully edited </target>
+        </trans-unit>
+
+        <trans-unit id="text.parts_tracked_by_users">
+            <source>text.parts_tracked_by_users</source>
+            <target> Parts tracked by users </target>
+        </trans-unit>
+
+        <trans-unit id="text.change_pass">
+            <source>text.change_pass</source>
+            <target> Change login or password </target>
+        </trans-unit>
 
         <trans-unit id="message.registration_complete">
             <source>message.registration_complete</source>

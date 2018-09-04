@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Tracked
+{% endblock %}
+
+{% block body %}
+
+    <style>
+        table {
+            width: 100%;
+            border: 1px solid black;
+        }
+    </style>
+{#
+
+    {% include 'default/_paginator_track.html.twig' with {
+        paginator: paginator,
+        route_name: 'track_index_paginated',
+    } %}
+#}
+
+    <h1>
+        {{ 'tracked.parts'|trans }}
+    </h1>
+
+{#    {% for message in app.session.getFlashBag.get('message') %}
+        {{ message }}
+    {% endfor %}#}
+
+    {% if usersTracked is defined and usersTracked|length %}
+        <table class="zui-table">
+            <th>{{ 'title.user_id'|trans }} </th>
+            <th>{{  'label.imie'|trans }} </th>
+            <th>{{  'label.nazwisko'|trans }} </th>
+            <th>{{  'label.email'|trans }} </th>
+            <th>{{  'index.table'|trans }} </th>
+            <th>{{  'name.table'|trans }} </th>
+            <th>{{  'date.table'|trans }} </th>
+            <th>{{  'price.table'|trans }}</th>
+            {% for row in usersTracked %}
+                <tr>
+                    <td>{{ row.idUzytkownicy }}</td>
+                    <td>{{ row.Imie }}</td>
+                    <td>{{ row.Nazwisko }}</td>
+                    <td>{{ row.email }}</td>
+                    <td>{{ row.INDEKS }}</td>
+                    <td>{{ row.NAZWA }}</td>
+                    <td>{{ row.Data }}</td>
+                    <td>{{ row.wartosc }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        {# <a href= "{{ url('homepage') }}">{{ 'homepage'|trans }}</a>#}
+    {% else %}
+        <div>
+            {{ error.empty_list }}
+        </div>
+    {% endif %}
+{% endblock %}

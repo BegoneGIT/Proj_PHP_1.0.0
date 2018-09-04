@@ -149,53 +149,65 @@ class __TwigTemplate_959324d008d8cd7fbd46d417f07530a01abeeaf357c6728ebe91e97920b
             echo "\">";
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("title.addcsv"), "html", null, true);
             echo "</a></li>
+            <li><a class=\"first after\"  href= \"";
+            // line 33
+            echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getUrl("users_tracked");
+            echo "\">";
+            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("text.parts_tracked_by_users"), "html", null, true);
+            echo "</a></li>
         ";
         }
-        // line 34
+        // line 35
         echo "        ";
         if ($this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("IS_AUTHENTICATED_FULLY")) {
-            // line 35
+            // line 36
             echo "            <li><a class=\"first after\"  href= \"";
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getUrl("track_index", array("company" => "mixed"));
             echo "\">";
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("tracked"), "html", null, true);
             echo "</a></li>
             <li><a class=\"first after\"  href=\"";
-            // line 36
+            // line 37
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getUrl("account_index");
             echo "\">";
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("userdata"), "html", null, true);
             echo "</a></li>
             <li><a class=\"first after\"  href=\"";
-            // line 37
+            // line 38
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getUrl("auth_logout");
             echo "\">";
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("auth.logout.label"), "html", null, true);
             echo "</a></li>
             <li><a class=\"first after\"  href=\"";
-            // line 38
+            // line 39
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getUrl("deleteUser");
             echo "\">";
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("title.delete_user"), "html", null, true);
             echo "</a></li>
+            <li><a class=\"first after\"  href=\"";
+            // line 40
+            echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getUrl("editPass");
+            echo "\">";
+            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("text.change_pass"), "html", null, true);
+            echo "</a></li>
 
         ";
         } else {
-            // line 41
+            // line 43
             echo "            <li><a class=\"first after\"  href=\"";
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getUrl("register");
             echo "\">";
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("title.register"), "html", null, true);
             echo "</a></li>
             <li><a class=\"first after\"  href=\"";
-            // line 42
+            // line 44
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getUrl("auth_login");
             echo "\">";
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("auth.login.label"), "html", null, true);
             echo "</a></li>
         ";
         }
-        // line 44
+        // line 46
         echo "    </ul>
 </div>
 ";
@@ -219,7 +231,7 @@ class __TwigTemplate_959324d008d8cd7fbd46d417f07530a01abeeaf357c6728ebe91e97920b
 
     public function getDebugInfo()
     {
-        return array (  199 => 44,  192 => 42,  185 => 41,  177 => 38,  171 => 37,  165 => 36,  158 => 35,  155 => 34,  148 => 32,  142 => 31,  135 => 30,  133 => 29,  129 => 27,  119 => 23,  115 => 22,  112 => 21,  108 => 20,  102 => 19,  97 => 16,  88 => 14,  84 => 13,  78 => 10,  75 => 9,  72 => 8,  63 => 7,  50 => 5,  41 => 4,  11 => 1,);
+        return array (  211 => 46,  204 => 44,  197 => 43,  189 => 40,  183 => 39,  177 => 38,  171 => 37,  164 => 36,  161 => 35,  154 => 33,  148 => 32,  142 => 31,  135 => 30,  133 => 29,  129 => 27,  119 => 23,  115 => 22,  112 => 21,  108 => 20,  102 => 19,  97 => 16,  88 => 14,  84 => 13,  78 => 10,  75 => 9,  72 => 8,  63 => 7,  50 => 5,  41 => 4,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -264,12 +276,14 @@ class __TwigTemplate_959324d008d8cd7fbd46d417f07530a01abeeaf357c6728ebe91e97920b
             <li><a class=\"first after\"  href= \"{{ url('user_index') }}\">{{ 'all_users'|trans }}</a></li>
             <li><a class=\"first after\"  href= \"{{ url('show_for_delete') }}\">{{ 'delete.user'|trans }}</a></li>
             <li><a class=\"first after\"  href= \"{{ url('addCsv') }}\">{{ 'title.addcsv'|trans }}</a></li>
+            <li><a class=\"first after\"  href= \"{{ url('users_tracked') }}\">{{ 'text.parts_tracked_by_users'|trans }}</a></li>
         {% endif %}
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
             <li><a class=\"first after\"  href= \"{{ url('track_index',{'company': 'mixed'}) }}\">{{ 'tracked'|trans }}</a></li>
             <li><a class=\"first after\"  href=\"{{ url('account_index') }}\">{{ 'userdata'|trans }}</a></li>
             <li><a class=\"first after\"  href=\"{{ url('auth_logout') }}\">{{ 'auth.logout.label'|trans }}</a></li>
             <li><a class=\"first after\"  href=\"{{ url('deleteUser') }}\">{{ 'title.delete_user'|trans }}</a></li>
+            <li><a class=\"first after\"  href=\"{{ url('editPass') }}\">{{ 'text.change_pass'|trans }}</a></li>
 
         {% else %}
             <li><a class=\"first after\"  href=\"{{ url('register') }}\">{{ 'title.register'|trans }}</a></li>

@@ -35,6 +35,9 @@
                 <th>{{  'name.table'|trans }} </th>
                 <th>{{ 'numbers.table'|trans }} </th>
                 <th>{{ 'price.table'|trans }} </th>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <th>{{ 'title.edit'|trans }} </th>
+                {% endif %}
             </tr>
             {% for row in paginator.data %}
                 <tr>
@@ -42,6 +45,9 @@
                     <td>{{ row.NAZWA }}</td>
                     <td>{{ row.STAN_MIN }}</td>
                     <td>{{ row.CENA }}</td>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <td><a href= "{{ url('modify_part_data', {'partID': row.ID}) }}">{{ '&#9755' }}</a> </td>
+                    {% endif %}
                 </tr>
             {% endfor %}
         </table>

@@ -39,6 +39,9 @@ class TrackController implements ControllerProviderInterface
         $controller->match('/{INDEKS}/add', [$this, 'addAction'])
             ->method('POST|GET')
             ->bind('track_add');
+        $controller->match('/{trackID}/delete', [$this, 'deleteAction'])
+            ->method('POST|GET')
+            ->bind('track_delete');
 
         return $controller;
     }
@@ -124,6 +127,45 @@ class TrackController implements ControllerProviderInterface
         );
     }
 
+    public function deleteAction(Application $app, Request $request, $trackID)
+    {
+        $partData = new TrackRepository($app['db']);
+        $result = $partData->partData($trackID);
 
+        $formFill['ilosc'] = $result[0]['STAN_MIN'];
+        $formFill['cena'] = $result[0]['CENA'];
+
+
+        $form = $app['form.factory']->createBuilder(EditRecordType::class, $formFill)->getForm();
+        $form->handleRequest($request);
+
+        $update = $form->getData();
+        $update['ID'] = $partID;
+
+        if ($form->isSubmitted() && $form->isValid()){
+            $partData->updatePart($update);
+
+            $app['session']->getFlashBag()->add(
+                'messages',
+                [
+                    'type' => 'success',
+                    'message' => 'message.part_successfully_edited',
+                ]
+            );
+
+        }
+
+
+
+        return $app['twig']->render(
+            'parts/editPart.html.twig',
+            [
+                'partID' => $partID,
+                'partData' => $result,
+                'form' => $form->createView(),
+            ]
+        );
+
+    }
 
    }

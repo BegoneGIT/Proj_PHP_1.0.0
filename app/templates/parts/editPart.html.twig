@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'edit part' }}{% endblock %}
+
+{% block body %}
+    <h1>{{ 'title.track_add'|trans }}</h1>
+    {% if partID %}
+        {{ form_start(form, { method: 'post', action: url('modify_part_data',{'partID': partID}) }) }}
+        {{ form_widget(form, {'attr': { 'class': 'form-labels-on-top' }}) }}
+        <input type="submit" value="{{ 'action.save'|trans }}" class="btn btn-success" />
+        {{ form_end(form) }}
+    {% else %}
+
+    {% endif %}
+{% endblock %}

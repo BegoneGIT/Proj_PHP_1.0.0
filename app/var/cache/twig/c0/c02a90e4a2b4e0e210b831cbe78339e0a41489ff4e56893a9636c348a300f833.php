@@ -116,47 +116,72 @@ class __TwigTemplate_4b630b9daae9c5b765c4cf2607668ae799297f6b48c0139f343b136e2a9
             // line 37
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("price.table"), "html", null, true);
             echo " </th>
-            </tr>
+                ";
+            // line 38
+            if ($this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("ROLE_ADMIN")) {
+                // line 39
+                echo "                    <th>";
+                echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("title.edit"), "html", null, true);
+                echo " </th>
+                ";
+            }
+            // line 41
+            echo "            </tr>
             ";
-            // line 39
+            // line 42
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable($this->getAttribute((isset($context["paginator"]) ? $context["paginator"] : $this->getContext($context, "paginator")), "data", array()));
             foreach ($context['_seq'] as $context["_key"] => $context["row"]) {
-                // line 40
+                // line 43
                 echo "                <tr>
                     <td><a href= \"";
-                // line 41
+                // line 44
                 echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getUrl("track_add", array("INDEKS" => $this->getAttribute($context["row"], "INDEKS", array()), "company" => (isset($context["company"]) ? $context["company"] : $this->getContext($context, "company")))), "html", null, true);
                 echo "\">";
                 echo twig_escape_filter($this->env, $this->getAttribute($context["row"], "INDEKS", array()), "html", null, true);
                 echo "</a></td>
                     <td>";
-                // line 42
+                // line 45
                 echo twig_escape_filter($this->env, $this->getAttribute($context["row"], "NAZWA", array()), "html", null, true);
                 echo "</td>
                     <td>";
-                // line 43
+                // line 46
                 echo twig_escape_filter($this->env, $this->getAttribute($context["row"], "STAN_MIN", array()), "html", null, true);
                 echo "</td>
                     <td>";
-                // line 44
+                // line 47
                 echo twig_escape_filter($this->env, $this->getAttribute($context["row"], "CENA", array()), "html", null, true);
                 echo "</td>
-                </tr>
+                    ";
+                // line 48
+                if ($this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("ROLE_ADMIN")) {
+                    // line 49
+                    echo "                        <td><a href= \"";
+                    echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getUrl("modify_part_data", array("partID" => $this->getAttribute($context["row"], "ID", array()))), "html", null, true);
+                    echo "\">";
+                    echo "&#9755";
+                    echo "</a> </td>
+                    ";
+                }
+                // line 51
+                echo "                </tr>
             ";
             }
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['row'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 47
+            // line 53
             echo "        </table>
         ";
-            // line 49
+            // line 55
             echo "    ";
         } else {
-            // line 50
+            // line 56
             echo "        <div>
-            List is empty!
+            ";
+            // line 57
+            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["error"]) ? $context["error"] : $this->getContext($context, "error")), "empty_list", array()), "html", null, true);
+            echo "
         </div>
     ";
         }
@@ -180,7 +205,7 @@ class __TwigTemplate_4b630b9daae9c5b765c4cf2607668ae799297f6b48c0139f343b136e2a9
 
     public function getDebugInfo()
     {
-        return array (  158 => 50,  155 => 49,  152 => 47,  143 => 44,  139 => 43,  135 => 42,  129 => 41,  126 => 40,  122 => 39,  117 => 37,  113 => 36,  109 => 35,  105 => 34,  101 => 32,  99 => 31,  94 => 29,  89 => 26,  86 => 21,  84 => 18,  83 => 17,  82 => 16,  72 => 8,  63 => 7,  50 => 4,  41 => 3,  11 => 1,);
+        return array (  183 => 57,  180 => 56,  177 => 55,  174 => 53,  167 => 51,  159 => 49,  157 => 48,  153 => 47,  149 => 46,  145 => 45,  139 => 44,  136 => 43,  132 => 42,  129 => 41,  123 => 39,  121 => 38,  117 => 37,  113 => 36,  109 => 35,  105 => 34,  101 => 32,  99 => 31,  94 => 29,  89 => 26,  86 => 21,  84 => 18,  83 => 17,  82 => 16,  72 => 8,  63 => 7,  50 => 4,  41 => 3,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -230,6 +255,9 @@ class __TwigTemplate_4b630b9daae9c5b765c4cf2607668ae799297f6b48c0139f343b136e2a9
                 <th>{{  'name.table'|trans }} </th>
                 <th>{{ 'numbers.table'|trans }} </th>
                 <th>{{ 'price.table'|trans }} </th>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <th>{{ 'title.edit'|trans }} </th>
+                {% endif %}
             </tr>
             {% for row in paginator.data %}
                 <tr>
@@ -237,13 +265,16 @@ class __TwigTemplate_4b630b9daae9c5b765c4cf2607668ae799297f6b48c0139f343b136e2a9
                     <td>{{ row.NAZWA }}</td>
                     <td>{{ row.STAN_MIN }}</td>
                     <td>{{ row.CENA }}</td>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <td><a href= \"{{ url('modify_part_data', {'partID': row.ID}) }}\">{{ '&#9755' }}</a> </td>
+                    {% endif %}
                 </tr>
             {% endfor %}
         </table>
         {#<a href= \"{{ url('homepage') }}\">{{ 'homepage'|trans }}</a>#}
     {% else %}
         <div>
-            List is empty!
+            {{ error.empty_list }}
         </div>
     {% endif %}
 {% endblock %}", "parts/index.html.twig", "C:\\xampp\\htdocs\\Proj_PHP_1.0.0\\app\\templates\\parts\\index.html.twig");

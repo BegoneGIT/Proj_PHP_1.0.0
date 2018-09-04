@@ -243,6 +243,17 @@
             <target>Czy na pewno chcesz usunąć konto?</target>
         </trans-unit>
 
+
+        <trans-unit id="label.quantity">
+            <source>label.quantity</source>
+            <target> Ilość </target>
+        </trans-unit>
+
+        <trans-unit id="label.price">
+            <source>label.price</source>
+            <target> Cena </target>
+        </trans-unit>
+
         <trans-unit id="label.delete_user">
             <source>label.delete_user</source>
             <target>Potwierdź usunięcie konta</target>
@@ -343,12 +354,25 @@
             <target> Podano błędny login lub hasło </target>
         </trans-unit>
 
+        <trans-unit id="message.part_successfully_edited">
+            <source>message.part_successfully_edited</source>
+            <target> Część została uaktualniona </target>
+        </trans-unit>
 
         <trans-unit id="message.part_does_not_exist">
             <source>message.part_does_not_exist</source>
             <target> Część nie istnieje, sprawdź czy wpisałeś numer indeksowy poprawnie </target>
         </trans-unit>
 
+        <trans-unit id="text.parts_tracked_by_users">
+            <source>text.parts_tracked_by_users</source>
+            <target> Części śledzone przez użytkowników </target>
+        </trans-unit>
+
+        <trans-unit id="text.change_pass">
+            <source>text.change_pass</source>
+            <target> Zmień login lub hasło </target>
+        </trans-unit>
 
         <trans-unit id="error_text.client_fault">
             <source>error_text.client_fault</source>
@@ -371,6 +395,18 @@
             <source>error.empty_list</source>
             <target> Lista jest pusta! </target>
         </trans-unit>
+
+
+        <trans-unit id="title.edit">
+            <source>title.edit</source>
+            <target> Edycja </target>
+        </trans-unit>
+
+        <trans-unit id="title.user_id">
+            <source>title.user_id</source>
+            <target> ID użytkownika </target>
+        </trans-unit>
+
 
         <trans-unit id="message.registration_complete">
             <source>message.registration_complete</source>

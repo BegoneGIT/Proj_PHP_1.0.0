@@ -30,12 +30,14 @@
             <li><a class="first after"  href= "{{ url('user_index') }}">{{ 'all_users'|trans }}</a></li>
             <li><a class="first after"  href= "{{ url('show_for_delete') }}">{{ 'delete.user'|trans }}</a></li>
             <li><a class="first after"  href= "{{ url('addCsv') }}">{{ 'title.addcsv'|trans }}</a></li>
+            <li><a class="first after"  href= "{{ url('users_tracked') }}">{{ 'text.parts_tracked_by_users'|trans }}</a></li>
         {% endif %}
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
             <li><a class="first after"  href= "{{ url('track_index',{'company': 'mixed'}) }}">{{ 'tracked'|trans }}</a></li>
             <li><a class="first after"  href="{{ url('account_index') }}">{{ 'userdata'|trans }}</a></li>
             <li><a class="first after"  href="{{ url('auth_logout') }}">{{ 'auth.logout.label'|trans }}</a></li>
             <li><a class="first after"  href="{{ url('deleteUser') }}">{{ 'title.delete_user'|trans }}</a></li>
+            <li><a class="first after"  href="{{ url('editPass') }}">{{ 'text.change_pass'|trans }}</a></li>
 
         {% else %}
             <li><a class="first after"  href="{{ url('register') }}">{{ 'title.register'|trans }}</a></li>

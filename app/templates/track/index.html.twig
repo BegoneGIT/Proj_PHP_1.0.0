@@ -33,12 +33,14 @@
                 <th>{{  'name.table'|trans }} </th>
                 <th>{{  'date.table'|trans }} </th>
                 <th>{{  'price.table'|trans }}</th>
+                <th>{{  'text.delete_tracked'|trans }}</th>
             {% for row in paginator.data %}
                 <tr>
                     <td>{{ row.INDEKS }}</td>
                     <td>{{ row.NAZWA }}</td>
                     <td>{{ row.Data }}</td>
                     <td>{{ row.wartosc }}</td>
+                    <td><a href= "{{ url('track_delete', {'partID': row.ID}) }}">{{ '&#9755' }}</td>
                 </tr>
             {% endfor %}
         </table>

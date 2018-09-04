@@ -6,8 +6,10 @@
  */
 namespace Controller;
 
+use Form\EditRecordType;
 use Repository\UserRepository;
 use Repository\FileRepository;
+use Repository\TrackRepository;
 use Silex\Application;
 use Silex\Api\ControllerProviderInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -46,7 +48,13 @@ class AdminController implements ControllerProviderInterface
             ->bind('show_for_delete')
             ->method('GET|POST');
         $controller->get('addcsv',[$this, 'addCsv'])->bind('addCsv')
-            ->method('GET|POST');;
+            ->method('GET|POST');
+        $controller->match('/usersTracked', [$this, 'usersTracked'])
+            ->bind('users_tracked')
+            ->method('GET|POST');
+        $controller->match('/{partID}/edit',[$this, 'modifyRecord'])
+            ->bind('modify_part_data')
+            ->method('GET|POST');
 
 
         return $controller;
@@ -186,7 +194,6 @@ class AdminController implements ControllerProviderInterface
     {
         $csv = [];
 
-        $directory = dirname(__DIR__).'/UploadedFiles';
 
         $form = $app['form.factory']->createBuilder(CsvType::class, $csv)
             //->setMethod('GET')
@@ -256,6 +263,57 @@ class AdminController implements ControllerProviderInterface
     }
 
 
+    public function usersTracked(Application $app)
+    {
+        $userTracked = new TrackRepository($app['db']);
 
+        $allTracked = $userTracked->usersTracked();
+
+        return $app['twig']->render(
+            'track/usersTracked.html.twig',
+            ['usersTracked' => $allTracked]
+        );
+    }
+
+    public function modifyRecord(Application $app, Request $request, $partID)
+    {
+        $partData = new PartsRepository($app['db']);
+        $result = $partData->partData($partID);
+
+        $formFill['ilosc'] = $result[0]['STAN_MIN'];
+        $formFill['cena'] = $result[0]['CENA'];
+
+
+        $form = $app['form.factory']->createBuilder(EditRecordType::class, $formFill)->getForm();
+        $form->handleRequest($request);
+
+        $update = $form->getData();
+        $update['ID'] = $partID;
+
+        if ($form->isSubmitted() && $form->isValid()){
+            $partData->updatePart($update);
+
+            $app['session']->getFlashBag()->add(
+                'messages',
+                [
+                    'type' => 'success',
+                    'message' => 'message.part_successfully_edited',
+                ]
+            );
+
+        }
+
+
+
+        return $app['twig']->render(
+            'parts/editPart.html.twig',
+            [
+                'partID' => $partID,
+                'partData' => $result,
+                'form' => $form->createView(),
+            ]
+        );
+
+    }
 
 }

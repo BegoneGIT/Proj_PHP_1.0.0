@@ -117,7 +117,7 @@ class TrackRepository
 
 
         $currentDateTime = new \DateTime();
-        $track['Data'] = $currentDateTime->format('Y-m-d H:i:s');
+        $track['Data'] = $currentDateTime->format('d-m-Y H:i:s');
 
 
         $track['uzytkownik_ID'] = $this->findLoggedUserId($track['uzytkownik_ID']);
@@ -165,4 +165,22 @@ class TrackRepository
 
         return $queryBuilder->execute()->fetchAll();
     }
+
+    public function usersTracked()
+    {
+        $queryBuilder = $this->db->createQueryBuilder();
+
+        $queryBuilder->select(
+            'u.idUzytkownicy','u.Imie','u.Nazwisko','u.email',
+            'p.INDEKS','p.NAZWA',
+            't.Data','t.wartosc'
+        )
+            ->from('obserwowane', 't')
+            ->innerJoin('t','uzytkownicy', 'u','t.uzytkownik_ID = u.idUzytkownicy')
+            ->innerJoin('t', 'parts', 'p','t.updated_ID = p.ID');
+
+            return $queryBuilder->execute()->fetchAll();
+    }
+
+
 }

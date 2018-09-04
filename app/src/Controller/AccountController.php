@@ -11,6 +11,8 @@
 
 namespace Controller;
 
+use Form\EditDataType;
+use Form\EditPassType;
 use Form\RegisterType;
 use Silex\Application;
 use Silex\Api\ControllerProviderInterface;
@@ -39,7 +41,9 @@ class AccountController implements ControllerProviderInterface
         $controller->get('/editAccount', [$this, 'editData'])->bind('account_edit')
                     ->method('GET|POST');
         $controller->get('/delete', [$this, 'deleteUser'])->bind('deleteUser')
-                   ->method('GET|POST');;
+                   ->method('GET|POST');
+        $controller->get('/editPass', [$this, 'editPass'])->bind('editPass')
+                   ->method('GET|POST');
 
 
         return $controller;
@@ -79,17 +83,15 @@ class AccountController implements ControllerProviderInterface
         $formFill = array_merge(
             $userData['userData'], $userData['phone'], $userData['adress']
         );
-        $formFill['login'] = $userData['login'];
 
 
-        $form = $app['form.factory']->createBuilder(RegisterType::class, $formFill)->getForm();
+        $form = $app['form.factory']->createBuilder(EditDataType::class, $formFill)->getForm();
         //dump($formFill);
         $form->handleRequest($request);
 
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $formData=$form->getData();
-            $formData['password'] = $app['security.encoder.bcrypt']->encodePassword($formData['password'], '');
+            $formData = $form->getData();
             $userRepository->updateData($formData,$userLogin);
 
             $app['session']->getFlashBag()->add(
@@ -104,13 +106,58 @@ class AccountController implements ControllerProviderInterface
         }
 
         return $app['twig']->render(
-            'register/register.html.twig',
+            'userdata/changeUserData.html.twig',
             [
                 'tag' => $userData,
                 'form' => $form->createView(),
             ]
         );
     }
+
+    public function editPass(Application $app,Request $request)
+    {
+        $userRepository = new UserRepository($app['db']);
+
+        $userLogin = $app['security.token_storage']->getToken()->getUser()->getUsername();
+
+        $userData = $userRepository->displayUserData($userLogin);
+
+        $formFill['login'] = $userData['login'];
+
+
+        $form = $app['form.factory']->createBuilder(EditPassType::class, $formFill)->getForm();
+        //dump($formFill);
+        $form->handleRequest($request);
+
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $formData=$form->getData();
+            $formData['password'] = $app['security.encoder.bcrypt']->encodePassword($formData['password'], '');
+            $userRepository->updatePassData($formData,$userLogin);
+
+            $app['session']->getFlashBag()->add(
+                'messages',
+                [
+                    'type' => 'success',
+                    'message' => 'message.user_data_successfully_edited',
+                ]
+            );
+
+            return $app->redirect($app['url_generator']->generate('account_index'), 301);
+        }
+
+        return $app['twig']->render(
+            'userdata/changePass.html.twig',
+            [
+                'tag' => $userData,
+                'form' => $form->createView(),
+            ]
+        );
+    }
+
+
+
+
 
     /**
      * Delete action
