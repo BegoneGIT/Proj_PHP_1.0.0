@@ -127,7 +127,7 @@ class TrackController implements ControllerProviderInterface
         );
     }
 
-    public function deleteAction(Application $app, Request $request, $trackID)
+   /* public function deleteAction(Application $app, Request $request, $trackID)
     {
         $partData = new TrackRepository($app['db']);
         $result = $partData->partData($trackID);
@@ -140,7 +140,7 @@ class TrackController implements ControllerProviderInterface
         $form->handleRequest($request);
 
         $update = $form->getData();
-        $update['ID'] = $partID;
+        $update['ID'] = $trackID;
 
         if ($form->isSubmitted() && $form->isValid()){
             $partData->updatePart($update);
@@ -166,6 +166,6 @@ class TrackController implements ControllerProviderInterface
             ]
         );
 
-    }
+    }*/
 
    }
