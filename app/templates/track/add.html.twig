@@ -11,7 +11,7 @@
         <input type="submit" value="{{ 'action.save'|trans }}" class="btn btn-success" />
         {{ form_end(form) }}
     {% else %}
-        {{ form_start(form, { method: 'post', action: url('track_add',{'INDEKS':  'default' }) }) }}
+        {{ form_start(form, { method: 'post', action: url('track_add',{'INDEKS':  '-0-' }) }) }}
         {{ form_widget(form, {'attr': { 'class': 'form-labels-on-top' }}) }}
         <input type="submit" value="{{ 'action.save'|trans }}" class="btn btn-success" />
         {{ form_end(form) }}

@@ -196,6 +196,22 @@
             <target> Previous </target>
         </trans-unit>
 
+        <trans-unit id="label.delete_track">
+            <source>label.delete_track</source>
+            <target> Delete from tracked </target>
+        </trans-unit>
+
+        <trans-unit id="text.delete_tracked">
+            <source>text.delete_tracked</source>
+            <target> Delete from tracked </target>
+        </trans-unit>
+
+        <trans-unit id="title.delete_track">
+            <source>title.delete_track</source>
+            <target> Delete from tracked  </target>
+        </trans-unit>
+
+
         <trans-unit id="label.name">
             <source>label.name</source>
             <target> Name </target>
@@ -358,7 +374,13 @@
 
         <trans-unit id="message.part_does_not_exist">
             <source>message.part_does_not_exist</source>
-            <target> Part does not exist, try typing it's index again </target>
+            <target> Part does not exist, try typing its index again </target>
+        </trans-unit>
+
+
+        <trans-unit id="message.this_part_is_not_tracked">
+            <source>message.this_part_is_not_tracked</source>
+            <target> You do not track this part </target>
         </trans-unit>
 
 
@@ -393,6 +415,11 @@
             <target> Parts tracked by users </target>
         </trans-unit>
 
+        <trans-unit id="text.deletion_track">
+            <source>text.deletion_track</source>
+            <target> Do you really want to stop tracking listed part? </target>
+        </trans-unit>
+
         <trans-unit id="text.change_pass">
             <source>text.change_pass</source>
             <target> Change login or password </target>
@@ -402,6 +429,7 @@
             <source>message.registration_complete</source>
             <target> You have been successfully registered </target>
         </trans-unit>
+
 
         <trans-unit id="message.registration_error">
             <source>message.registration_error</source>

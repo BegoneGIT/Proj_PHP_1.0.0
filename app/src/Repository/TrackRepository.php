@@ -57,7 +57,7 @@ class TrackRepository
 
         $queryBuilder = $this->db->createQueryBuilder();
 
-        return $queryBuilder->select('u.INDEKS','u.NAZWA', 't.Data', 't.wartosc')
+        return $queryBuilder->select('t.ID','u.INDEKS','u.NAZWA', 't.Data', 't.wartosc')
             ->from('obserwowane', 't')
             ->innerJoin('t','parts','u','t.updated_ID = u.ID')
             ->where('t.uzytkownik_ID = :userId')
@@ -182,5 +182,50 @@ class TrackRepository
             return $queryBuilder->execute()->fetchAll();
     }
 
+    /**
+     * Deletes from table obserwowane
+     *
+     * @param $trackID
+     * @return \Doctrine\DBAL\Query\QueryBuilder
+     */
+    public function deleteTrack($trackID)
+    {
+        $this->db->delete('obserwowane', ['id' => $trackID]);
 
+        return 1;
+    }
+
+    /**
+     * Returns info on specific part based on it's ID in obserwowane
+     *
+     * @param $trackID
+     * @return array
+     */
+    public function partInfo($trackID)
+    {
+        $queryBuilder = $this->db->createQueryBuilder();
+
+        $queryBuilder->select('p.INDEKS','p.NAZWA')
+            ->from('obserwowane', 't')
+            ->where('t.id = :track')
+            ->innerJoin('t','parts', 'p','t.updated_ID = p.ID')
+            ->setParameter('track', $trackID, \PDO::PARAM_STR);
+
+        return $queryBuilder->execute()->fetchAll();
+    }
+
+    public function userTrack($trackID,$userID)
+    {
+        $queryBuilder = $this->db->createQueryBuilder();
+
+        $queryBuilder->select('t.id')
+            ->from('obserwowane', 't')
+            ->where('t.id = :track')
+            ->andWhere('t.uzytkownik_ID = :userID')
+            ->setParameter('track', $trackID, \PDO::PARAM_INT)
+            ->setParameter('userID', $userID, \PDO::PARAM_INT);
+
+        return $queryBuilder->execute()->fetchAll();
+
+    }
 }

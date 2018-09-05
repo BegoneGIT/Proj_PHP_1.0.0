@@ -9,10 +9,12 @@
 
 namespace Controller;
 
+use Form\DeleteTrackType;
 use Silex\Application;
 use Silex\Api\ControllerProviderInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Repository\TrackRepository;
+use Repository\UserRepository;
 use Form\TrackType;
 
 /**
@@ -127,45 +129,60 @@ class TrackController implements ControllerProviderInterface
         );
     }
 
-   /* public function deleteAction(Application $app, Request $request, $trackID)
+    public function deleteAction(Application $app, Request $request, $trackID)
     {
         $partData = new TrackRepository($app['db']);
-        $result = $partData->partData($trackID);
+        $userRepos = new UserRepository($app['db']);
 
-        $formFill['ilosc'] = $result[0]['STAN_MIN'];
-        $formFill['cena'] = $result[0]['CENA'];
+        $token = $app['security.token_storage']->getToken()->getUser()->getUsername();
 
 
-        $form = $app['form.factory']->createBuilder(EditRecordType::class, $formFill)->getForm();
+        $userID = $userRepos->findLoggedUserId($token);
+
+        if( !$partData->userTrack($trackID,$userID)  ){
+
+            $app['session']->getFlashBag()->add(
+                'messages',
+                [
+                    'type' => 'error',
+                    'message' => 'message.this_part_is_not_tracked',
+                ]
+            );
+
+            return $app->redirect($app['url_generator']->generate('track_index'), 301);
+        }
+
+        $form = $app['form.factory']->createBuilder(DeleteTrackType::class)->getForm();
         $form->handleRequest($request);
 
-        $update = $form->getData();
-        $update['ID'] = $trackID;
+        $result = $partData->partInfo($trackID);
 
         if ($form->isSubmitted() && $form->isValid()){
-            $partData->updatePart($update);
+
+            $partData->deleteTrack($trackID);
 
             $app['session']->getFlashBag()->add(
                 'messages',
                 [
                     'type' => 'success',
-                    'message' => 'message.part_successfully_edited',
+                    'message' => 'message.part_successfully_deleted',
                 ]
             );
 
+            return $app->redirect($app['url_generator']->generate('track_index'), 301);
         }
 
 
 
         return $app['twig']->render(
-            'parts/editPart.html.twig',
+            'delete/deleteTrack.html.twig',
             [
-                'partID' => $partID,
-                'partData' => $result,
+                'trackID' => $trackID,
+                'partData' => $result[0],
                 'form' => $form->createView(),
             ]
         );
 
-    }*/
+    }
 
    }

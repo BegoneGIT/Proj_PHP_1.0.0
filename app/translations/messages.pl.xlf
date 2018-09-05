@@ -348,6 +348,30 @@
             <target> Plik Csv </target>
         </trans-unit>
 
+        <trans-unit id="label.delete_track">
+            <source>label.delete_track</source>
+            <target> Usuń z obserwowanych </target>
+        </trans-unit>
+
+        <trans-unit id="title.delete_track">
+            <source>title.delete_track</source>
+            <target> Usuń z obserwowanych </target>
+        </trans-unit>
+
+        <trans-unit id="message.this_part_is_not_tracked">
+            <source>message.this_part_is_not_tracked</source>
+            <target> Nie obserwujesz tej części </target>
+        </trans-unit>
+
+        <trans-unit id="text.deletion_track">
+            <source>text.deletion_track</source>
+            <target> Czy na pewno chcesz przestać śledzić wymienioną część? </target>
+        </trans-unit>
+
+        <trans-unit id="text.delete_tracked">
+            <source>text.delete_tracked</source>
+            <target> Usuń z obserwowanych </target>
+        </trans-unit>
 
         <trans-unit id="Bad credentials.">
             <source>Bad credentials.</source>

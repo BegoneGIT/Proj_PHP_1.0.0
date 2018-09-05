@@ -367,7 +367,7 @@ class UserRepository
      * @return id of the user
      */
 
-    private function findLoggedUserId($userLogin)
+    public function findLoggedUserId($userLogin)
     {
         $resultUserId = [];
 
