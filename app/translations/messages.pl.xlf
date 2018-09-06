@@ -331,6 +331,10 @@
             </target>
         </trans-unit>
 
+        <trans-unit id="text.users_tracked">
+            <source>text.users_tracked</source>
+            <target> Części śledzone przez użytkowników </target>
+        </trans-unit>
 
         <trans-unit id="delete.user">
             <source>delete.user</source>

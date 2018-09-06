@@ -61,7 +61,9 @@ class TrackController implements ControllerProviderInterface
         $trackRepository = new TrackRepository($app['db']);
 
         $token = $app['security.token_storage']->getToken();
-        $userId = $token->getUser();
+        $userLogin = $token->getUser();
+
+        $userId = $trackRepository->findLoggedUserId($userLogin);
 
         return $app['twig']->render(
             'track/index.html.twig',
@@ -139,7 +141,7 @@ class TrackController implements ControllerProviderInterface
 
         $userID = $userRepos->findLoggedUserId($token);
 
-        if( !$partData->userTrack($trackID,$userID)  ){
+        if( !$partData->userTracks($trackID,$userID)  ){
 
             $app['session']->getFlashBag()->add(
                 'messages',

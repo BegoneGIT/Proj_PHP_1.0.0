@@ -51,9 +51,9 @@ class TrackRepository
      *
      * @return \Doctrine\DBAL\Query\QueryBuilder Result
      */
-    protected function queryAll($userLogin)
+    protected function queryAll($userId)
     {
-        $userId = $this->findLoggedUserId($userLogin);
+        //$userId = $this->findLoggedUserId($userLogin);
 
         $queryBuilder = $this->db->createQueryBuilder();
 
@@ -135,7 +135,7 @@ class TrackRepository
      * @return id of the user
      */
 
-    private function findLoggedUserId($userLogin)
+    public function findLoggedUserId($userLogin)
     {
         $resultUserId = [];
         $userIdQueryBuilder = $this->db->createQueryBuilder();
@@ -214,7 +214,7 @@ class TrackRepository
         return $queryBuilder->execute()->fetchAll();
     }
 
-    public function userTrack($trackID,$userID)
+    public function userTracks($trackID,$userID)
     {
         $queryBuilder = $this->db->createQueryBuilder();
 

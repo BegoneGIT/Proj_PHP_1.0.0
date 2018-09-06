@@ -6,6 +6,7 @@
  */
 namespace Controller;
 
+use Form\EditDataType;
 use Form\EditRecordType;
 use Repository\UserRepository;
 use Repository\FileRepository;
@@ -55,6 +56,9 @@ class AdminController implements ControllerProviderInterface
         $controller->match('/{partID}/edit',[$this, 'modifyRecord'])
             ->bind('modify_part_data')
             ->method('GET|POST');
+        $controller->match('/{userId}/user_tracked',[$this, 'showUserTracked'])
+            ->bind('show_user_tracked')
+            ->method('GET|POST');
 
 
         return $controller;
@@ -97,10 +101,10 @@ class AdminController implements ControllerProviderInterface
         $formFill = array_merge(
             $userData['userData'], $userData['phone'], $userData['adress']
         );
-        $formFill['login'] = $userData['login'];
 
 
-        $form = $app['form.factory']->createBuilder(RegisterType::class, $formFill)->getForm();
+
+        $form = $app['form.factory']->createBuilder(EditDataType::class, $formFill)->getForm();
         //dump($formFill);
         $form->handleRequest($request);
 
@@ -274,6 +278,18 @@ class AdminController implements ControllerProviderInterface
             ['usersTracked' => $allTracked]
         );
     }
+
+
+    public function showUserTracked(Application $app,$page = 1, $userId)
+    {
+        $userTracked = new TrackRepository($app['db']);
+
+        return $app['twig']->render(
+            'track/showUserTracked.html.twig',
+            ['paginator' => $userTracked->findAllPaginated($page, $userId)]
+        );
+    }
+
 
     public function modifyRecord(Application $app, Request $request, $partID)
     {

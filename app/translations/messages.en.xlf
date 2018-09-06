@@ -168,7 +168,10 @@
             <target> Tracked Parts </target>
         </trans-unit>
 
-
+        <trans-unit id="text.users_tracked">
+            <source>text.users_tracked</source>
+            <target> Parts tracked by all users </target>
+        </trans-unit>
 
 
         <trans-unit id="userdata">
