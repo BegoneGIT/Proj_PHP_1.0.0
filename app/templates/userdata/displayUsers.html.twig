@@ -24,6 +24,7 @@
     {% if paginator.data is defined and paginator.data|length %}
         <table class="zui-table">
             <tr>
+                <th>{{ 'login.table'|trans }} </th>
                 <th>{{ 'id.table'|trans }} </th>
                 <th>{{ 'label.login'|trans }}</th>
                 <th>{{  'label.imie'|trans }} </th>
@@ -42,6 +43,7 @@
             </tr>
             {% for row in paginator.data %}
                 <tr>
+                    <td><a href= "{{ url('modify_user_login_data', {'userLogin': row.login}) }}">{{ '&#9881' }}</td>
                     <td>{{ row.idUzytkownicy }}</td>
                     <td><a href= "{{ url('user_edit', {'userLogin': row.login}) }}">{{ row.login }}</a></td>
                     <td>{{ row.Imie }}</td>

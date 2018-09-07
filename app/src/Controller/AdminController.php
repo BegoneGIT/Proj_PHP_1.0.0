@@ -7,6 +7,7 @@
 namespace Controller;
 
 use Form\EditDataType;
+use Form\EditLoginType;
 use Form\EditRecordType;
 use Repository\UserRepository;
 use Repository\FileRepository;
@@ -55,6 +56,9 @@ class AdminController implements ControllerProviderInterface
             ->method('GET|POST');
         $controller->match('/{partID}/edit',[$this, 'modifyRecord'])
             ->bind('modify_part_data')
+            ->method('GET|POST');
+        $controller->match('/{userLogin}/modLogin',[$this, 'editUserLogin'])
+            ->bind('modify_user_login_data')
             ->method('GET|POST');
         $controller->match('/{userId}/user_tracked',[$this, 'showUserTracked'])
             ->bind('show_user_tracked')
@@ -339,21 +343,18 @@ class AdminController implements ControllerProviderInterface
 
         $userData = $userRepository->displayUserData($userLogin);
 
-        $formFill = array_merge(
-            $userData['userData'], $userData['phone'], $userData['adress']
-        );
-        // $formFill['login'] = $userData['login'];
+
+        $formFill['login'] = $userData['login'];
 
 
-        $form = $app['form.factory']->createBuilder(EditDataType::class, $formFill)->getForm();
+        $form = $app['form.factory']->createBuilder(EditLoginType::class, $formFill)->getForm();
         //dump($formFill);
         $form->handleRequest($request);
 
 
         if ($form->isSubmitted() && $form->isValid()) {
             $formData=$form->getData();
-            //$formData['password'] = $app['security.encoder.bcrypt']->encodePassword($formData['password'], '');
-            $userRepository->updateData($formData,$userLogin);
+            $userRepository->updateLoginData($formData,$userLogin);
 
             $app['session']->getFlashBag()->add(
                 'messages',

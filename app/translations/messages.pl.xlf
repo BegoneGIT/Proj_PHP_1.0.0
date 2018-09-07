@@ -139,6 +139,11 @@
             <target> Obserwowane </target>
         </trans-unit>
 
+        <trans-unit id="login.table">
+            <source>login.table</source>
+            <target>Zmień login</target>
+        </trans-unit>
+
         <trans-unit id="tracked.parts">
             <source>tracked.parts</source>
             <target> Obserwowane części </target>

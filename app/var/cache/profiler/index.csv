@@ -438,3 +438,5 @@ d318a8,::1,GET,http://localhost:8888/index_dev.php/,1536329015,,500
 68f907,::1,GET,http://localhost:8888/index_dev.php/,1536329070,,500
 bdec49,::1,GET,http://localhost:8888/index_dev.php/,1536329138,,500
 2767e6,::1,GET,http://localhost:8888/index_dev.php/,1536329148,,200
+38d2e1,::1,GET,http://localhost:8888/index_dev.php/admin/users,1536342884,,200
+186abb,::1,GET,http://localhost:8888/index_dev.php/admin/users,1536343070,,200

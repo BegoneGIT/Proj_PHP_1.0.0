@@ -457,6 +457,12 @@
             <target> Parts tracked by users </target>
         </trans-unit>
 
+        <trans-unit id="login.table">
+            <source>login.table</source>
+            <target>Change Login</target>
+        </trans-unit>
+
+
         <trans-unit id="text.deletion_track">
             <source>text.deletion_track</source>
             <target> Do you really want to stop tracking listed part? </target>

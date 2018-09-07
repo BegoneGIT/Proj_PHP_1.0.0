@@ -276,6 +276,26 @@ class UserRepository
         return 1;
     }
 
+
+    public function updateLoginData($logindata, $userName)
+    {
+        try {
+            $this->db->beginTransaction();
+
+            $id = $this->findLoggedUserId($userName);
+
+            $submit['id_uzytkownik'] = $id;
+            $submit['login'] =  $logindata['login'];
+            $this->db->update('login', $submit, ['id_uzytkownik' => $submit['id_uzytkownik']]);
+            $this->db->commit();
+        } catch (DBALException $exception){
+            $this->db->rollBack();
+            throw $exception;
+        }
+        return 1;
+    }
+
+
     /**
      *      Updates data into uzytkownicy table
      *
