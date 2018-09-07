@@ -101,7 +101,7 @@ class AdminController implements ControllerProviderInterface
         $formFill = array_merge(
             $userData['userData'], $userData['phone'], $userData['adress']
         );
-
+       // $formFill['login'] = $userData['login'];
 
 
         $form = $app['form.factory']->createBuilder(EditDataType::class, $formFill)->getForm();
@@ -111,7 +111,7 @@ class AdminController implements ControllerProviderInterface
 
         if ($form->isSubmitted() && $form->isValid()) {
             $formData=$form->getData();
-            $formData['password'] = $app['security.encoder.bcrypt']->encodePassword($formData['password'], '');
+            //$formData['password'] = $app['security.encoder.bcrypt']->encodePassword($formData['password'], '');
             $userRepository->updateData($formData,$userLogin);
 
             $app['session']->getFlashBag()->add(
@@ -332,4 +332,46 @@ class AdminController implements ControllerProviderInterface
 
     }
 
+    public function editUserLogin(Application $app, $userLogin,Request $request)
+    {
+        $userRepository = new UserRepository($app['db']);
+
+
+        $userData = $userRepository->displayUserData($userLogin);
+
+        $formFill = array_merge(
+            $userData['userData'], $userData['phone'], $userData['adress']
+        );
+        // $formFill['login'] = $userData['login'];
+
+
+        $form = $app['form.factory']->createBuilder(EditDataType::class, $formFill)->getForm();
+        //dump($formFill);
+        $form->handleRequest($request);
+
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $formData=$form->getData();
+            //$formData['password'] = $app['security.encoder.bcrypt']->encodePassword($formData['password'], '');
+            $userRepository->updateData($formData,$userLogin);
+
+            $app['session']->getFlashBag()->add(
+                'messages',
+                [
+                    'type' => 'success',
+                    'message' => 'message.user_data_successfully_edited',
+                ]
+            );
+
+            return $app->redirect($app['url_generator']->generate('user_index'), 301);
+        }
+
+        return $app['twig']->render(
+            'userdata/editUserData.html.twig',
+            [
+                'tag' => $userData,
+                'form' => $form->createView(),
+            ]
+        );
+    }
 }

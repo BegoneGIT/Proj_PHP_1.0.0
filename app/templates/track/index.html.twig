@@ -38,7 +38,7 @@
                 <tr>
                     <td>{{ row.INDEKS }}</td>
                     <td>{{ row.NAZWA }}</td>
-                    <td>{{ row.Data }}</td>
+                    <td>{{ row.Data|date("d/m/Y") }}</td>
                     <td>{{ row.wartosc }}</td>
                     <td><a href= "{{ url('track_delete', {'trackID': row.ID}) }}">{{ '&#9755' }}</td>
                 </tr>

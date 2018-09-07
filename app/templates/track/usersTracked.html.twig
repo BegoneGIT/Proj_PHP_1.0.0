@@ -46,7 +46,7 @@
                     <td>{{ row.email }}</td>
                     <td>{{ row.INDEKS }}</td>
                     <td>{{ row.NAZWA }}</td>
-                    <td>{{ row.Data }}</td>
+                    <td>{{ row.Data|date("d/m/Y") }}</td>
                     <td>{{ row.wartosc }}</td>
                 </tr>
             {% endfor %}
@@ -54,7 +54,7 @@
         {# <a href= "{{ url('homepage') }}">{{ 'homepage'|trans }}</a>#}
     {% else %}
         <div>
-            {{ error.empty_list }}
+            {{ 'error.empty_list'|trans }}
         </div>
     {% endif %}
 {% endblock %}

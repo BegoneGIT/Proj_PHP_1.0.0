@@ -16,11 +16,15 @@
 
 <div class="wrapper">
     <ul>
-        <li><a class="first after"  href="{{ url('search_index',{'INDEKS':  'default'}) }}">{{ 'action.search'|trans }}</a></li>
+        <li><a class="first after"  href="{{ url('search_index',{'INDEKS': 'text.default'|trans }) }}">{{ 'action.search'|trans }}</a></li>
             {% for company in companies %}
                 <li>
-                    <a class="first after"  href="{{ url('parts_index', {'company': company.FIRMA}) }}">
-                            <span class="capitalize"> {{ company.FIRMA }}</span>
+                    <a class="first after"  href="{{ url('parts_index', {'company': company.id}) }}">
+                        {% if company.FIRMA is same as('pozostale')%}           {# funnily enough twig uses isa same as() in place of === #}
+                            {{ 'text.rest'|trans }}
+                        {% else %}
+                            <span class="capitalize">{{ company.FIRMA }}</span>
+                        {% endif %}
                     </a>
                 </li>
         {% endfor %}

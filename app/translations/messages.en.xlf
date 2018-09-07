@@ -127,6 +127,36 @@
             <target>Repeat Password</target>
         </trans-unit>
 
+        <trans-unit id="label.other">
+            <source>label.other</source>
+            <target>Other</target>
+        </trans-unit>
+
+
+        <trans-unit id="Suzuki">
+            <source>Suzuki</source>
+            <target>Suzuki</target>
+        </trans-unit>
+
+        <trans-unit id="Kia">
+            <source>Kia</source>
+            <target>Kia</target>
+        </trans-unit>
+
+        <trans-unit id="Mitsubischi">
+            <source>Mitsubischi</source>
+            <target>Mitsubischi</target>
+        </trans-unit>
+
+        <trans-unit id="Subaru">
+            <source>Subaru</source>
+            <target>Subaru</target>
+        </trans-unit>
+
+        <trans-unit id="Toyota">
+            <source>Toyota</source>
+            <target>Toyota</target>
+        </trans-unit>
 
         <trans-unit id="title.auth_login">
             <source>title.auth_login</source>
@@ -173,6 +203,15 @@
             <target> Parts tracked by all users </target>
         </trans-unit>
 
+        <trans-unit id="text.default">
+            <source>text.default</source>
+            <target> index </target>
+        </trans-unit>
+
+        <trans-unit id="error.occured">
+            <source>error.occured</source>
+            <target> An error occurred. </target>
+        </trans-unit>
 
         <trans-unit id="userdata">
             <source>userdata</source>
@@ -422,6 +461,12 @@
             <source>text.deletion_track</source>
             <target> Do you really want to stop tracking listed part? </target>
         </trans-unit>
+
+        <trans-unit id="text.rest">
+            <source>text.rest</source>
+            <target> Mixed parts </target>
+        </trans-unit>
+
 
         <trans-unit id="text.change_pass">
             <source>text.change_pass</source>

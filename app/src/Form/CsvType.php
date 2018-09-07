@@ -7,7 +7,7 @@ namespace Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -23,15 +23,18 @@ class CsvType extends AbstractType
     {
         $builder->add(
             'name',
-            TextType::class,
+            ChoiceType::class,
             [
+                'choices' =>[
+                    'Suzuki' => 1,
+                    'Kia' => 2,
+                    'Mitsubischi' => 3,
+                    'Subaru' => 4,
+                    'Toyota' => 5,
+                    'label.other' => 6
+                ],
                 'label' => 'label.name',
                 'required' => true,
-                'attr' => [
-                    'max_length' => 32,
-                    'class' => 'form-row'
-
-                ],
                 'constraints' => [
                     new Assert\NotBlank(),
                 ],

@@ -99,7 +99,7 @@ class __TwigTemplate_959324d008d8cd7fbd46d417f07530a01abeeaf357c6728ebe91e97920b
     <ul>
         <li><a class=\"first after\"  href=\"";
         // line 19
-        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getUrl("search_index", array("INDEKS" => "default"));
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getUrl("search_index", array("INDEKS" => $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("text.default"))), "html", null, true);
         echo "\">";
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("action.search"), "html", null, true);
         echo "</a></li>
@@ -112,80 +112,92 @@ class __TwigTemplate_959324d008d8cd7fbd46d417f07530a01abeeaf357c6728ebe91e97920b
             echo "                <li>
                     <a class=\"first after\"  href=\"";
             // line 22
-            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getUrl("parts_index", array("company" => $this->getAttribute($context["company"], "FIRMA", array()))), "html", null, true);
+            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getUrl("parts_index", array("company" => $this->getAttribute($context["company"], "id", array()))), "html", null, true);
             echo "\">
-                            <span class=\"capitalize\"> ";
+                        ";
             // line 23
-            echo twig_escape_filter($this->env, $this->getAttribute($context["company"], "FIRMA", array()), "html", null, true);
-            echo "</span>
-                    </a>
+            if (($this->getAttribute($context["company"], "FIRMA", array()) === "pozostale")) {
+                // line 24
+                echo "                            ";
+                echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("text.rest"), "html", null, true);
+                echo "
+                        ";
+            } else {
+                // line 26
+                echo "                            <span class=\"capitalize\">";
+                echo twig_escape_filter($this->env, $this->getAttribute($context["company"], "FIRMA", array()), "html", null, true);
+                echo "</span>
+                        ";
+            }
+            // line 28
+            echo "                    </a>
                 </li>
         ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['company'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 27
+        // line 31
         echo "
 
         ";
-        // line 29
+        // line 33
         if ($this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("ROLE_ADMIN")) {
-            // line 30
+            // line 34
             echo "            <li><a class=\"first after\"  href= \"";
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getUrl("user_index");
             echo "\">";
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("all_users"), "html", null, true);
             echo "</a></li>
             <li><a class=\"first after\"  href= \"";
-            // line 31
+            // line 35
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getUrl("show_for_delete");
             echo "\">";
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("delete.user"), "html", null, true);
             echo "</a></li>
             <li><a class=\"first after\"  href= \"";
-            // line 32
+            // line 36
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getUrl("addCsv");
             echo "\">";
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("title.addcsv"), "html", null, true);
             echo "</a></li>
             <li><a class=\"first after\"  href= \"";
-            // line 33
+            // line 37
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getUrl("users_tracked");
             echo "\">";
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("text.parts_tracked_by_users"), "html", null, true);
             echo "</a></li>
         ";
         }
-        // line 35
+        // line 39
         echo "        ";
         if ($this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("IS_AUTHENTICATED_FULLY")) {
-            // line 36
+            // line 40
             echo "            <li><a class=\"first after\"  href= \"";
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getUrl("track_index", array("company" => "mixed"));
             echo "\">";
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("tracked"), "html", null, true);
             echo "</a></li>
             <li><a class=\"first after\"  href=\"";
-            // line 37
+            // line 41
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getUrl("account_index");
             echo "\">";
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("userdata"), "html", null, true);
             echo "</a></li>
             <li><a class=\"first after\"  href=\"";
-            // line 38
+            // line 42
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getUrl("auth_logout");
             echo "\">";
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("auth.logout.label"), "html", null, true);
             echo "</a></li>
             <li><a class=\"first after\"  href=\"";
-            // line 39
+            // line 43
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getUrl("deleteUser");
             echo "\">";
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("title.delete_user"), "html", null, true);
             echo "</a></li>
             <li><a class=\"first after\"  href=\"";
-            // line 40
+            // line 44
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getUrl("editPass");
             echo "\">";
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("text.change_pass"), "html", null, true);
@@ -193,21 +205,21 @@ class __TwigTemplate_959324d008d8cd7fbd46d417f07530a01abeeaf357c6728ebe91e97920b
 
         ";
         } else {
-            // line 43
+            // line 47
             echo "            <li><a class=\"first after\"  href=\"";
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getUrl("register");
             echo "\">";
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("title.register"), "html", null, true);
             echo "</a></li>
             <li><a class=\"first after\"  href=\"";
-            // line 44
+            // line 48
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getUrl("auth_login");
             echo "\">";
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("auth.login.label"), "html", null, true);
             echo "</a></li>
         ";
         }
-        // line 46
+        // line 50
         echo "    </ul>
 </div>
 ";
@@ -231,7 +243,7 @@ class __TwigTemplate_959324d008d8cd7fbd46d417f07530a01abeeaf357c6728ebe91e97920b
 
     public function getDebugInfo()
     {
-        return array (  211 => 46,  204 => 44,  197 => 43,  189 => 40,  183 => 39,  177 => 38,  171 => 37,  164 => 36,  161 => 35,  154 => 33,  148 => 32,  142 => 31,  135 => 30,  133 => 29,  129 => 27,  119 => 23,  115 => 22,  112 => 21,  108 => 20,  102 => 19,  97 => 16,  88 => 14,  84 => 13,  78 => 10,  75 => 9,  72 => 8,  63 => 7,  50 => 5,  41 => 4,  11 => 1,);
+        return array (  223 => 50,  216 => 48,  209 => 47,  201 => 44,  195 => 43,  189 => 42,  183 => 41,  176 => 40,  173 => 39,  166 => 37,  160 => 36,  154 => 35,  147 => 34,  145 => 33,  141 => 31,  133 => 28,  127 => 26,  121 => 24,  119 => 23,  115 => 22,  112 => 21,  108 => 20,  102 => 19,  97 => 16,  88 => 14,  84 => 13,  78 => 10,  75 => 9,  72 => 8,  63 => 7,  50 => 5,  41 => 4,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -262,11 +274,15 @@ class __TwigTemplate_959324d008d8cd7fbd46d417f07530a01abeeaf357c6728ebe91e97920b
 
 <div class=\"wrapper\">
     <ul>
-        <li><a class=\"first after\"  href=\"{{ url('search_index',{'INDEKS':  'default'}) }}\">{{ 'action.search'|trans }}</a></li>
+        <li><a class=\"first after\"  href=\"{{ url('search_index',{'INDEKS': 'text.default'|trans }) }}\">{{ 'action.search'|trans }}</a></li>
             {% for company in companies %}
                 <li>
-                    <a class=\"first after\"  href=\"{{ url('parts_index', {'company': company.FIRMA}) }}\">
-                            <span class=\"capitalize\"> {{ company.FIRMA }}</span>
+                    <a class=\"first after\"  href=\"{{ url('parts_index', {'company': company.id}) }}\">
+                        {% if company.FIRMA is same as('pozostale')%}
+                            {{ 'text.rest'|trans }}
+                        {% else %}
+                            <span class=\"capitalize\">{{ company.FIRMA }}</span>
+                        {% endif %}
                     </a>
                 </li>
         {% endfor %}

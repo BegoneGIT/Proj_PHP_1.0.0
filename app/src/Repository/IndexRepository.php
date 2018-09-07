@@ -36,8 +36,9 @@ class IndexRepository
     {
         $ask = $this->db->createQueryBuilder();
 
-        $ask->select('DISTINCT p.FIRMA')
-            ->from('parts', 'p');
+        $ask->select('DISTINCT b.brand as FIRMA', 'b.id')
+            ->from('parts', 'p')
+            ->innerJoin('p','brands','b','p.FIRMA = b.id');
         return $ask->execute()->fetchAll();
     }
 

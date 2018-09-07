@@ -180,7 +180,7 @@ class __TwigTemplate_4b630b9daae9c5b765c4cf2607668ae799297f6b48c0139f343b136e2a9
             echo "        <div>
             ";
             // line 57
-            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["error"]) ? $context["error"] : $this->getContext($context, "error")), "empty_list", array()), "html", null, true);
+            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("error.empty_list"), "html", null, true);
             echo "
         </div>
     ";
@@ -274,7 +274,7 @@ class __TwigTemplate_4b630b9daae9c5b765c4cf2607668ae799297f6b48c0139f343b136e2a9
         {#<a href= \"{{ url('homepage') }}\">{{ 'homepage'|trans }}</a>#}
     {% else %}
         <div>
-            {{ error.empty_list }}
+            {{ 'error.empty_list'|trans }}
         </div>
     {% endif %}
 {% endblock %}", "parts/index.html.twig", "C:\\xampp\\htdocs\\Proj_PHP_1.0.0\\app\\templates\\parts\\index.html.twig");

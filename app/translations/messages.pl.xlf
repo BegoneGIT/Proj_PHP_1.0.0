@@ -121,7 +121,7 @@
 
         <trans-unit id="label.actions">
             <source>label.actions</source>
-            <target>Action</target>
+            <target>Akcja</target>
         </trans-unit>
 
         <trans-unit id="action.save">
@@ -279,6 +279,37 @@
             <target> Kod Pocztowy </target>
         </trans-unit>
 
+        <trans-unit id="label.other">
+            <source>label.other</source>
+            <target>Pozostałe</target>
+        </trans-unit>
+
+
+        <trans-unit id="Suzuki">
+            <source>Suzuki</source>
+            <target>Suzuki</target>
+        </trans-unit>
+
+        <trans-unit id="Kia">
+            <source>Kia</source>
+            <target>Kia</target>
+        </trans-unit>
+
+        <trans-unit id="Mitsubischi">
+            <source>Mitsubischi</source>
+            <target>Mitsubischi</target>
+        </trans-unit>
+
+        <trans-unit id="Subaru">
+            <source>Subaru</source>
+            <target>Subaru</target>
+        </trans-unit>
+
+        <trans-unit id="Toyota">
+            <source>Toyota</source>
+            <target>Toyota</target>
+        </trans-unit>
+
 
         <trans-unit id="users.index">
             <source>users.index</source>
@@ -322,6 +353,12 @@
             </target>
         </trans-unit>
 
+        <trans-unit id="text.rest">
+            <source>text.rest</source>
+            <target> Części różnych marek </target>
+        </trans-unit>
+
+
         <trans-unit id="text.user_deletion_information">
             <source>text.user_deletion_information</source>
             <target> Po kliknięciu poniższego przycisku
@@ -330,6 +367,17 @@
                 Czy na pewno chcesz usunąć konto?
             </target>
         </trans-unit>
+
+        <trans-unit id="error.occured">
+            <source>error.occured</source>
+            <target> Wystąpił błąd. </target>
+        </trans-unit>
+
+        <trans-unit id="text.default">
+            <source>text.default</source>
+            <target> indeks </target>
+        </trans-unit>
+
 
         <trans-unit id="text.users_tracked">
             <source>text.users_tracked</source>

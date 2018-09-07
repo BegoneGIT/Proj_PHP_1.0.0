@@ -117,7 +117,7 @@ class TrackRepository
 
 
         $currentDateTime = new \DateTime();
-        $track['Data'] = $currentDateTime->format('d-m-Y H:i:s');
+        $track['Data'] = $currentDateTime->format('Y-m-d H:i:s');
 
 
         $track['uzytkownik_ID'] = $this->findLoggedUserId($track['uzytkownik_ID']);
