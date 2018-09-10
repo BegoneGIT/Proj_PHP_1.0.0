@@ -2,7 +2,6 @@
 namespace Repository;
 
 use Doctrine\DBAL\Connection;
-use Utils\Paginator;
 
 /**
  * Index Repository
@@ -28,7 +27,7 @@ class IndexRepository
     }
 
     /**
-     * query and fetch all tables
+     * query to list all parts brands
      *
      * @return array Result
      */

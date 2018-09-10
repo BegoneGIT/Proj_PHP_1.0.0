@@ -66,7 +66,7 @@ class PartsController implements ControllerProviderInterface
     }
 
     /**
-     * Search action.
+     * Search action. Allows searching for specific part
      *
      * @param \Silex\Application $app Silex application
      *

@@ -3,8 +3,6 @@ namespace Repository;
 
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\DBALException;
-use Doctrine\DBAL\Schema;
-use Utils\Paginator;
 use Doctrine\DBAL\Exception\LockWaitTimeoutException;
 
 /**

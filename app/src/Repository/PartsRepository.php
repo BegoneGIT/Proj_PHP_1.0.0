@@ -193,6 +193,11 @@ class PartsRepository
         return $queryBuilder->execute()->fetchAll();
     }
 
+    /**
+     * Update part data
+     *
+     * @param $part
+     */
     public function updatePart($part)
     {
         try {

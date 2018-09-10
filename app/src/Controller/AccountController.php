@@ -51,7 +51,8 @@ class AccountController implements ControllerProviderInterface
 
 
     /**
-     * Parts action.
+     * User panel action.
+     * Lists user data.
      *
      * @param \Silex\Application $app Silex application
      *
@@ -71,7 +72,16 @@ class AccountController implements ControllerProviderInterface
         );
     }
 
-
+    /**
+     * Edit logged user data.
+     * Displays filled form with current user data.
+     *
+     *
+     * @param Application $app
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @throws \Doctrine\DBAL\DBALException
+     */
     public function editData(Application $app,Request $request)
     {
         $userRepository = new UserRepository($app['db']);
@@ -114,6 +124,14 @@ class AccountController implements ControllerProviderInterface
         );
     }
 
+    /**
+     * Edit login and password action.
+     *
+     * @param Application $app
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @throws \Doctrine\DBAL\DBALException
+     */
     public function editPass(Application $app,Request $request)
     {
         $userRepository = new UserRepository($app['db']);
@@ -160,7 +178,7 @@ class AccountController implements ControllerProviderInterface
 
 
     /**
-     * Delete action
+     * Delete action - delets user
      *
      * Deletes user from all tables
      *

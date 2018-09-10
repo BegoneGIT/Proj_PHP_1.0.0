@@ -16,7 +16,7 @@ use Symfony\Component\Form\Extension\Core\Type\NumberType;
 
 
 /**
- * Class LoginType.
+ * Class RegisterType.
  */
 class RegisterType extends AbstractType
 {

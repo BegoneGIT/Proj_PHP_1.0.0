@@ -2,6 +2,9 @@
 /**
  * Admin controller.
  *
+ * Actions available only for user with admin privileges
+ * Used to manage users data, add new parts or modify existing
+ *
  * @copyright (c) 2018 Mateusz Bulat
  */
 namespace Controller;
@@ -70,6 +73,7 @@ class AdminController implements ControllerProviderInterface
 
     /**
      * User data action.
+     * Lists all users with their respective data.
      *
      * @param \Silex\Application $app Silex application
      *
@@ -88,6 +92,7 @@ class AdminController implements ControllerProviderInterface
 
     /**
      * Edit user data
+     * Displays form filled with current data.
      *
      * @param Application $app
      * @param $userLogin
@@ -197,7 +202,15 @@ class AdminController implements ControllerProviderInterface
         );
     }
 
-
+    /**
+     * Add data from csv file to database.
+     * Brand of added parts is specified in form.
+     *
+     * @param Application $app
+     * @param Request $request
+     * @return mixed
+     * @throws \Doctrine\DBAL\DBALException
+     */
     public function addCsv(Application $app, Request $request)
     {
         $csv = [];
@@ -270,7 +283,12 @@ class AdminController implements ControllerProviderInterface
         );
     }
 
-
+    /**
+     * Display parts tracked by users.
+     *
+     * @param Application $app
+     * @return mixed
+     */
     public function usersTracked(Application $app)
     {
         $userTracked = new TrackRepository($app['db']);
@@ -283,7 +301,16 @@ class AdminController implements ControllerProviderInterface
         );
     }
 
-
+    /**
+     * Display parts tracked by specific user.
+     *
+     * @param Application $app
+     * @param int $page
+     * @param int $userId used to identify user whom
+     * tracked parts are to be listed
+     *
+     * @return mixed
+     */
     public function showUserTracked(Application $app,$page = 1, $userId)
     {
         $userTracked = new TrackRepository($app['db']);
@@ -294,7 +321,15 @@ class AdminController implements ControllerProviderInterface
         );
     }
 
-
+    /**
+     * Allows for record modification
+     * Price and quantity can be changed
+     *
+     * @param Application $app
+     * @param Request $request
+     * @param $partID Id of the part to be modified
+     * @return mixed
+     */
     public function modifyRecord(Application $app, Request $request, $partID)
     {
         $partData = new PartsRepository($app['db']);
@@ -336,6 +371,16 @@ class AdminController implements ControllerProviderInterface
 
     }
 
+    /**
+     * Edit user login action
+     *
+     * @param Application $app
+     * @param $userLogin Used to identify user
+     *
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @throws \Doctrine\DBAL\DBALException
+     */
     public function editUserLogin(Application $app, $userLogin,Request $request)
     {
         $userRepository = new UserRepository($app['db']);

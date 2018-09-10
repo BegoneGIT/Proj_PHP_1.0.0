@@ -1,6 +1,7 @@
 <?php
 /**
- * Register form.
+ * EditData form.
+ * Edits user data but login and password.
  */
 
 namespace Form;

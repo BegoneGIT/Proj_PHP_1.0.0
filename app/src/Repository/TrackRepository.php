@@ -89,7 +89,7 @@ class TrackRepository
     /**
      * Save record.
      *
-     * It is supposed to add a record with current date,
+     * It adds a record with current date,
      * uploaders ID (uzytkownicy.idUzytkownicy) from session and
      * price (updated.CENA)
      *
@@ -153,6 +153,7 @@ class TrackRepository
      * Checks whether the form submitted part name exists
      *
      * @param $track
+     * @return array with records fetched
      */
     public function partExists($track)
     {
@@ -166,6 +167,12 @@ class TrackRepository
         return $queryBuilder->execute()->fetchAll();
     }
 
+    /**
+     * Query to display all tracked parts
+     * listing info about user that tracks specific part
+     *
+     * @return array
+     */
     public function usersTracked()
     {
         $queryBuilder = $this->db->createQueryBuilder();
@@ -185,14 +192,14 @@ class TrackRepository
     /**
      * Deletes from table obserwowane
      *
-     * @param $trackID
+     * @param $trackID Id of a tracked part to be deleted
+     *
      * @return \Doctrine\DBAL\Query\QueryBuilder
      */
     public function deleteTrack($trackID)
     {
         $this->db->delete('obserwowane', ['id' => $trackID]);
 
-        return 1;
     }
 
     /**
@@ -214,6 +221,15 @@ class TrackRepository
         return $queryBuilder->execute()->fetchAll();
     }
 
+    /**
+     * Checks whether user tracks this specific part
+     *
+     * @param $trackID - id of a part
+     *
+     * @param $userID - id of a user
+     *
+     * @return array
+     */
     public function userTracks($trackID,$userID)
     {
         $queryBuilder = $this->db->createQueryBuilder();

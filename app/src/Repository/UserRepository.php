@@ -139,6 +139,7 @@ class UserRepository
      * Registers user
      *
      * @param array $data is $data from form
+     * @throws DBALException
      */
 
     public function register($data)
@@ -156,7 +157,6 @@ class UserRepository
             $this->db->rollBack();
             throw $exception;
         }
-        return $data;
     }
 
 
@@ -164,6 +164,7 @@ class UserRepository
      * Inserts data into login table
      *
      * @param array $logindata is a form data acquired registering user
+     * @return int
      */
 
     private function savePassData($logindata, $id)
@@ -180,7 +181,8 @@ class UserRepository
     /**
      *      Inserts data into uzytkownicy table
      *
-     * @param array $userdata Info got from form
+     * @param array $userdata Info from form
+     * @return int
      */
 
     private function saveUserData($userdata)
@@ -197,8 +199,8 @@ class UserRepository
     /**
      * Saves user phone to table telefon
      *
-     * @param $userdata array
-     * @param $id int
+     * @param $userdata array with data to be inserted
+     * @param $id int of a user
      * @return int
      */
     private function saveUserPhone($userdata, $id)
@@ -212,8 +214,8 @@ class UserRepository
     /**
      * Saves user adress data into adres table
      *
-     * @param $userdata
-     * @param $id
+     * @param $userdata - to be inserted into database
+     * @param $id - of a user
      * @return int
      */
     private function saveUserAdress($userdata, $id)
@@ -230,8 +232,11 @@ class UserRepository
 
 
     /**
-     * @param $data
+     * Updates user data
+     *
+     * @param $data to be inserted into database
      * @param $userName string with logged user name
+     * @throws DBALException
      */
     public function updateData($data, $userName)
     {
@@ -248,13 +253,13 @@ class UserRepository
             $this->db->rollBack();
             throw $exception;
         }
-        return $data;
     }
 
     /**
      * Updates data into login table
      *
      * @param array $logindata is a form data acquired registering user
+     * @throws DBALException
      */
 
     public function updatePassData($logindata, $userName)
@@ -273,10 +278,15 @@ class UserRepository
             $this->db->rollBack();
             throw $exception;
         }
-        return 1;
     }
 
-
+    /**
+     * Udpates login data
+     *
+     * @param $logindata
+     * @param $userName
+     * @throws DBALException
+     */
     public function updateLoginData($logindata, $userName)
     {
         try {
@@ -292,14 +302,14 @@ class UserRepository
             $this->db->rollBack();
             throw $exception;
         }
-        return 1;
     }
 
 
     /**
      *      Updates data into uzytkownicy table
      *
-     * @param array $userdata Info got from form
+     * @param array $userdata Info from form
+     * @return int
      */
 
     private function updateUserData($userdata, $id)
@@ -317,8 +327,8 @@ class UserRepository
     /**
      * Updates user phone to table telefon
      *
-     * @param $userdata array
-     * @param $id int
+     * @param $userdata array data to be inserted into database
+     * @param $id int of the user
      * @return int
      */
     private function updateUserPhone($userdata, $id)
@@ -334,8 +344,8 @@ class UserRepository
     /**
      * Updates user adress data into adres table
      *
-     * @param $userdata
-     * @param $id
+     * @param $userdata array data to be inserted into database
+     * @param $id int of the use
      * @return int
      */
     private function updateUserAdress($userdata, $id)
@@ -356,6 +366,7 @@ class UserRepository
      *  Displays User data
      *
      * @param string $userlogin is logged user login
+     * @return array user data
      */
 
     public function displayUserData($userlogin)
@@ -383,8 +394,8 @@ class UserRepository
     /**
      * Finds logged user id by login in table `login`
      *
-     * @param $userLogin
-     * @return id of the user
+     * @param $userLogin string user login
+     * @return int id of the user
      */
 
     public function findLoggedUserId($userLogin)
@@ -404,6 +415,9 @@ class UserRepository
 
     /**
      * Find logged user data by id
+     *
+     * @param $userId int Id of a user to be dispalyed
+     * @return array user data
      */
     private function findLoggedUserData($userId)
     {
@@ -424,7 +438,8 @@ class UserRepository
     /**
      * Finds user phone in table telefon by his ID
      *
-     * @param $userId
+     * @param $userId int user id
+     * @return array with user phone
      */
     private function findLoggedUserPhone($userId)
     {
@@ -445,7 +460,8 @@ class UserRepository
     /**
      * Finds user address in table telefon by his ID
      *
-     * @param $userId
+     * @param $userId int user id
+     * @return array user adress
      */
     private function findLoggedUserAddress($userId)
     {
@@ -469,7 +485,7 @@ class UserRepository
      * Shows all users with their respective data.
      *
      * serving functions provide phone numbers and adresses
-     *
+     * @return user data
      */
 
     public function showAllUsers()
@@ -513,9 +529,11 @@ class UserRepository
 
 
     /**
-     * Delete user and all his info (in all atbles using his $id)
+     * Delete user and all his info (in all tables using his $id)
+     *
+     * @param $userName string user login
+     * @throws DBALException
      */
-
     public function deleteUser($userName)
     {
 
@@ -537,6 +555,5 @@ class UserRepository
             throw $exception;
         }
 
-        return $this;
     }
 }

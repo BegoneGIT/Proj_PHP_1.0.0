@@ -1,6 +1,8 @@
 <?php
 /**
  * EditRecord type
+ *
+ * Edits properties of part.
  */
 
 namespace Form;

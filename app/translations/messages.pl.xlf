@@ -327,6 +327,11 @@
             <target>Użytkownik został usunięty</target>
         </trans-unit>
 
+        <trans-unit id="message.part_successfully_deleted">
+            <source>message.part_successfully_deleted</source>
+            <target> Część została usuniąta z obserwowanych </target>
+        </trans-unit>
+
         <trans-unit id="id.table">
             <source>id.table</source>
             <target> ID </target>

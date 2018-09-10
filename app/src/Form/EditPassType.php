@@ -1,6 +1,7 @@
 <?php
 /**
  * EditPass form.
+ * Modify login and password.
  */
 
 namespace Form;

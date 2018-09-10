@@ -425,6 +425,11 @@
             <target> You do not track this part </target>
         </trans-unit>
 
+        <trans-unit id="message.part_successfully_deleted">
+            <source>message.part_successfully_deleted</source>
+            <target> Part was successfully deleted </target>
+        </trans-unit>
+
 
         <trans-unit id="error_text.client_fault">
             <source>error_text.client_fault</source>

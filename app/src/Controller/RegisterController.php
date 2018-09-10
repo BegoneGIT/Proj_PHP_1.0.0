@@ -1,6 +1,6 @@
 <?php
 /**
- * Auth controller.
+ * Register controller.
  *
  */
 namespace Controller;

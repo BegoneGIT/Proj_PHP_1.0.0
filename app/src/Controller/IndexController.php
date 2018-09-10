@@ -1,6 +1,7 @@
 <?php
 /**
  * Index controller.
+ * Manages main page and links.
  *
  * @copyright (c) 2018 Mateusz Bulat
  */
@@ -35,6 +36,7 @@ class IndexController implements ControllerProviderInterface
 
     /**
      * Index action.
+     * Lists current brands of parts.
      *
      * @param \Silex\Application $app Silex application
      *

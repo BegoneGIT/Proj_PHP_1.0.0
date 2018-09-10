@@ -49,7 +49,8 @@ class TrackController implements ControllerProviderInterface
     }
 
     /**
-     * Parts action.
+     * Index action.
+     * Lists parts tracked by current logged user
      *
      * @param \Silex\Application $app Silex application
      *
@@ -72,9 +73,11 @@ class TrackController implements ControllerProviderInterface
     }
     /**
      * Add action.
+     * Adds part to tracked by current user.
      *
      * @param \Silex\Application                        $app     Silex application
      * @param \Symfony\Component\HttpFoundation\Request $request HTTP Request
+     * @param string $INDEKS used to chceck if part of this index exists
      *
      * @return \Symfony\Component\HttpFoundation\Response HTTP Response
      */
@@ -131,6 +134,17 @@ class TrackController implements ControllerProviderInterface
         );
     }
 
+    /**
+     * Delete from tracked action.
+     * Deletes part based on its ID if current user tracks it.
+     *
+     * @param Application $app
+     * @param Request $request
+     * @param $trackID Id of tracked part
+     * to be removed from tracked list.
+     *
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
     public function deleteAction(Application $app, Request $request, $trackID)
     {
         $partData = new TrackRepository($app['db']);
